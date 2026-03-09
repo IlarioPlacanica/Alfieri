@@ -13,4 +13,4 @@ defaults:
       type: apartments
     values:
       layout: apartment
-      permalink: "/:name/"
+    
