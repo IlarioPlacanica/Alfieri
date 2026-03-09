@@ -23,14 +23,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isManualScrolling) return;
 
     const offset = getOffset();
+    const activationY = window.scrollY + offset + window.innerHeight * 0.35;
+
     let currentSectionId = sections[0].id;
 
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop - offset;
-      if (window.scrollY >= sectionTop) {
+      if (activationY >= section.offsetTop) {
         currentSectionId = section.id;
       }
     });
+
+    const nearBottom =
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+
+    if (nearBottom) {
+      currentSectionId = sections[sections.length - 1].id;
+    }
 
     setActiveLink(currentSectionId);
   }
