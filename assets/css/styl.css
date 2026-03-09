@@ -65,7 +65,7 @@ model-viewer {
 .section-nav a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 17px;
   font-weight: 700;
   line-height: 1;
   padding: 7px 8px;
@@ -87,7 +87,7 @@ model-viewer {
   }
 
   .section-nav a {
-    font-size: 9px;
+    font-size: 12px;
     padding: 6px 5px;
     letter-spacing: 0.02em;
   }
