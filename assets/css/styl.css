@@ -1,11 +1,12 @@
 :root {
-  --page-bg: #ececec;
+  --page-bg: #ededed;
   --card-bg: #ffffff;
   --media-bg: #f3f3f3;
   --shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
   --card-radius: 34px;
   --media-radius: 24px;
-  --shell-width: 430px;
+  --shell-width: 440px;
+  --nav-height: 58px;
 }
 
 * {
@@ -20,6 +21,7 @@ body {
   margin: 0;
   background: var(--page-bg);
   font-family: Arial, Helvetica, sans-serif;
+  color: #111;
 }
 
 img,
@@ -44,18 +46,53 @@ model-viewer {
   box-shadow: var(--shadow);
 }
 
+.section-nav {
+  position: sticky;
+  top: 10px;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 8px;
+  min-height: var(--nav-height);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+}
+
+.section-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 8px;
+  border-radius: 12px;
+  color: #111;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.section-nav a:hover {
+  background: #f4f4f4;
+}
+
 .block + .block {
   margin-top: 12px;
 }
 
-.hero-media,
-.gallery-item,
-.viewer-wrap,
-.tour-wrap {
+.media-card {
   position: relative;
   overflow: hidden;
   border-radius: var(--media-radius);
   background: var(--media-bg);
+}
+
+.scroll-target {
+  scroll-margin-top: calc(var(--nav-height) + 18px);
 }
 
 .hero-media {
@@ -84,21 +121,26 @@ model-viewer {
   gap: 12px;
 }
 
+.gallery-item {
+  aspect-ratio: 9 / 16;
+}
+
 .gallery-item img {
-  aspect-ratio: 9 / 12.8;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   background: #ddd;
 }
 
 .viewer-wrap {
-  aspect-ratio: 9 / 12;
-  min-height: 430px;
+  min-height: 520px;
+  aspect-ratio: 9 / 12.5;
 }
 
 .glb-viewer {
   width: 100%;
   height: 100%;
-  background: #f6f6f6;
+  background: #f3f3f3;
   --poster-color: transparent;
 }
 
@@ -121,6 +163,6 @@ model-viewer {
   }
 
   .app-card {
-    width: 430px;
+    width: 440px;
   }
 }

@@ -11,9 +11,16 @@
   <main class="page">
     <div class="app-card">
 
+      <header class="section-nav">
+        <a href="#video">Video</a>
+        <a href="#render">Render</a>
+        <a href="#modello-3d">Modello 3D</a>
+        <a href="#tour">Tour</a>
+      </header>
+
       {% if page.hero_video %}
-      <section class="block">
-        <div class="hero-media">
+      <section id="video" class="block scroll-target">
+        <div class="hero-media media-card">
           <video
             class="hero-video"
             autoplay
@@ -37,10 +44,10 @@
       {% endif %}
 
       {% if page.gallery %}
-      <section class="block">
+      <section id="render" class="block scroll-target">
         <div class="gallery-column">
           {% for image in page.gallery %}
-          <div class="gallery-item">
+          <div class="gallery-item media-card">
             <img
               src="{{ image | relative_url }}"
               alt=""
@@ -53,15 +60,15 @@
       {% endif %}
 
       {% if page.glb_model %}
-      <section class="block">
-        <div class="viewer-wrap">
+      <section id="modello-3d" class="block scroll-target">
+        <div class="viewer-wrap media-card">
           <model-viewer
             src="{{ page.glb_model | relative_url }}"
             {% if page.glb_poster %}poster="{{ page.glb_poster | relative_url }}"{% endif %}
             camera-controls
             interaction-prompt="none"
-            shadow-intensity="1"
-            exposure="1"
+            shadow-intensity="0.35"
+            exposure="0.68"
             loading="eager"
             reveal="auto"
             class="glb-viewer">
@@ -71,8 +78,8 @@
       {% endif %}
 
       {% if page.tour_embed_url %}
-      <section class="block">
-        <div class="tour-wrap">
+      <section id="tour" class="block scroll-target">
+        <div class="tour-wrap media-card">
           <iframe
             src="{{ page.tour_embed_url | relative_url }}"
             title="Tour virtuale"
