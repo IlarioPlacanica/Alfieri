@@ -1,38 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll(".section-nav a");
-  const sections = document.querySelectorAll(".scroll-target");
+  const navLinks = Array.from(document.querySelectorAll(".section-nav a"));
+  const sections = Array.from(document.querySelectorAll(".scroll-target"));
 
   if (!navLinks.length || !sections.length) return;
 
-  const setActiveLink = (id) => {
+  function setActiveLink(id) {
     navLinks.forEach((link) => {
-      const target = link.getAttribute("href");
-      link.classList.toggle("is-active", target === `#${id}`);
+      const href = link.getAttribute("href");
+      link.classList.toggle("is-active", href === `#${id}`);
     });
-  };
+  }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      let visibleSection = null;
+  function updateActiveLinkOnScroll() {
+    const nav = document.querySelector(".section-nav");
+    const offset = (nav ? nav.offsetHeight : 0) + 28;
 
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          visibleSection = entry.target;
-        }
-      });
+    let currentSectionId = sections[0].id;
 
-      if (visibleSection) {
-        setActiveLink(visibleSection.id);
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - offset;
+      if (window.scrollY >= sectionTop) {
+        currentSectionId = section.id;
       }
-    },
-    {
-      root: null,
-      rootMargin: "-35% 0px -35% 0px",
-      threshold: 0.2
-    }
-  );
+    });
 
-  sections.forEach((section) => observer.observe(section));
+    setActiveLink(currentSectionId);
+  }
 
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
@@ -40,4 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (id) setActiveLink(id);
     });
   });
+
+  window.addEventListener("scroll", updateActiveLinkOnScroll, { passive: true });
+  window.addEventListener("resize", updateActiveLinkOnScroll);
+
+  updateActiveLinkOnScroll();
 });
