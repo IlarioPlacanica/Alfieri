@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #111;
+  color: #fff;
+}
+
+.container {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 40px 0;
+}
+
+.listing {
+  display: grid;
+  gap: 16px;
+}
+
+.listing-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #333;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.gallery {
+  display: grid;
+  gap: 12px;
+}
+
+.gallery img {
+  width: 100%;
+  max-width: 420px;
+}
+
+.hero {
+  padding: 48px 0;
+  background: #1a1a1a;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.meta div {
+  border: 1px solid #333;
+  padding: 12px;
+  border-radius: 10px;
+}
