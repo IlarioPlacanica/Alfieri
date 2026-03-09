@@ -1,0 +1,24 @@
+---
+title: "Appartamento A14"
+permalink: /A14
+address: "Via Alfieri, Torino"
+price: "€ 295.000"
+size: "92 m²"
+rooms: "3"
+bathrooms: "1"
+
+hero_video: "/assets/media/A14/hero.mp4"
+hero_poster: "/assets/media/A14/poster.jpg"
+
+tour_url: "https://example.com/tour-a11/"
+
+features:
+  - "Soggiorno luminoso"
+  - "Cucina separata"
+
+gallery:
+  - "/assets/media/A14/gallery-1.jpg"
+  - "/assets/media/A14/gallery-2.jpg"
+---
+
+Descrizione dell'appartamento A14.
