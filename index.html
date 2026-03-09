@@ -1,29 +1,32 @@
 ---
 title: Appartamenti
 ---
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
 </head>
-<body>
-  <main class="container">
-    <h1>Appartamenti disponibili</h1>
-    <div class="listing">
+<body class="site-body">
+  <main class="listing-shell">
+    <div class="listing-header">
+      <p class="listing-kicker">Schede appartamenti</p>
+      <h1 class="listing-title">Seleziona un appartamento</h1>
+    </div>
+
+    <div class="listing-grid">
       {% for apartment in site.apartments %}
         {% assign first_image = apartment.gallery | first %}
         <a class="listing-card" href="{{ apartment.url | relative_url }}">
           {% if first_image %}
-            <img src="{{ first_image | relative_url }}" alt="{{ apartment.title }}">
+            <img src="{{ first_image | relative_url }}" alt="{{ apartment.title }}" class="listing-thumb" loading="lazy" />
           {% endif %}
-          <div class="listing-body">
+          <div class="listing-card-body">
             <h2>{{ apartment.title }}</h2>
-            <p>{{ apartment.address }}</p>
-            <strong>{{ apartment.price }}</strong>
+            {% if apartment.address %}<p>{{ apartment.address }}</p>{% endif %}
+            {% if apartment.price %}<strong>{{ apartment.price }}</strong>{% endif %}
           </div>
         </a>
       {% endfor %}
