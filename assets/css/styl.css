@@ -51,34 +51,46 @@ model-viewer {
   top: 12px;
   z-index: 20;
   display: flex;
-  gap: 8px;
+  gap: 6px;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 12px;
-  margin-bottom: 12px;
-  background: #4b4b4b;
+  width: 88%;
+  margin: 0 auto 12px;
+  padding: 8px 10px;
+  background: #1f1f1f;
   border-radius: 18px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
 .section-nav a {
   color: #ffffff;
   text-decoration: none;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   line-height: 1;
-  padding: 8px 10px;
+  padding: 7px 8px;
   border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   transition: background 0.2s ease;
 }
 
 .section-nav a:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.block + .block {
-  margin-top: 12px;
+@media (max-width: 640px) {
+  .section-nav {
+    width: 92%;
+    gap: 4px;
+    padding: 7px 8px;
+  }
+
+  .section-nav a {
+    font-size: 9px;
+    padding: 6px 5px;
+    letter-spacing: 0.02em;
+  }
 }
 
 .media-card {
@@ -142,8 +154,11 @@ model-viewer {
 }
 
 .tour-wrap {
-  aspect-ratio: 9 / 16;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--media-radius);
   background: #000;
+  aspect-ratio: 9 / 16;
 }
 
 .tour-wrap iframe {
