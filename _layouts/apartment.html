@@ -12,10 +12,10 @@
     <div class="app-card">
 
       <header class="section-nav">
-        <a href="#video">Video</a>
-        <a href="#render">Render</a>
-        <a href="#modello-3d">Modello 3D</a>
-        <a href="#tour">Tour</a>
+        <a href="#video">VIDEO</a>
+        <a href="#render">RENDER</a>
+        <a href="#modello-3d">MODELLO 3D</a>
+        <a href="#tour">TOUR</a>
       </header>
 
       {% if page.hero_video %}
@@ -67,8 +67,8 @@
             {% if page.glb_poster %}poster="{{ page.glb_poster | relative_url }}"{% endif %}
             camera-controls
             interaction-prompt="none"
-            shadow-intensity="0.35"
-            exposure="0.68"
+            shadow-intensity="0.6"
+            exposure="0.45"
             loading="eager"
             reveal="auto"
             class="glb-viewer">
