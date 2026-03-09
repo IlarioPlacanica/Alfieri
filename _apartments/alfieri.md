@@ -1,5 +1,6 @@
 ---
-title: "Appartamento Alfieri"
+title: "Appartamento A11"
+permalink: /A11
 address: "Via Alfieri, Torino"
 price: "€ 295.000"
 size: "92 m²"
