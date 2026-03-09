@@ -7,6 +7,7 @@
   --media-radius: 24px;
   --shell-width: 440px;
   --nav-height: 58px;
+  --stack-gap: 12px;
 }
 
 * {
@@ -46,6 +47,10 @@ model-viewer {
   box-shadow: var(--shadow);
 }
 
+  .block + .block {
+  margin-top: var(--stack-gap);
+}
+
 .section-nav {
   position: sticky;
   top: 12px;
@@ -72,22 +77,24 @@ model-viewer {
   border-radius: 12px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.section-nav a:hover {
-  background: rgba(255, 255, 255, 0.1);
+.section-nav a:hover,
+.section-nav a.is-active {
+  background: #ffffff;
+  color: #000000;
 }
 
 @media (max-width: 640px) {
   .section-nav {
-    width: 92%;
+    width: 100%;
     gap: 4px;
     padding: 7px 8px;
   }
 
   .section-nav a {
-    font-size: 12px;
+    font-size: 15px;
     padding: 6px 5px;
     letter-spacing: 0.02em;
   }
@@ -127,7 +134,7 @@ model-viewer {
 
 .gallery-column {
   display: grid;
-  gap: 12px;
+  gap: var(--stack-gap);
 }
 
 .gallery-item {
