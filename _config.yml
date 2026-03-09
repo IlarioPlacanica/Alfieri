@@ -1,0 +1,16 @@
+title: Schede Appartamenti
+description: Vetrina immobili
+baseurl: "/Alfieri"
+url: ""
+
+collections:
+  apartments:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: apartments
+    values:
+      layout: apartment
+      permalink: "/:name/"
