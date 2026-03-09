@@ -1,1 +1,3 @@
-console.log("script caricato");
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("A14 layout caricato");
+});

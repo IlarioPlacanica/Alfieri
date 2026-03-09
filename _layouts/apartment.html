@@ -4,102 +4,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ page.title }}</title>
-  <meta name="description" content="{{ page.title }}" />
-  <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
-  <script type="module" src="https://unpkg.com//model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
-<body class="site-body">
-  <main class="phone-page">
-    <section class="hero-card">
-      <div class="hero-media">
-        {% if page.hero_video %}
-          <video class="hero-video" autoplay muted loop playsinline {% if page.hero_poster %}poster="{{ page.hero_poster | relative_url }}"{% endif %}>
-            <source src="{{ page.hero_video | relative_url }}" type="video/mp4" />
-          </video>
-        {% endif %}
+<body>
+  <main class="page">
+    <div class="app-card">
 
-        {% if page.hero_overlay_png %}
+      {% if page.hero_video %}
+      <section class="block">
+        <div class="hero-media">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            {% if page.hero_poster %}poster="{{ page.hero_poster | relative_url }}"{% endif %}
+          >
+            <source src="{{ page.hero_video | relative_url }}" type="video/mp4">
+          </video>
+
+          {% if page.hero_overlay_png %}
           <img
             class="hero-overlay-png"
             src="{{ page.hero_overlay_png | relative_url }}"
-            alt="{{ page.title }}"
-            loading="eager"
-          />
-        {% endif %}
-      </div>
-
-      <div class="hero-copy">
-        <p class="eyebrow">Scheda immobile</p>
-        <h1>{{ page.title }}</h1>
-        {% if page.address %}<p class="hero-address">{{ page.address }}</p>{% endif %}
-        {% if page.price %}<p class="hero-price">{{ page.price }}</p>{% endif %}
-      </div>
-    </section>
-
-    {% if page.gallery %}
-      <section class="content-section">
-        <div class="section-heading">
-          <p class="eyebrow">Galleria</p>
-          <h2>Immagini</h2>
+            alt=""
+          >
+          {% endif %}
         </div>
-        <div class="gallery-stack">
-          {% for image in page.gallery limit:5 %}
-            <button class="gallery-item" type="button">
-              <img src="{{ image | relative_url }}" alt="{{ page.title }} foto {{ forloop.index }}" loading="lazy" />
-            </button>
+      </section>
+      {% endif %}
+
+      {% if page.gallery %}
+      <section class="block">
+        <div class="gallery-column">
+          {% for image in page.gallery %}
+          <div class="gallery-item">
+            <img
+              src="{{ image | relative_url }}"
+              alt=""
+              loading="lazy"
+            >
+          </div>
           {% endfor %}
         </div>
       </section>
-    {% endif %}
+      {% endif %}
 
-    {% if page.glb_model %}
-      <section class="content-section">
-        <div class="section-heading">
-          <p class="eyebrow">3D Viewer</p>
-          <h2>Modello appartamento</h2>
-        </div>
-        <div class="viewer-card">
+      {% if page.glb_model %}
+      <section class="block">
+        <div class="viewer-wrap">
           <model-viewer
             src="{{ page.glb_model | relative_url }}"
             {% if page.glb_poster %}poster="{{ page.glb_poster | relative_url }}"{% endif %}
             camera-controls
-            touch-action="pan-y"
+            interaction-prompt="none"
             shadow-intensity="1"
             exposure="1"
-            environment-image="neutral"
-            loading="lazy"
-            interaction-prompt="auto"
-            disable-tap
-          >
-            <div class="viewer-hint">Trascina per ruotare</div>
+            loading="eager"
+            reveal="auto"
+            class="glb-viewer">
           </model-viewer>
         </div>
       </section>
-    {% endif %}
+      {% endif %}
 
-    {% if page.tour_embed_url %}
-      <section class="content-section">
-        <div class="section-heading">
-          <p class="eyebrow">Tour virtuale</p>
-          <h2>Marzipano</h2>
-        </div>
-        <div class="tour-card">
+      {% if page.tour_embed_url %}
+      <section class="block">
+        <div class="tour-wrap">
           <iframe
-            src="{{ page.tour_embed_url }}"
-            title="Tour virtuale {{ page.title }}"
+            src="{{ page.tour_embed_url | relative_url }}"
+            title="Tour virtuale"
             loading="lazy"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin"
-          ></iframe>
+            allowfullscreen>
+          </iframe>
         </div>
       </section>
-    {% endif %}
-  </main>
+      {% endif %}
 
-  <div id="lightbox" class="lightbox is-hidden" aria-hidden="true">
-    <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Chiudi">×</button>
-    <img id="lightbox-image" src="" alt="" />
-  </div>
+    </div>
+  </main>
 
   <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
 </body>

@@ -1,56 +1,126 @@
+:root {
+  --page-bg: #ececec;
+  --card-bg: #ffffff;
+  --media-bg: #f3f3f3;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.10);
+  --card-radius: 34px;
+  --media-radius: 24px;
+  --shell-width: 430px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background: #111;
-  color: #fff;
+  background: var(--page-bg);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
-  width: min(1100px, calc(100% - 32px));
-  margin: 0 auto;
-}
-
-.section {
-  padding: 40px 0;
-}
-
-.listing {
-  display: grid;
-  gap: 16px;
-}
-
-.listing-card {
+img,
+video,
+iframe,
+model-viewer {
   display: block;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #333;
-  padding: 16px;
-  border-radius: 12px;
-}
-
-.gallery {
-  display: grid;
-  gap: 12px;
-}
-
-.gallery img {
   width: 100%;
-  max-width: 420px;
 }
 
-.hero {
-  padding: 48px 0;
-  background: #1a1a1a;
+.page {
+  min-height: 100vh;
+  padding: 22px 12px 36px;
 }
 
-.meta {
+.app-card {
+  width: min(100%, var(--shell-width));
+  margin: 0 auto;
+  padding: 12px;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+}
+
+.block + .block {
+  margin-top: 12px;
+}
+
+.hero-media,
+.gallery-item,
+.viewer-wrap,
+.tour-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--media-radius);
+  background: var(--media-bg);
+}
+
+.hero-media {
+  aspect-ratio: 9 / 16;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+}
+
+.hero-overlay-png {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gallery-column {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
-.meta div {
-  border: 1px solid #333;
-  padding: 12px;
-  border-radius: 10px;
+.gallery-item img {
+  aspect-ratio: 9 / 12.8;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.viewer-wrap {
+  aspect-ratio: 9 / 12;
+  min-height: 430px;
+}
+
+.glb-viewer {
+  width: 100%;
+  height: 100%;
+  background: #f6f6f6;
+  --poster-color: transparent;
+}
+
+.tour-wrap {
+  aspect-ratio: 9 / 16;
+  background: #000;
+}
+
+.tour-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+@media (min-width: 900px) {
+  .page {
+    padding-top: 34px;
+    padding-bottom: 44px;
+  }
+
+  .app-card {
+    width: 430px;
+  }
 }
