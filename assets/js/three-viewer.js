@@ -74,7 +74,7 @@ function initThreeViewer(wrapper, canvas) {
   scene.add(hemiLight);
 
   // Luce principale: deve "battere" davvero sui muri
-  const sunLight = new THREE.DirectionalLight(0xffffff, 3.3);
+  const sunLight = new THREE.DirectionalLight(0xffffff, 3.8);
   sunLight.position.set(5.5, 8.0, 4.5);
   sunLight.castShadow = true;
 
