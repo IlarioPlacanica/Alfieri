@@ -59,24 +59,16 @@
       </section>
       {% endif %}
 
-      {% if page.glb_model %}
-      <section id="modello-3d" class="block scroll-target">
-        <div class="viewer-wrap media-card">
-          <model-viewer
-            src="{{ page.glb_model | relative_url }}"
-            {% if page.glb_poster %}poster="{{ page.glb_poster | relative_url }}"{% endif %}
-            camera-controls
-            interaction-prompt="none"
-            environment-image="legacy"
-            shadow-intensity="2"
-            exposure="1"
-            loading="eager"
-            reveal="auto"
-            class="glb-viewer">
-          </model-viewer>
-        </div>
-      </section>
-      {% endif %}
+     {% if page.glb_model %}
+     <section id="modello-3d" class="block scroll-target">
+       <div
+         class="viewer-wrap three-viewer"
+         data-model="{{ page.glb_model | relative_url }}">
+         <canvas id="three-canvas"></canvas>
+       </div>
+     </section>
+     <script type="module" src="{{ '/assets/js/three-viewer.js' | relative_url }}"></script>
+     {% endif %}
 
       {% if page.tour_embed_url %}
       <section id="tour" class="block scroll-target">
