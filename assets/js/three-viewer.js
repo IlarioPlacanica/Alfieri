@@ -185,7 +185,7 @@ function initThreeViewer(wrapper, canvas) {
 
     const fov = THREE.MathUtils.degToRad(cameraRef.fov);
     let distance = maxDim / (2 * Math.tan(fov / 2));
-    distance *= isMobile ? 1.75 : 1.5;
+    distance *= isMobile ? 1.45 : 1.25;
 
     cameraRef.near = Math.max(distance / 100, 0.01);
     cameraRef.far = Math.max(distance * 30, 100);
