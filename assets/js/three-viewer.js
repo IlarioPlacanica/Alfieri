@@ -216,7 +216,7 @@ function initThreeViewer(wrapper, canvas) {
     // Sposta la luce in base alla scala reale del modello
     mainLight.position.set(
       maxDim * 0.45,
-      maxDim * 1.35,
+      maxDim * 1,
       maxDim * 0.75
     );
 
