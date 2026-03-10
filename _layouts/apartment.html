@@ -79,15 +79,22 @@
 
       {% if page.tour_embed_url %}
       <section id="tour" class="block scroll-target">
-        <div class="tour-wrap media-card">
-          <iframe
-            src="{{ page.tour_embed_url | relative_url }}"
-            title="Tour virtuale"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin">
-          </iframe>
-        </div>
+          <div class="tour-wrap media-card" id="tour-container">
+              <button type="button"
+                      class="tour-fullscreen-btn"
+                      id="tour-fullscreen-btn"
+                      aria-label="Schermo intero">
+                  ⤢
+              </button>
+
+              <iframe id="tour-iframe"
+                      src="{{ page.tour_embed_url | relative_url }}"
+                      title="Tour virtuale"
+                      loading="lazy"
+                      allowfullscreen
+                      referrerpolicy="strict-origin-when-cross-origin">
+              </iframe>
+          </div>
       </section>
       {% endif %}
 

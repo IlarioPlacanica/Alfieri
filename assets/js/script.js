@@ -1,7 +1,12 @@
-document.addEventListener("DOMContentLoaded", () => {
+﻿document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".section-nav");
   const navLinks = Array.from(document.querySelectorAll(".section-nav a"));
   const sections = Array.from(document.querySelectorAll(".scroll-target"));
+  const tourContainer = document.getElementById("tour-container");
+  const tourFullscreenBtn = document.getElementById("tour-fullscreen-btn");
+  const isDesktop = window.matchMedia(
+    "(min-width: 900px) and (hover: hover) and (pointer: fine)"
+  ).matches;
 
   if (!nav || !navLinks.length || !sections.length) return;
 
@@ -69,6 +74,32 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 700);
     });
   });
+
+  if (tourContainer && tourFullscreenBtn && isDesktop) {
+    tourFullscreenBtn.addEventListener("click", async () => {
+      try {
+        if (!document.fullscreenElement) {
+          await tourContainer.requestFullscreen();
+        } else {
+          await document.exitFullscreen();
+        }
+      } catch (error) {
+        console.error("Errore fullscreen tour:", error);
+      }
+    });
+
+    document.addEventListener("fullscreenchange", () => {
+      if (document.fullscreenElement === tourContainer) {
+        tourFullscreenBtn.textContent = "✕";
+        tourFullscreenBtn.setAttribute("aria-label", "Esci da schermo intero");
+      } else {
+        tourFullscreenBtn.textContent = "⤢";
+        tourFullscreenBtn.setAttribute("aria-label", "Schermo intero");
+      }
+    });
+  } else if (tourFullscreenBtn) {
+    tourFullscreenBtn.remove();
+  }
 
   window.addEventListener("scroll", updateActiveLinkOnScroll, { passive: true });
   window.addEventListener("resize", updateActiveLinkOnScroll);
