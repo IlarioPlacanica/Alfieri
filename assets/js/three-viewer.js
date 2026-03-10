@@ -34,18 +34,18 @@ function initThreeViewer(wrapper, canvas) {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.15;
+  renderer.toneMappingExposure = 1.28;
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0xf3f3f3);
 
   const camera = new THREE.PerspectiveCamera(
-    40,
+    38,
     wrapper.clientWidth / wrapper.clientHeight,
     0.01,
     1000
   );
-  camera.position.set(0, 2.5, 8);
+  camera.position.set(0, 2.2, 6.8);
 
   const controls = new OrbitControls(camera, canvas);
   controls.enableDamping = true;
@@ -61,44 +61,46 @@ function initThreeViewer(wrapper, canvas) {
   controls.maxDistance = 80;
   controls.minPolarAngle = 0;
   controls.maxPolarAngle = Math.PI / 2.02;
-  controls.target.set(0, 1.2, 0);
+  controls.target.set(0, 1.0, 0);
   controls.update();
 
-  // Luce base: schiarisce ma non fa ombre
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
+  // Luce ambiente molto più bassa, solo per non chiudere i neri
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
   scene.add(ambientLight);
 
-  const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe9e9e9, 0.55);
+  // Luce cielo morbida
+  const hemiLight = new THREE.HemisphereLight(0xffffff, 0xe7e7e7, 0.55);
   hemiLight.position.set(0, 10, 0);
   scene.add(hemiLight);
 
-  // Luce principale con ombre per interni
-  const spotLight = new THREE.SpotLight(0xffffff, 18);
-  spotLight.position.set(2.8, 5.8, 3.8);
-  spotLight.angle = Math.PI / 5.2;
-  spotLight.penumbra = 0.45;
-  spotLight.decay = 1.6;
-  spotLight.distance = 0;
-  spotLight.castShadow = true;
+  // Luce principale: deve "battere" davvero sui muri
+  const sunLight = new THREE.DirectionalLight(0xffffff, 2.8);
+  sunLight.position.set(5.5, 8.0, 4.5);
+  sunLight.castShadow = true;
 
   const shadowMapSize = isMobile ? 1024 : 2048;
-  spotLight.shadow.mapSize.set(shadowMapSize, shadowMapSize);
-  spotLight.shadow.bias = -0.00008;
-  spotLight.shadow.normalBias = 0.02;
-  spotLight.shadow.camera.near = 0.2;
-  spotLight.shadow.camera.far = 40;
-  spotLight.shadow.focus = 1;
+  sunLight.shadow.mapSize.set(shadowMapSize, shadowMapSize);
 
-  spotLight.target.position.set(0, 1.0, 0);
-  scene.add(spotLight);
-  scene.add(spotLight.target);
+  sunLight.shadow.bias = -0.00005;
+  sunLight.shadow.normalBias = 0.03;
 
-  // Fill frontale leggero per non chiudere troppo i neri
-  const fillLight = new THREE.DirectionalLight(0xffffff, 0.65);
-  fillLight.position.set(-3, 2.5, 3);
+  sunLight.shadow.camera.left = -10;
+  sunLight.shadow.camera.right = 10;
+  sunLight.shadow.camera.top = 10;
+  sunLight.shadow.camera.bottom = -10;
+  sunLight.shadow.camera.near = 0.5;
+  sunLight.shadow.camera.far = 35;
+
+  sunLight.target.position.set(0, 0.9, 0);
+  scene.add(sunLight);
+  scene.add(sunLight.target);
+
+  // Fill light più morbida dal lato opposto
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  fillLight.position.set(-4.0, 3.5, -2.0);
   scene.add(fillLight);
 
-  // Pavimento chiaro sotto al modello
+  // Piano chiaro
   const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(40, 40),
     new THREE.MeshStandardMaterial({
@@ -114,7 +116,7 @@ function initThreeViewer(wrapper, canvas) {
   // Piano ombra
   const shadowPlane = new THREE.Mesh(
     new THREE.PlaneGeometry(40, 40),
-    new THREE.ShadowMaterial({ opacity: 0.16 })
+    new THREE.ShadowMaterial({ opacity: 0.14 })
   );
   shadowPlane.rotation.x = -Math.PI / 2;
   shadowPlane.position.y = 0;
@@ -136,6 +138,7 @@ function initThreeViewer(wrapper, canvas) {
         obj.receiveShadow = true;
 
         const materials = Array.isArray(obj.material) ? obj.material : [obj.material];
+
         materials.forEach((material) => {
           if (!material) return;
 
@@ -147,17 +150,12 @@ function initThreeViewer(wrapper, canvas) {
             material.emissiveMap.colorSpace = THREE.SRGBColorSpace;
           }
 
-          // Piccolo aiuto per schiarire materiali troppo spenti
-          if ('envMapIntensity' in material && material.envMapIntensity !== undefined) {
-            material.envMapIntensity = 0.9;
-          }
-
           material.needsUpdate = true;
         });
       });
 
       scene.add(modelRoot);
-      centerAndFitModel(modelRoot, camera, controls, spotLight);
+      centerAndFitModel(modelRoot, camera, controls, sunLight);
       resizeViewer();
       hideViewerMessage(wrapper);
       animate();
@@ -182,21 +180,21 @@ function initThreeViewer(wrapper, canvas) {
     const fittedSize = fittedBox.getSize(new THREE.Vector3());
     const maxDim = Math.max(fittedSize.x, fittedSize.y, fittedSize.z);
 
-    const targetY = Math.max(fittedSize.y * 0.38, 0.7);
+    const targetY = Math.max(fittedSize.y * 0.34, 0.65);
     controlsRef.target.set(0, targetY, 0);
 
     const fov = THREE.MathUtils.degToRad(cameraRef.fov);
     let distance = maxDim / (2 * Math.tan(fov / 2));
-    distance *= isMobile ? 2.0 : 1.8;
+    distance *= isMobile ? 1.75 : 1.5;
 
     cameraRef.near = Math.max(distance / 100, 0.01);
     cameraRef.far = Math.max(distance * 30, 100);
     cameraRef.updateProjectionMatrix();
 
     cameraRef.position.set(
-      distance * 0.72,
       distance * 0.95,
-      distance * 1.18
+      distance * 1.1,
+      distance * 1.35
     );
     cameraRef.lookAt(controlsRef.target);
 
@@ -204,20 +202,23 @@ function initThreeViewer(wrapper, canvas) {
     controlsRef.maxDistance = Math.max(maxDim * 6, 30);
     controlsRef.update();
 
-    // punta la spot verso il modello
     mainLight.target.position.copy(controlsRef.target);
 
-    // adatta il cono e la shadow camera alla scala del modello
-    mainLight.shadow.camera.near = 0.2;
-    mainLight.shadow.camera.far = Math.max(maxDim * 6, 25);
-    mainLight.shadow.camera.updateProjectionMatrix();
-
-    // sposta la spot in modo coerente con la dimensione del modello
+    // Sposta la luce in base alla scala reale del modello
     mainLight.position.set(
-      maxDim * 0.55,
-      maxDim * 1.15,
+      maxDim * 0.9,
+      maxDim * 1.35,
       maxDim * 0.75
     );
+
+    const shadowHalfSize = Math.max(maxDim * 1.2, 6);
+    mainLight.shadow.camera.left = -shadowHalfSize;
+    mainLight.shadow.camera.right = shadowHalfSize;
+    mainLight.shadow.camera.top = shadowHalfSize;
+    mainLight.shadow.camera.bottom = -shadowHalfSize;
+    mainLight.shadow.camera.near = 0.5;
+    mainLight.shadow.camera.far = Math.max(maxDim * 5, 25);
+    mainLight.shadow.camera.updateProjectionMatrix();
 
     shadowPlane.position.y = 0;
     floor.position.y = -0.002;
