@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}">
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
   <script type="importmap">
   {
     "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/"
+      "three": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/"
     }
   }
   </script>
@@ -19,12 +19,12 @@
   <main class="page">
     <div class="app-card">
 
-      <header class="section-nav">
+      <nav class="section-nav">
         <a href="#video">VIDEO</a>
         <a href="#render">RENDER</a>
         <a href="#modello-3d">MODELLO 3D</a>
         <a href="#tour">TOUR</a>
-      </header>
+      </nav>
 
       {% if page.hero_video %}
       <section id="video" class="block scroll-target">
@@ -67,16 +67,15 @@
       </section>
       {% endif %}
 
-     {% if page.glb_model %}
-     <section id="modello-3d" class="block scroll-target">
-       <div
-         class="viewer-wrap three-viewer"
-         data-model="{{ page.glb_model | relative_url }}">
-         <canvas id="three-canvas"></canvas>
-       </div>
-     </section>
-     <script type="module" src="{{ '/assets/js/three-viewer.js' | relative_url }}"></script>
-     {% endif %}
+      {% if page.glb_model %}
+      <section id="modello-3d" class="block scroll-target">
+        <div
+          class="viewer-wrap three-viewer media-card"
+          data-model="{{ page.glb_model | relative_url }}">
+          <canvas id="three-canvas"></canvas>
+        </div>
+      </section>
+      {% endif %}
 
       {% if page.tour_embed_url %}
       <section id="tour" class="block scroll-target">
@@ -85,7 +84,8 @@
             src="{{ page.tour_embed_url | relative_url }}"
             title="Tour virtuale"
             loading="lazy"
-            allowfullscreen>
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin">
           </iframe>
         </div>
       </section>
@@ -95,5 +95,9 @@
   </main>
 
   <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+
+  {% if page.glb_model %}
+  <script type="module" src="{{ '/assets/js/three-viewer.js' | relative_url }}"></script>
+  {% endif %}
 </body>
 </html>
