@@ -215,9 +215,9 @@ function initThreeViewer(wrapper, canvas) {
 
     // Sposta la luce in base alla scala reale del modello
     mainLight.position.set(
-      maxDim * 0.45,
-      maxDim * 1,
-      maxDim * 0.75
+      maxDim * 0.45,  //Destra/sinistra
+      maxDim * 1.25,     //Alto/Basso
+      maxDim * 0.75   //Davanti/Dietro
     );
 
     const shadowHalfSize = Math.max(maxDim * 1.2, 6);
