@@ -183,7 +183,7 @@ model-viewer {
 }
 
 .tour-fullscreen-btn {
-    display: none;
+    display: inline-flex;
     position: absolute;
     right: 12px;
     bottom: 12px;
@@ -207,12 +207,6 @@ model-viewer {
         background: #ffffff;
         color: #000000;
     }
-
-@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
-    .tour-fullscreen-btn {
-        display: inline-flex;
-    }
-}
 
 @media (min-width: 900px) {
   .page {

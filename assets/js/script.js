@@ -75,7 +75,7 @@
     });
   });
 
-  if (tourContainer && tourFullscreenBtn && isDesktop) {
+  if (tourContainer && tourFullscreenBtn) {
     tourFullscreenBtn.addEventListener("click", async () => {
       try {
         if (!document.fullscreenElement) {
@@ -97,8 +97,6 @@
         tourFullscreenBtn.setAttribute("aria-label", "Schermo intero");
       }
     });
-  } else if (tourFullscreenBtn) {
-    tourFullscreenBtn.remove();
   }
 
   window.addEventListener("scroll", updateActiveLinkOnScroll, { passive: true });
