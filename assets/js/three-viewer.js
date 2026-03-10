@@ -134,6 +134,12 @@ function initThreeViewer(wrapper, canvas) {
       modelRoot.traverse((obj) => {
         if (!obj.isMesh) return;
 
+	if (obj.name.toLowerCase().includes('Glass')) {
+          obj.castShadow = false;
+          obj.receiveShadow = false;
+          return;
+        }
+
         obj.castShadow = true;
         obj.receiveShadow = true;
 
