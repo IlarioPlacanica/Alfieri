@@ -137,7 +137,7 @@ function initThreeViewer(wrapper, canvas) {
        console.log('MESH NAME:', obj.name);
         
 
-	if (obj.name.toLowerCase().includes('Glass')) {
+	if (obj.name === 'Glass') {
           obj.castShadow = false;
           obj.receiveShadow = false;
           return;
