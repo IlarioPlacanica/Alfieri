@@ -34,7 +34,7 @@ function initThreeViewer(wrapper, canvas) {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.45;
+  renderer.toneMappingExposure = 1.30;
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0xf3f3f3);
@@ -192,7 +192,7 @@ function initThreeViewer(wrapper, canvas) {
     cameraRef.updateProjectionMatrix();
 
     cameraRef.position.set(
-      distance * 0.30,
+      distance * 0.10,
       distance * 1.85,
       distance * 0.95
     );
