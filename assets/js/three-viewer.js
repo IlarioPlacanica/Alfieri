@@ -180,7 +180,7 @@ function initThreeViewer(wrapper, canvas) {
     const fittedSize = fittedBox.getSize(new THREE.Vector3());
     const maxDim = Math.max(fittedSize.x, fittedSize.y, fittedSize.z);
 
-    const targetY = Math.max(fittedSize.y * 0.34, 0.65);
+    const targetY = Math.max(fittedSize.y * 0.22, 0.45);
     controlsRef.target.set(0, targetY, 0);
 
     const fov = THREE.MathUtils.degToRad(cameraRef.fov);
@@ -192,9 +192,9 @@ function initThreeViewer(wrapper, canvas) {
     cameraRef.updateProjectionMatrix();
 
     cameraRef.position.set(
-      distance * 0.95,
-      distance * 1.1,
-      distance * 1.35
+      distance * 0.62,
+      distance * 1.85,
+      distance * 0.95
     );
     cameraRef.lookAt(controlsRef.target);
 
