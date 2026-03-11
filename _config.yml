@@ -1,7 +1,4 @@
-title: Schede Appartamenti
-description: Vetrina immobili
 baseurl: "/Alfieri"
-url: ""
 
 collections:
   apartments:
@@ -12,4 +9,4 @@ defaults:
       path: ""
       type: apartments
     values:
-      layout: apartment
+      layout: apartment      
