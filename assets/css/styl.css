@@ -291,13 +291,15 @@ model-viewer {
 
 .urban-layout {
     display: grid;
-    grid-template-columns: minmax(0, 900px) minmax(320px, 1fr);
+    grid-template-columns: 520px minmax(320px, 1fr);
     gap: 28px;
     align-items: start;
 }
 
 .urban-viewer-wrap {
     position: relative;
+    width: 520px;
+    max-width: 100%;
 }
 
 .urban-viewer {
