@@ -1,12 +1,78 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
+  initAnchorScroll();
+  initHeroVideo();
+  initApartmentPageNavigation();
+  initTourFullscreen();
+});
+
+/* =========================================
+   GLOBAL: smooth scroll link interni
+========================================= */
+function initAnchorScroll() {
+  const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+  if (!internalLinks.length) return;
+
+  internalLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
+
+      if (!href || href === "#") return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      event.preventDefault();
+
+      const headerOffset = 20;
+      const targetTop =
+        target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: targetTop,
+        behavior: "smooth"
+      });
+    });
+  });
+}
+
+/* =========================================
+   HOMEPAGE: gestione video hero
+========================================= */
+function initHeroVideo() {
+  const heroVideo = document.querySelector(".home-hero__video");
+
+  if (!heroVideo) return;
+
+  // Prova a far partire il video in autoplay
+  const playPromise = heroVideo.play();
+
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      // Se il browser blocca l'autoplay, resta visibile il poster
+      heroVideo.classList.add("is-blocked");
+    });
+  }
+
+  // Effetto leggero: pausa video se tab non attiva
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      heroVideo.pause();
+    } else {
+      heroVideo.play().catch(() => {
+        // fallback silenzioso
+      });
+    }
+  });
+}
+
+/* =========================================
+   PAGINE APPARTAMENTO: nav sticky + sezione attiva
+========================================= */
+function initApartmentPageNavigation() {
   const nav = document.querySelector(".section-nav");
   const navLinks = Array.from(document.querySelectorAll(".section-nav a"));
   const sections = Array.from(document.querySelectorAll(".scroll-target"));
-  const tourContainer = document.getElementById("tour-container");
-  const tourFullscreenBtn = document.getElementById("tour-fullscreen-btn");
-  const isDesktop = window.matchMedia(
-    "(min-width: 900px) and (hover: hover) and (pointer: fine)"
-  ).matches;
 
   if (!nav || !navLinks.length || !sections.length) return;
 
@@ -39,7 +105,8 @@
     });
 
     const nearBottom =
-      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 4;
 
     if (nearBottom) {
       currentSectionId = sections[sections.length - 1].id;
@@ -50,12 +117,12 @@
 
   navLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
-      event.preventDefault();
-
       const targetId = link.getAttribute("href")?.replace("#", "");
       const targetSection = document.getElementById(targetId);
-      if (!targetSection) return;
 
+      if (!targetId || !targetSection) return;
+
+      event.preventDefault();
       setActiveLink(targetId);
 
       isManualScrolling = true;
@@ -75,32 +142,40 @@
     });
   });
 
-  if (tourContainer && tourFullscreenBtn) {
-    tourFullscreenBtn.addEventListener("click", async () => {
-      try {
-        if (!document.fullscreenElement) {
-          await tourContainer.requestFullscreen();
-        } else {
-          await document.exitFullscreen();
-        }
-      } catch (error) {
-        console.error("Errore fullscreen tour:", error);
-      }
-    });
-
-    document.addEventListener("fullscreenchange", () => {
-      if (document.fullscreenElement === tourContainer) {
-        tourFullscreenBtn.textContent = "✕";
-        tourFullscreenBtn.setAttribute("aria-label", "Esci da schermo intero");
-      } else {
-        tourFullscreenBtn.textContent = "⤢";
-        tourFullscreenBtn.setAttribute("aria-label", "Schermo intero");
-      }
-    });
-  }
-
   window.addEventListener("scroll", updateActiveLinkOnScroll, { passive: true });
   window.addEventListener("resize", updateActiveLinkOnScroll);
 
   updateActiveLinkOnScroll();
-});
+}
+
+/* =========================================
+   PAGINE APPARTAMENTO: fullscreen tour
+========================================= */
+function initTourFullscreen() {
+  const tourContainer = document.getElementById("tour-container");
+  const tourFullscreenBtn = document.getElementById("tour-fullscreen-btn");
+
+  if (!tourContainer || !tourFullscreenBtn) return;
+
+  tourFullscreenBtn.addEventListener("click", async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await tourContainer.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (error) {
+      console.error("Errore fullscreen tour:", error);
+    }
+  });
+
+  document.addEventListener("fullscreenchange", () => {
+    if (document.fullscreenElement === tourContainer) {
+      tourFullscreenBtn.textContent = "✕";
+      tourFullscreenBtn.setAttribute("aria-label", "Esci da schermo intero");
+    } else {
+      tourFullscreenBtn.textContent = "⤢";
+      tourFullscreenBtn.setAttribute("aria-label", "Schermo intero");
+    }
+  });
+}

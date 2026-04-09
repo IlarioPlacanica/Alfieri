@@ -1,36 +1,232 @@
 ---
 title: Appartamenti
 ---
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
 </head>
-<body class="site-body">
-  <main class="listing-shell">
-    <div class="listing-header">
-      <p class="listing-kicker">Schede appartamenti</p>
-      <h1 class="listing-title">Seleziona un appartamento</h1>
-    </div>
+<body class="site-body home-page">
+    {% assign apartments_sorted = site.apartments | sort: "title" %}
 
-    <div class="listing-grid">
-      {% for apartment in site.apartments %}
-        {% assign first_image = apartment.gallery | first %}
-        <a class="listing-card" href="{{ apartment.url | relative_url }}">
-          {% if first_image %}
-            <img src="{{ first_image | relative_url }}" alt="{{ apartment.title }}" class="listing-thumb" loading="lazy" />
-          {% endif %}
-          <div class="listing-card-body">
-            <h2>{{ apartment.title }}</h2>
-            {% if apartment.address %}<p>{{ apartment.address }}</p>{% endif %}
-            {% if apartment.price %}<strong>{{ apartment.price }}</strong>{% endif %}
-          </div>
-        </a>
-      {% endfor %}
-    </div>
-  </main>
+    <main class="home-shell">
+
+        <section class="home-hero">
+            <div class="home-hero__media">
+                <img src="{{ '/assets/media/index/hero-poster.jpg' | relative_url }}"
+                     alt="Vista del progetto"
+                     class="home-hero__image"
+                     loading="eager" />
+
+                <video class="home-hero__video"
+                       autoplay
+                       muted
+                       loop
+                       playsinline
+                       preload="metadata"
+                       poster="{{ '/assets/media/index/hero-poster.jpg' | relative_url }}">
+                    <source src="{{ '/assets/media/index/hero-video.mp4' | relative_url }}" type="video/mp4" />
+                </video>
+
+                <div class="home-hero__overlay"></div>
+            </div>
+
+            <div class="home-hero__content">
+                <p class="home-eyebrow">Residenze contemporanee a Milano</p>
+                <h1 class="home-title">
+                    Una nuova idea di abitare.<br />
+                    Elegante, urbana, essenziale.
+                </h1>
+                <p class="home-intro">
+                    Una collezione di appartamenti pensata per un vivere contemporaneo,
+                    con spazi luminosi, materiali ricercati e una presenza architettonica
+                    capace di raccontare identità e valore nel tempo.
+                </p>
+
+                <div class="home-cta-row">
+                    <a href="#appartamenti" class="btn btn--primary">Scopri gli appartamenti</a>
+                    <a href="#progetto" class="btn btn--secondary">Esplora il progetto</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="progetto" class="home-section home-section--intro">
+            <div class="section-heading section-heading--wide">
+                <div>
+                    <p class="section-kicker">Il progetto</p>
+                    <h2>Una landing da progetto immobiliare, non una semplice lista di schede</h2>
+                </div>
+                <p class="section-note">
+                    La struttura segue un’impostazione editoriale: prima posizionamento e atmosfera,
+                    poi approfondimento e selezione delle unità disponibili.
+                </p>
+            </div>
+
+            <div class="intro-layout">
+                <div class="intro-layout__media">
+                    <img src="{{ '/assets/media/index/intro-cover.jpg' | relative_url }}"
+                         alt="Dettaglio architettura e interior"
+                         loading="lazy" />
+                </div>
+
+                <div class="intro-layout__content">
+                    <div class="intro-card-list">
+                        <article class="intro-card">
+                            <span class="intro-card__number">01</span>
+                            <h3>Atmosfera premium</h3>
+                            <p>
+                                Immagini ampie, testi brevi, spazi generosi e una gerarchia pulita
+                                per comunicare qualità percepita fin dal primo scroll.
+                            </p>
+                        </article>
+
+                        <article class="intro-card">
+                            <span class="intro-card__number">02</span>
+                            <h3>Navigazione ordinata</h3>
+                            <p>
+                                L’utente entra nel progetto, ne comprende il tono e solo dopo
+                                passa alla scelta dell’appartamento più adatto.
+                            </p>
+                        </article>
+
+                        <article class="intro-card">
+                            <span class="intro-card__number">03</span>
+                            <h3>Sotto-url invariati</h3>
+                            <p>
+                                Ogni unità continua a essere generata dalla collection e mantiene
+                                il proprio permalink dedicato.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-section">
+            <div class="statement-block">
+                <div class="statement-block__content">
+                    <p class="section-kicker">Abitare contemporaneo</p>
+                    <h2>Spazi pensati per chi cerca bellezza, comfort e valore nel tempo</h2>
+                    <p>
+                        La homepage introduce il carattere del progetto con un linguaggio più
+                        vicino ai reference: elegante, emozionale, credibile e centrato sul
+                        posizionamento dell’iniziativa.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-section home-section--split-feature">
+            <div class="split-feature">
+                <div class="split-feature__content">
+                    <p class="section-kicker">Dettagli</p>
+                    <h2>Un racconto visivo essenziale, costruito per valorizzare ogni unità</h2>
+                    <p>
+                        La landing principale accompagna l’utente nella scoperta del progetto
+                        e rimanda alle singole schede appartamento, dove restano galleria,
+                        video, 3D e tour immersivi.
+                    </p>
+                    <a href="#appartamenti" class="text-link">
+                        Vai alle disponibilità
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="split-feature__media">
+                    <img src="{{ '/assets/media/index/highlight-cover.jpg' | relative_url }}"
+                         alt="Interni e dettagli materici"
+                         loading="lazy" />
+                </div>
+            </div>
+        </section>
+
+        <section id="appartamenti" class="home-section">
+            <div class="section-heading section-heading--split">
+                <div>
+                    <p class="section-kicker">Appartamenti</p>
+                    <h2>Seleziona la tua soluzione</h2>
+                </div>
+                <p class="section-note">
+                    Ogni card porta alla pagina dedicata dell’unità, generata dal relativo file `.md`.
+                </p>
+            </div>
+
+            <div class="apartment-grid">
+                {% for apartment in apartments_sorted %}
+                <a class="apartment-card" href="{{ apartment.url | relative_url }}">
+                    <div class="apartment-card__media">
+                        {% if apartment.cover_image %}
+                        <img src="{{ apartment.cover_image | relative_url }}"
+                             alt="{{ apartment.title }}"
+                             loading="lazy" />
+                        {% elsif apartment.hero_poster %}
+                        <img src="{{ apartment.hero_poster | relative_url }}"
+                             alt="{{ apartment.title }}"
+                             loading="lazy" />
+                        {% elsif apartment.gallery and apartment.gallery.size > 0 %}
+                        <img src="{{ apartment.gallery[0] | relative_url }}"
+                             alt="{{ apartment.title }}"
+                             loading="lazy" />
+                        {% else %}
+                        <div class="apartment-card__placeholder">Anteprima unità</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="apartment-card__body">
+                        <div class="apartment-card__top">
+                            <p class="apartment-card__eyebrow">Appartamento</p>
+                            <h3>{{ apartment.title }}</h3>
+                        </div>
+
+                        <div class="apartment-card__meta">
+                            {% if apartment.address %}
+                            <span>{{ apartment.address }}</span>
+                            {% endif %}
+                            {% if apartment.price %}
+                            <strong>{{ apartment.price }}</strong>
+                            {% endif %}
+                        </div>
+
+                        <span class="apartment-card__link">
+                            Scopri l’unità
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="home-section">
+            <div class="bottom-cta">
+                <div class="bottom-cta__media">
+                    <img src="{{ '/assets/media/index/cta-cover.jpg' | relative_url }}"
+                         alt="Immagine finale progetto"
+                         loading="lazy" />
+                </div>
+
+                <div class="bottom-cta__content">
+                    <p class="section-kicker">Scopri di più</p>
+                    <h2>Esplora le unità disponibili e accedi alle schede dedicate</h2>
+                    <p>
+                        Ogni appartamento ha il proprio approfondimento con contenuti visuali,
+                        materiali descrittivi e strumenti di navigazione dedicati.
+                    </p>
+                    <a href="#appartamenti" class="btn btn--dark">Vai agli appartamenti</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
 </body>
 </html>
