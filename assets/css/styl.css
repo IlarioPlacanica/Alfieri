@@ -302,25 +302,20 @@ model-viewer {
     position: relative;
     width: 100%;
     margin: 0;
-    padding: 110px 32px 120px;
+    padding: 88px 32px 94px;
     background: #d9cec2;
-    overflow: hidden;
 }
 
 .intro-editorial__inner {
-    position: relative;
-    z-index: 2;
     width: min(980px, 100%);
     margin: 0 auto;
     text-align: center;
 }
 
 .intro-editorial__ornament {
-    position: relative;
-    z-index: 2;
-    width: 74px;
-    margin: 0 auto 26px;
-    opacity: 0.45;
+    width: 62px;
+    margin: 0 auto 18px;
+    opacity: 0.42;
 }
 
     .intro-editorial__ornament img {
@@ -330,73 +325,55 @@ model-viewer {
     }
 
 .intro-editorial__eyebrow {
-    margin: 0 0 16px;
+    margin: 0 0 12px;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(70, 52, 47, 0.72);
+    color: rgba(70, 52, 47, 0.70);
 }
 
 .intro-editorial__title {
     margin: 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(54px, 6vw, 86px);
+    font-size: clamp(42px, 4.4vw, 68px);
     font-weight: 500;
-    line-height: 0.95;
-    letter-spacing: -0.045em;
+    line-height: 0.96;
+    letter-spacing: -0.035em;
     text-transform: uppercase;
     color: #4a3632;
 }
 
 .intro-editorial__text {
-    width: min(980px, 100%);
-    margin: 28px auto 0;
-    font-size: clamp(22px, 1.9vw, 36px);
-    line-height: 1.38;
-    color: rgba(88, 69, 64, 0.78);
-}
-
-.intro-editorial__pattern {
-    position: absolute;
-    top: 50%;
-    right: -90px;
-    transform: translateY(-50%);
-    width: min(38vw, 620px);
-    aspect-ratio: 1 / 1.15;
-    opacity: 0.22;
-    pointer-events: none;
-    background-image: url("{{ '/assets/media/index/intro-pattern.svg' | relative_url }}");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    width: min(860px, 100%);
+    margin: 18px auto 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(22px, 2vw, 30px);
+    font-weight: 500;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: rgba(88, 69, 64, 0.82);
 }
 
 @media (max-width: 760px) {
     .intro-editorial {
-        padding: 72px 20px 80px;
+        padding: 60px 20px 68px;
     }
 
     .intro-editorial__ornament {
-        width: 58px;
-        margin-bottom: 20px;
+        width: 50px;
+        margin-bottom: 14px;
     }
 
     .intro-editorial__title {
-        font-size: clamp(38px, 11vw, 58px);
-        line-height: 0.98;
+        font-size: clamp(34px, 10vw, 50px);
+        line-height: 1;
     }
 
     .intro-editorial__text {
-        margin-top: 20px;
-        font-size: 19px;
-        line-height: 1.5;
-    }
-
-    .intro-editorial__pattern {
-        right: -120px;
-        width: 72vw;
-        opacity: 0.18;
+        margin-top: 14px;
+        font-size: 22px;
+        line-height: 1.34;
     }
 }
 
@@ -463,14 +440,28 @@ model-viewer {
     line-height: 1.8;
 }
 
+.urban-copy__image {
+    margin-top: 22px;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #d8d2c8;
+    overflow: hidden;
+}
+
+    .urban-copy__image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
 .section--apartments {
     padding-bottom: 72px;
 }
 
 .apartment-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
 }
 
 .apartment-card {
@@ -484,12 +475,12 @@ model-viewer {
 }
 
     .apartment-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 18px 36px rgba(0,0,0,0.08);
+        transform: translateY(-3px);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.07);
     }
 
 .apartment-card__media {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 4 / 4.8;
     background: #ddd6cb;
     overflow: hidden;
 }
@@ -505,28 +496,28 @@ model-viewer {
     display: grid;
     place-items: center;
     color: #666;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .apartment-card__body {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    padding: 22px;
+    gap: 14px;
+    padding: 16px;
 }
 
     .apartment-card__body h3 {
         margin: 0;
-        font-size: 30px;
+        font-size: 24px;
         line-height: 1;
-        letter-spacing: -0.035em;
+        letter-spacing: -0.03em;
     }
 
 .apartment-card__meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px 14px;
-    font-size: 15px;
+    gap: 8px 12px;
+    font-size: 14px;
     color: #616161;
 }
 
