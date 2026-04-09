@@ -147,11 +147,7 @@ title: Appartamenti
                 {% for apartment in apartments_sorted %}
                 <a class="apartment-card" href="{{ apartment.url | relative_url }}">
                     <div class="apartment-card__media">
-                        {% if apartment.cover_image %}
-                        <img src="{{ apartment.cover_image | relative_url }}" alt="{{ apartment.title }}" loading="lazy" />
-                        {% elsif apartment.hero_poster %}
-                        <img src="{{ apartment.hero_poster | relative_url }}" alt="{{ apartment.title }}" loading="lazy" />
-                        {% elsif apartment.gallery and apartment.gallery.size > 0 %}
+                        {% if apartment.gallery and apartment.gallery.size > 0 %}
                         <img src="{{ apartment.gallery[0] | relative_url }}" alt="{{ apartment.title }}" loading="lazy" />
                         {% else %}
                         <div class="apartment-card__placeholder">Anteprima unità</div>
