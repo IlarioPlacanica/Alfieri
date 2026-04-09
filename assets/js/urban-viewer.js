@@ -10,20 +10,27 @@ if (container && window.Cesium) {
 }
 
 async function initUrbanViewer() {
-  const viewer = new Cesium.Viewer("urbanViewer", {
-    timeline: false,
-    animation: false,
-    baseLayerPicker: false,
-    geocoder: false,
-    homeButton: false,
-    sceneModePicker: false,
-    navigationHelpButton: false,
-    fullscreenButton: false,
-    infoBox: false,
-    selectionIndicator: false,
-    globe: false
-  });
+    const viewer = new Cesium.Viewer("urbanViewer", {
+      timeline: false,
+      animation: false,
+      baseLayerPicker: false,
+      geocoder: false,
+      homeButton: false,
+      sceneModePicker: false,
+      navigationHelpButton: false,
+      fullscreenButton: false,
+      infoBox: false,
+      selectionIndicator: false,
+      globe: false,
+      requestRenderMode: true,
+      maximumRenderTimeChange: Infinity,
+      msaaSamples: 1
+    });
 
+  viewer.resolutionScale = 0.7;
+  viewer.scene.fog.enabled = false;
+  viewer.scene.postProcessStages.fxaa.enabled = false;
+  viewer.scene.requestRenderMode = true;
   viewer.scene.skyBox.show = false;
   viewer.scene.sun.show = false;
   viewer.scene.moon.show = false;
@@ -35,6 +42,8 @@ async function initUrbanViewer() {
 
   const googleTileset = await Cesium.createGooglePhotorealistic3DTileset();
 
+  googleTileset.maximumScreenSpaceError = 32
+  /*
   googleTileset.customShader = new Cesium.CustomShader({
     mode: Cesium.CustomShaderMode.MODIFY_MATERIAL,
     lightingModel: Cesium.LightingModel.UNLIT,
@@ -43,7 +52,7 @@ async function initUrbanViewer() {
         material.diffuse = clamp(material.diffuse * 1.5, 0.0, 1.0);
       }
     `
-  });
+  });*/
 
   viewer.scene.primitives.add(googleTileset);
 
