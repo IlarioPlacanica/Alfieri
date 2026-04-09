@@ -20,8 +20,7 @@ function initAnchorScroll() {
       event.preventDefault();
 
       const offset = 20;
-      const top =
-        target.getBoundingClientRect().top + window.pageYOffset - offset;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
 
       window.scrollTo({
         top,
@@ -126,6 +125,7 @@ function initApartmentPageNavigation() {
 
   window.addEventListener("scroll", updateActiveLinkOnScroll, { passive: true });
   window.addEventListener("resize", updateActiveLinkOnScroll);
+
   updateActiveLinkOnScroll();
 }
 

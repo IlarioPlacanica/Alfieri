@@ -10,7 +10,6 @@ title: Appartamenti
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
 
-    <!-- Cesium -->
     <link rel="stylesheet"
           href="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Widgets/widgets.css" />
     <script src="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Cesium.js"></script>
@@ -20,7 +19,6 @@ title: Appartamenti
 
     <main class="home-main">
 
-        <!-- HERO FULLSCREEN -->
         <section class="hero">
             <div class="hero__media">
                 <img src="{{ '/assets/media/index/hero-poster.jpg' | relative_url }}"
@@ -42,59 +40,45 @@ title: Appartamenti
             </div>
 
             <div class="hero__content">
-                <p class="hero__eyebrow">Nuove residenze a Milano</p>
-                <h1 class="hero__title">
-                    Un nuovo modo di abitare la città.
-                </h1>
-                <p class="hero__text">
-                    Appartamenti contemporanei inseriti in un contesto urbano in evoluzione,
-                    con un linguaggio architettonico essenziale, luminoso e materico.
-                </p>
+                <p class="hero__eyebrow">Milano</p>
+                <h1 class="hero__title">Abitare la città.</h1>
 
                 <div class="hero__actions">
-                    <a href="#appartamenti" class="btn btn--light">Scopri gli appartamenti</a>
+                    <a href="#appartamenti" class="btn btn--light">Appartamenti</a>
                     <a href="#contesto" class="btn btn--ghost">Contesto urbano</a>
                 </div>
             </div>
         </section>
 
-        <!-- BANDA SOTTILE -->
         <section class="project-band" aria-label="Punti chiave del progetto">
             <div class="project-band__item">
                 <span class="project-band__label">Progetto</span>
-                <strong>Residenza contemporanea a Milano</strong>
+                <strong>Residenze contemporanee</strong>
             </div>
             <div class="project-band__item">
                 <span class="project-band__label">Contesto</span>
-                <strong>Nuovo equilibrio tra città, servizi e connessioni</strong>
+                <strong>Quartiere, servizi, connessioni</strong>
             </div>
             <div class="project-band__item">
                 <span class="project-band__label">Collezione</span>
-                <strong>Unità selezionate con approfondimenti dedicati</strong>
+                <strong>Unità con schede dedicate</strong>
             </div>
         </section>
 
-        <!-- TESTO INTRO -->
         <section class="section section--intro">
-            <div class="section-heading">
+            <div class="section-heading section-heading--tight">
                 <p class="section-kicker">Il progetto</p>
-                <h2>Un racconto più urbano, più architettonico, più vicino ai reference</h2>
+                <h2>Un’impostazione più essenziale, urbana e visiva.</h2>
             </div>
 
-            <div class="intro-copy">
+            <div class="intro-copy intro-copy--single">
                 <p>
-                    La homepage introduce il carattere del progetto prima della selezione delle unità:
-                    immagine, contesto, atmosfera e posizione. Solo dopo si entra nel dettaglio
-                    dei singoli appartamenti.
-                </p>
-                <p>
-                    Ogni scheda appartamento continua a vivere nel proprio sotto-url generato
-                    dalla collection, senza cambiare la logica dei file `.md`.
+                    La homepage introduce il carattere del progetto e il suo posizionamento urbano,
+                    poi accompagna l’utente nella selezione delle unità disponibili.
                 </p>
             </div>
         </section>
 
-        <!-- INQUADRAMENTO URBANO -->
         <section id="contesto" class="section section--urban">
             <div class="section-heading section-heading--split">
                 <div>
@@ -102,8 +86,7 @@ title: Appartamenti
                     <h2>L’edificio nel suo intorno</h2>
                 </div>
                 <p class="section-note">
-                    Un riquadro interattivo con Google Photorealistic 3D Tiles, orbitabile
-                    attorno al lotto evidenziato.
+                    Vista orbitabile sul lotto con Google Photorealistic 3D Tiles.
                 </p>
             </div>
 
@@ -123,19 +106,13 @@ title: Appartamenti
                     <p class="urban-copy__eyebrow">Vista 3D</p>
                     <h3>Un punto di vista controllato sul lotto</h3>
                     <p>
-                        Il viewer è pensato come un quadrato immersivo ma controllato:
-                        si ruota attorno all’edificio, si può zoomare entro limiti definiti
-                        e il focus resta sempre sul progetto.
-                    </p>
-                    <p>
-                        Qui puoi raccontare accessibilità, quartiere, servizi, landmark,
-                        tessuto urbano e qualità della posizione.
+                        Il viewer ruota attorno all’edificio e mantiene il focus sul progetto,
+                        così puoi raccontare quartiere, accessibilità e rapporto con la città.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- APPARTAMENTI -->
         <section id="appartamenti" class="section section--apartments">
             <div class="section-heading section-heading--split">
                 <div>
