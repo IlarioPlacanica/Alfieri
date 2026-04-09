@@ -25,7 +25,7 @@ html {
 body {
     margin: 0;
     background: var(--page-bg);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
     color: #111;
 }
 
@@ -50,6 +50,47 @@ model-viewer {
     width: 100%;
     overflow-x: clip;
 }
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 40;
+    background: linear-gradient(180deg, rgba(12,12,12,0.30) 0%, rgba(12,12,12,0.00) 100%);
+}
+
+.site-header__inner {
+    width: min(1500px, calc(100% - 32px));
+    margin: 0 auto;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header__brand {
+    color: #fff;
+    text-decoration: none;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+}
+
+.site-header__nav {
+    display: flex;
+    gap: 22px;
+}
+
+    .site-header__nav a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
 
 .hero {
     position: relative;
@@ -91,7 +132,7 @@ model-viewer {
 .hero__content {
     position: relative;
     z-index: 3;
-    width: min(1440px, calc(100% - 32px));
+    width: min(1500px, calc(100% - 32px));
     margin: 0 auto;
     padding: 0 0 54px;
     color: #fff;
@@ -111,10 +152,10 @@ model-viewer {
 .hero__title {
     margin: 0;
     max-width: 8ch;
-    font-family: "Times New Roman", Georgia, serif;
-    font-size: clamp(52px, 8vw, 104px);
-    font-weight: 400;
-    line-height: 0.9;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(60px, 8vw, 118px);
+    font-weight: 500;
+    line-height: 0.88;
     letter-spacing: -0.04em;
 }
 
@@ -154,6 +195,11 @@ model-viewer {
     background: transparent;
 }
 
+.btn--dark {
+    background: #111111;
+    color: #ffffff;
+}
+
 .project-band {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -188,7 +234,7 @@ model-viewer {
 }
 
 .section {
-    width: min(1440px, calc(100% - 32px));
+    width: min(1500px, calc(100% - 32px));
     margin: 0 auto;
     padding: 84px 0 0;
 }
@@ -200,10 +246,10 @@ model-viewer {
     .section-heading h2 {
         margin: 0;
         max-width: 12ch;
-        font-family: "Times New Roman", Georgia, serif;
-        font-size: clamp(34px, 3.4vw, 58px);
-        font-weight: 400;
-        line-height: 1;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: clamp(38px, 3.4vw, 64px);
+        font-weight: 500;
+        line-height: 0.96;
         letter-spacing: -0.04em;
     }
 
@@ -245,8 +291,8 @@ model-viewer {
 
 .urban-layout {
     display: grid;
-    grid-template-columns: minmax(0, 840px) minmax(320px, 1fr);
-    gap: 32px;
+    grid-template-columns: minmax(0, 900px) minmax(320px, 1fr);
+    gap: 28px;
     align-items: start;
 }
 
@@ -288,10 +334,10 @@ model-viewer {
 
 .urban-copy h3 {
     margin: 0 0 14px;
-    font-family: "Times New Roman", Georgia, serif;
-    font-size: clamp(30px, 2.4vw, 42px);
-    font-weight: 400;
-    line-height: 1.02;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(34px, 2.4vw, 46px);
+    font-weight: 500;
+    line-height: 0.98;
     letter-spacing: -0.04em;
 }
 
@@ -383,6 +429,63 @@ model-viewer {
     .apartment-card__link svg {
         width: 18px;
         height: 18px;
+    }
+
+.contact-section {
+    width: min(1500px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 0 0 72px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
+    gap: 28px;
+    align-items: stretch;
+}
+
+.contact-section__media {
+    min-height: 520px;
+    overflow: hidden;
+    background: #d8d2c8;
+}
+
+    .contact-section__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.contact-section__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 28px 0;
+}
+
+    .contact-section__content h2 {
+        margin: 0 0 12px;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: clamp(40px, 3vw, 62px);
+        font-weight: 500;
+        line-height: 0.96;
+        letter-spacing: -0.04em;
+    }
+
+    .contact-section__content p {
+        margin: 0 0 20px;
+        color: #4d4d4d;
+        line-height: 1.8;
+    }
+
+.contact-list {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+    .contact-list a {
+        color: #111;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
     }
 
 /* =========================================
@@ -555,23 +658,38 @@ model-viewer {
 ========================================= */
 
 @media (max-width: 1100px) {
-    .urban-layout {
+    .urban-layout,
+    .contact-section {
         grid-template-columns: 1fr;
     }
 
     .urban-copy {
-        max-width: 840px;
+        max-width: 900px;
     }
 
     .apartment-grid {
         grid-template-columns: 1fr 1fr;
     }
+
+    .site-header__nav {
+        gap: 16px;
+    }
 }
 
 @media (max-width: 760px) {
+    .site-header__inner,
     .hero__content,
-    .section {
+    .section,
+    .contact-section {
         width: min(100% - 20px, 100%);
+    }
+
+    .site-header__inner {
+        min-height: 68px;
+    }
+
+    .site-header__nav {
+        display: none;
     }
 
     .hero__content {
@@ -608,6 +726,10 @@ model-viewer {
 
     .apartment-card__body h3 {
         font-size: 24px;
+    }
+
+    .contact-section__media {
+        min-height: 360px;
     }
 
     .section-nav {

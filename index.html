@@ -8,6 +8,12 @@ title: Appartamenti
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ page.title }}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+          rel="stylesheet" />
+
     <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
 
     <link rel="stylesheet"
@@ -16,6 +22,19 @@ title: Appartamenti
 </head>
 <body class="site-body home-page">
     {% assign apartments_sorted = site.apartments | sort: "title" %}
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a href="{{ '/' | relative_url }}" class="site-header__brand">ALFIERI</a>
+
+            <nav class="site-header__nav" aria-label="Navigazione principale">
+                <a href="#progetto">Progetto</a>
+                <a href="#contesto">Contesto</a>
+                <a href="#appartamenti">Appartamenti</a>
+                <a href="#contatti">Contatti</a>
+            </nav>
+        </div>
+    </header>
 
     <main class="home-main">
 
@@ -65,10 +84,10 @@ title: Appartamenti
             </div>
         </section>
 
-        <section class="section section--intro">
+        <section id="progetto" class="section section--intro">
             <div class="section-heading section-heading--tight">
                 <p class="section-kicker">Il progetto</p>
-                <h2>Un’impostazione più essenziale, urbana e visiva.</h2>
+                <h2>Un’impostazione essenziale, urbana, visiva.</h2>
             </div>
 
             <div class="intro-copy intro-copy--single">
@@ -157,6 +176,29 @@ title: Appartamenti
                     </div>
                 </a>
                 {% endfor %}
+            </div>
+        </section>
+
+        <section id="contatti" class="contact-section">
+            <div class="contact-section__media">
+                <img src="{{ '/assets/media/index/contact-cover.jpg' | relative_url }}"
+                     alt="Contatti progetto"
+                     loading="lazy" />
+            </div>
+
+            <div class="contact-section__content">
+                <p class="section-kicker">Contatti</p>
+                <h2>Richiedi informazioni</h2>
+                <p>
+                    Per disponibilità, brochure, visite e approfondimenti sul progetto.
+                </p>
+
+                <div class="contact-list">
+                    <a href="tel:+390200000000">+39 02 0000 0000</a>
+                    <a href="mailto:info@tuodominio.it">info@tuodominio.it</a>
+                </div>
+
+                <a href="mailto:info@tuodominio.it" class="btn btn--dark">Contattaci</a>
             </div>
         </section>
 

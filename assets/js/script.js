@@ -19,7 +19,9 @@ function initAnchorScroll() {
 
       event.preventDefault();
 
-      const offset = 20;
+      const header = document.querySelector(".site-header");
+      const headerOffset = header ? header.offsetHeight : 20;
+      const offset = headerOffset + 12;
       const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
 
       window.scrollTo({
