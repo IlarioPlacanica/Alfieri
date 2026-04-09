@@ -5,18 +5,13 @@
   initTourFullscreen();
 });
 
-/* =========================================
-   GLOBAL: smooth scroll link interni
-========================================= */
 function initAnchorScroll() {
   const internalLinks = document.querySelectorAll('a[href^="#"]');
-
   if (!internalLinks.length) return;
 
   internalLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       const href = link.getAttribute("href");
-
       if (!href || href === "#") return;
 
       const target = document.querySelector(href);
@@ -24,51 +19,38 @@ function initAnchorScroll() {
 
       event.preventDefault();
 
-      const headerOffset = 20;
-      const targetTop =
-        target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      const offset = 20;
+      const top =
+        target.getBoundingClientRect().top + window.pageYOffset - offset;
 
       window.scrollTo({
-        top: targetTop,
+        top,
         behavior: "smooth"
       });
     });
   });
 }
 
-/* =========================================
-   HOMEPAGE: gestione video hero
-========================================= */
 function initHeroVideo() {
-  const heroVideo = document.querySelector(".home-hero__video");
-
+  const heroVideo = document.querySelector(".hero__video");
   if (!heroVideo) return;
 
-  // Prova a far partire il video in autoplay
   const playPromise = heroVideo.play();
-
   if (playPromise !== undefined) {
     playPromise.catch(() => {
-      // Se il browser blocca l'autoplay, resta visibile il poster
       heroVideo.classList.add("is-blocked");
     });
   }
 
-  // Effetto leggero: pausa video se tab non attiva
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       heroVideo.pause();
     } else {
-      heroVideo.play().catch(() => {
-        // fallback silenzioso
-      });
+      heroVideo.play().catch(() => {});
     }
   });
 }
 
-/* =========================================
-   PAGINE APPARTAMENTO: nav sticky + sezione attiva
-========================================= */
 function initApartmentPageNavigation() {
   const nav = document.querySelector(".section-nav");
   const navLinks = Array.from(document.querySelectorAll(".section-nav a"));
@@ -144,13 +126,9 @@ function initApartmentPageNavigation() {
 
   window.addEventListener("scroll", updateActiveLinkOnScroll, { passive: true });
   window.addEventListener("resize", updateActiveLinkOnScroll);
-
   updateActiveLinkOnScroll();
 }
 
-/* =========================================
-   PAGINE APPARTAMENTO: fullscreen tour
-========================================= */
 function initTourFullscreen() {
   const tourContainer = document.getElementById("tour-container");
   const tourFullscreenBtn = document.getElementById("tour-fullscreen-btn");
