@@ -394,12 +394,12 @@ model-viewer {
 
     .urban-heading h2 {
         margin: 0;
-        max-width: 7ch;
         font-family: "Cormorant Garamond", Georgia, serif;
         font-size: clamp(54px, 5vw, 84px);
         font-weight: 500;
         line-height: 0.9;
         letter-spacing: -0.045em;
+        white-space: nowrap;
     }
 
 .urban-heading__note {
@@ -415,30 +415,28 @@ model-viewer {
 .urban-layout {
     display: grid;
     grid-template-columns: 520px minmax(0, 1fr);
-    column-gap: 28px; /* gap rosso */
-    align-items: stretch;
+    column-gap: 28px;
+    align-items: start;
 }
 
 .urban-viewer-wrap {
-    position: relative;
     width: 100%;
-    align-self: start;
 }
 
 .urban-viewer {
-    position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1; /* quadrato */
+    aspect-ratio: 1 / 1;
     background: #d8d2c8;
     overflow: hidden;
     border: 1px solid rgba(0,0,0,0.08);
 }
 
 .urban-copy {
-    min-height: 520px; /* uguale all'altezza del viewer quadrato */
     display: grid;
-    grid-template-rows: auto 1fr;
-    row-gap: 24px; /* gap blu orizzontale */
+    grid-template-rows: auto minmax(0, 1fr);
+    row-gap: 24px;
+    height: 520px; /* stessa altezza del viewer */
+    min-height: 520px;
     min-width: 0;
 }
 
@@ -457,7 +455,7 @@ model-viewer {
 .urban-copy__top h3 {
     margin: 0 0 14px;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(42px, 3.5vw, 64px);
+    font-size: clamp(23px, 3.5vw, 45px);
     font-weight: 500;
     line-height: 0.96;
     letter-spacing: -0.04em;
@@ -474,10 +472,12 @@ model-viewer {
 .urban-copy__image {
     min-width: 0;
     min-height: 0;
+    width: 100%;
     height: 100%;
+    overflow: hidden;
     border: 1px solid rgba(0,0,0,0.08);
     background: #d8d2c8;
-    overflow: hidden;
+    position: relative;
 }
 
     .urban-copy__image img {
@@ -487,7 +487,6 @@ model-viewer {
         object-fit: cover;
         object-position: center center;
     }
-
 /* viewer message fallback */
 .urban-viewer-message {
     letter-spacing: 0.01em;
