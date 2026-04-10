@@ -606,9 +606,10 @@ model-viewer {
 }
 
     .apartment-card__media img {
-        width: 120%;
-        height: 120%;
+        width: 130%;
+        height: 130%;
         object-fit: cover;
+        object-position: 30% center;
     }
 
 .apartment-card__placeholder {

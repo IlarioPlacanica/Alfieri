@@ -86,11 +86,11 @@ async function initUrbanViewer() {
 
   let orbitHeading = Cesium.Math.toRadians(55);
   let orbitPitch = Cesium.Math.toRadians(-35);
-  let orbitRange = 100;
+  let orbitRange = 70;
 
   const minPitch = Cesium.Math.toRadians(-80);
   const maxPitch = Cesium.Math.toRadians(-10);
-  const minRange = 80;
+  const minRange = 50;
   const maxRange = 900;
 
   controller.enableInputs = false;
