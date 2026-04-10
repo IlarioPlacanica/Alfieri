@@ -2,7 +2,7 @@ CesiumBootstrap();
 
 function CesiumBootstrap() {
   const container = document.getElementById("urbanViewer");
-  const resetButton = document.getElementById("urbanResetButton");
+  
 
   if (!container) return;
 
@@ -54,14 +54,6 @@ function CesiumBootstrap() {
     showMessage("Caricamento vista urbana…");
     initVisibilityObserver();
     bindGlobalEvents();
-
-    if (resetButton) {
-      resetButton.addEventListener("click", () => {
-        if (!state.viewer) return;
-        resetOrbitState();
-        focusSelectedPolygon(1.2);
-      });
-    }
   }
 
   function initVisibilityObserver() {

@@ -57,7 +57,7 @@ title: Appartamenti
             </div>
 
             <div class="hero__content">
-                <p class="hero__eyebrow">Milano</p>
+                <p class="hero__eyebrow">Torino, Via Alfieri 17</p>
                 <h1 class="hero__title">Abitare la città.</h1>
 
                 <div class="hero__actions">
@@ -106,33 +106,27 @@ title: Appartamenti
         </section>
 
         <section id="contesto" class="section section--urban">
+            <div class="urban-heading">
+                <h2>L’edificio nel suo intorno</h2>
+                <p class="urban-heading__note">
+                    Vista orbitabile sul lotto con Google Photorealistic 3D Tiles.
+                </p>
+            </div>
+
             <div class="urban-layout">
-                <div class="urban-title-block">
-                    <h2>L’edificio nel suo intorno</h2>
-
-                    <div class="urban-viewer-wrap">
-                        <div id="urbanViewer" class="urban-viewer"></div>
-
-                        <button id="urbanResetButton"
-                                class="urban-reset-button"
-                                type="button"
-                                aria-label="Reimposta vista">
-                            Reset vista
-                        </button>
-                    </div>
+                <div class="urban-viewer-wrap">
+                    <div id="urbanViewer" class="urban-viewer"></div>
                 </div>
 
                 <div class="urban-copy">
-                    <p class="urban-copy__note">
-                        Vista orbitabile sul lotto con Google Photorealistic 3D Tiles.
-                    </p>
-
-                    <p class="urban-copy__eyebrow">Vista 3D</p>
-                    <h3>Un punto di vista controllato sul lotto</h3>
-                    <p>
-                        Il viewer ruota attorno all’edificio e mantiene il focus sul progetto,
-                        così puoi raccontare quartiere, accessibilità e rapporto con la città.
-                    </p>
+                    <div class="urban-copy__top">
+                        <p class="urban-copy__eyebrow">Vista 3D</p>
+                        <h3>Un punto di vista controllato sul lotto</h3>
+                        <p>
+                            Il viewer ruota attorno all’edificio e mantiene il focus sul progetto,
+                            così puoi raccontare quartiere, accessibilità e rapporto con la città.
+                        </p>
+                    </div>
 
                     <div class="urban-copy__image">
                         <img src="{{ '/assets/media/index/inquadramento.png' | relative_url }}"
