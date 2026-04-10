@@ -156,7 +156,6 @@ model-viewer {
 
 .hero__title {
     margin: 0;
-    max-width: 8ch;
     font-family: "Cormorant Garamond", Georgia, serif;
     font-size: clamp(60px, 8vw, 118px);
     font-weight: 500;
