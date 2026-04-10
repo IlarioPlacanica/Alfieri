@@ -17,7 +17,10 @@ title: Appartamenti
     <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
 
     <!-- questo è un commento -->
-    <script type="module" src="{{ '/assets/js/urban-viewer.js' | relative_url }}"></script> 
+    <link rel="stylesheet"
+          href="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Widgets/widgets.css" />
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Cesium.js"></script>
+
 </head>
     <body class="site-body home-page">
         {% assign apartments_sorted = site.apartments | sort: "title" %}
@@ -197,7 +200,7 @@ title: Appartamenti
 
             <section id="contatti" class="contact-section">
                 <div class="contact-section__media">
-                    <img src="{{ '/assets/media/index/contact-cover.jpg' | relative_url }}"
+                    <img src="{{ '/assets/media/index/contact-cover.png' | relative_url }}"
                          alt="Contatti progetto"
                          loading="lazy" />
                 </div>
