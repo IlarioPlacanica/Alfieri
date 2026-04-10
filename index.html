@@ -44,17 +44,15 @@ title: Appartamenti
                          class="hero__poster"
                          loading="eager" />
 
-                    <!--
-    <video class="hero__video"
-           autoplay
-           muted
-           loop
-           playsinline
-           preload="metadata"
-           poster="{{ '/assets/media/index/hero-poster.jpg' | relative_url }}">
-        <source src="{{ '/assets/media/index/hero-video.mp4' | relative_url }}" type="video/mp4" />
-    </video>
-    -->
+                    <video class="hero__video"
+                           autoplay
+                           muted
+                           loop
+                           playsinline
+                           preload="metadata"
+                           poster="{{ '/assets/media/index/hero-poster.jpg' | relative_url }}">
+                        <source src="{{ '/assets/media/index/hero-video.mp4' | relative_url }}" type="video/mp4" />
+                    </video>
 
                     <div class="hero__overlay"></div>
                 </div>
@@ -155,11 +153,7 @@ title: Appartamenti
                     {% for apartment in apartments_sorted %}
                     <a class="apartment-card" href="{{ apartment.url | relative_url }}">
                         <div class="apartment-card__media">
-                            {% if apartment.gallery and apartment.gallery.size > 0 %}
-                            <img src="{{ apartment.gallery[0] | relative_url }}" alt="{{ apartment.title }}" loading="lazy" />
-                            {% else %}
                             <div class="apartment-card__placeholder">Anteprima unità</div>
-                            {% endif %}
                         </div>
 
                         <div class="apartment-card__body">
