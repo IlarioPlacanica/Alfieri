@@ -42,7 +42,7 @@ async function initUrbanViewer() {
   const googleTileset = await Cesium.createGooglePhotorealistic3DTileset();
 
   googleTileset.maximumScreenSpaceError = 32
-  /*
+  
   googleTileset.customShader = new Cesium.CustomShader({
     mode: Cesium.CustomShaderMode.MODIFY_MATERIAL,
     lightingModel: Cesium.LightingModel.UNLIT,
@@ -51,7 +51,7 @@ async function initUrbanViewer() {
         material.diffuse = clamp(material.diffuse * 1.5, 0.0, 1.0);
       }
     `
-  });*/
+  });
 
   viewer.scene.primitives.add(googleTileset);
 
