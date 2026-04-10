@@ -676,18 +676,68 @@ model-viewer {
     }
 
 /* =========================================
+   GALLERY
+========================================= */
+
+.section--gallery {
+    width: 100%;
+    margin: 0;
+    padding: 84px 32px 72px;
+    background: #f5f1ea;
+}
+
+    .section--gallery .section-heading,
+    .section--gallery .gallery-render-grid {
+        width: min(1500px, calc(100% - 32px));
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+.gallery-render-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.gallery-render-card {
+    background: #ffffff;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+    .gallery-render-card img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        object-fit: cover;
+    }
+
+/* =========================================
    CONTACT
 ========================================= */
 
 .contact-section {
     width: min(1500px, calc(100% - 32px));
-    margin: 64px auto 0;
-    padding: 0 0 72px;
+    margin: 0 auto;
+    padding: 84px 0 72px;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
     gap: 28px;
     align-items: stretch;
+    position: relative;
 }
+
+    .contact-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 100vw;
+        transform: translateX(-50%);
+        background: #d9cec2;
+        z-index: -1;
+    }
 
 .contact-section__media {
     min-height: 520px;
@@ -1191,6 +1241,49 @@ model-viewer {
             font-size: 15px;
             padding: 6px 5px;
             letter-spacing: 0.02em;
+        }
+    /*GALLERY*/
+    .section--gallery {
+        width: 100%;
+        margin: 0;
+        padding: 52px 0 56px;
+        background: #f5f1ea;
+    }
+
+        .section--gallery .section-heading,
+        .section--gallery .gallery-render-grid {
+            width: calc(100% - 40px);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    .gallery-render-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .gallery-render-card img {
+        aspect-ratio: 9 / 16;
+    }
+
+    .contact-section {
+        width: calc(100% - 40px);
+        margin: 0 auto;
+        padding: 52px 0 56px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+        .contact-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 100vw;
+            transform: translateX(-50%);
+            background: #d9cec2;
+            z-index: -1;
         }
 }
 

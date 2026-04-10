@@ -131,15 +131,15 @@ title: Appartamenti
                             <p class="urban-copy__eyebrow">Vista 3D</p>
                             <h3>Un punto di vista controllato sul lotto</h3>
                             <!-- <p>
-                                Il viewer ruota attorno all’edificio e mantiene il focus sul progetto,
-                                così puoi raccontare quartiere, accessibilità e rapporto con la città.
-                            </p>-->
-                        </div> 
-
-                            <div class="urban-copy__image">
-                                <div id="contextMap" class="context-map"></div>
-                            </div>
+                        Il viewer ruota attorno all’edificio e mantiene il focus sul progetto,
+                        così puoi raccontare quartiere, accessibilità e rapporto con la città.
+                    </p>-->
                         </div>
+
+                        <div class="urban-copy__image">
+                            <div id="contextMap" class="context-map"></div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -180,7 +180,7 @@ title: Appartamenti
                         <div class="apartment-card__body">
                             <p class="apartment-card__eyebrow">
                                 {% if apartment.title == "A22" %}
-                                Mono locale
+                                Monolocale
                                 {% elsif apartment.title == "A14" %}
                                 Bilocale
                                 {% elsif apartment.title == "A17" %}
@@ -205,6 +205,44 @@ title: Appartamenti
                     {% endif %}
                     {% endfor %}
                     {% endfor %}
+                </div>
+            </section>
+
+            <section id="galleria" class="section section--gallery">
+                <div class="section-heading section-heading--split">
+                    <div>
+                        <p class="section-kicker">Galleria</p>
+                        <h2>Interni</h2>
+                    </div>
+                    <p class="section-note">
+                        Una selezione di render degli ambienti interni.
+                    </p>
+                </div>
+
+                <div class="gallery-render-grid">
+                    <div class="gallery-render-card">
+                        <img src="{{ '/assets/media/index/render-1.png' | relative_url }}"
+                             alt="Render interno 1"
+                             loading="lazy" />
+                    </div>
+
+                    <div class="gallery-render-card">
+                        <img src="{{ '/assets/media/index/render-2.png' | relative_url }}"
+                             alt="Render interno 2"
+                             loading="lazy" />
+                    </div>
+
+                    <div class="gallery-render-card">
+                        <img src="{{ '/assets/media/index/render-3.png' | relative_url }}"
+                             alt="Render interno 3"
+                             loading="lazy" />
+                    </div>
+
+                    <div class="gallery-render-card">
+                        <img src="{{ '/assets/media/index/render-4.png' | relative_url }}"
+                             alt="Render interno 4"
+                             loading="lazy" />
+                    </div>
                 </div>
             </section>
 
