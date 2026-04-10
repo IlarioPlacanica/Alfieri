@@ -150,10 +150,16 @@ title: Appartamenti
                 </div>
 
                 <div class="apartment-grid">
+                    {% assign featured_apartments = "A22|A14|A17" | split: "|" %}
+
+                    {% for featured_title in featured_apartments %}
                     {% for apartment in apartments_sorted %}
+                    {% if apartment.title == featured_title %}
                     <a class="apartment-card" href="{{ apartment.url | relative_url }}">
                         <div class="apartment-card__media">
-                            <div class="apartment-card__placeholder">Anteprima unità</div>
+                            <img src="{{ '/assets/media/index/card-' | append: forloop.parentloop.index | append: '.jpg' | relative_url }}"
+                                 alt="{{ apartment.title }}"
+                                 loading="lazy" />
                         </div>
 
                         <div class="apartment-card__body">
@@ -173,6 +179,8 @@ title: Appartamenti
                             </span>
                         </div>
                     </a>
+                    {% endif %}
+                    {% endfor %}
                     {% endfor %}
                 </div>
             </section>
