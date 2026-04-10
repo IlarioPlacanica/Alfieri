@@ -17,7 +17,7 @@ title: Appartamenti
     <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
 
     <!-- questo è un commento -->
-    <!-- <script type="module" src="{{ '/assets/js/urban-viewer.js' | relative_url }}"></script> -->
+    <script type="module" src="{{ '/assets/js/urban-viewer.js' | relative_url }}"></script> 
 </head>
     <body class="site-body home-page">
         {% assign apartments_sorted = site.apartments | sort: "title" %}
@@ -44,15 +44,17 @@ title: Appartamenti
                          class="hero__poster"
                          loading="eager" />
 
-                    <video class="hero__video"
-                           autoplay
-                           muted
-                           loop
-                           playsinline
-                           preload="metadata"
-                           poster="{{ '/assets/media/index/hero-poster.jpg' | relative_url }}">
-                        <source src="{{ '/assets/media/index/hero-video.mp4' | relative_url }}" type="video/mp4" />
-                    </video>
+                    <!--
+    <video class="hero__video"
+           autoplay
+           muted
+           loop
+           playsinline
+           preload="metadata"
+           poster="{{ '/assets/media/index/hero-poster.jpg' | relative_url }}">
+        <source src="{{ '/assets/media/index/hero-video.mp4' | relative_url }}" type="video/mp4" />
+    </video>
+    -->
 
                     <div class="hero__overlay"></div>
                 </div>
@@ -115,9 +117,9 @@ title: Appartamenti
                 </div>
 
                 <div class="urban-layout">
-                  <!--  <div class="urban-viewer-wrap">
+                    <div class="urban-viewer-wrap">
                         <div id="urbanViewer" class="urban-viewer"></div>
-                    </div> -->
+                    </div>
 
                     <div class="urban-copy">
                         <div class="urban-copy__top">
