@@ -579,8 +579,18 @@ model-viewer {
    APARTMENTS
 ========================================= */
 
+.section--apartments .section-heading,
+.section--apartments .apartment-grid {
+    width: min(1500px, calc(100% - 32px));
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .section--apartments {
-    padding-bottom: 72px;
+    width: 100%;
+    margin: 0;
+    padding: 84px 32px 72px;
+    background: #d9cec2;
 }
 
 .apartment-grid {

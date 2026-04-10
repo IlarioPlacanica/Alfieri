@@ -178,7 +178,15 @@ title: Appartamenti
                         </div>
 
                         <div class="apartment-card__body">
-                            <p class="apartment-card__eyebrow">Appartamento</p>
+                            <p class="apartment-card__eyebrow">
+                                {% if apartment.title == "A22" %}
+                                Mono locale
+                                {% elsif apartment.title == "A14" %}
+                                Bilocale
+                                {% elsif apartment.title == "A17" %}
+                                Trilocale
+                                {% endif %}
+                            </p>
                             <h3>{{ apartment.title }}</h3>
 
                             <div class="apartment-card__meta">
