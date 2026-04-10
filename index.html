@@ -16,9 +16,7 @@ title: Appartamenti
 
     <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
 
-    <link rel="stylesheet"
-          href="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Widgets/widgets.css" />
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Cesium.js"></script>
+    <script type="module" src="{{ '/assets/js/urban-viewer.js' | relative_url }}"></script>
 </head>
 <body class="site-body home-page">
     {% assign apartments_sorted = site.apartments | sort: "title" %}
@@ -108,29 +106,27 @@ title: Appartamenti
         </section>
 
         <section id="contesto" class="section section--urban">
-            <div class="section-heading section-heading--split">
-                <div>
-                    <p class="section-kicker">Inquadramento urbano</p>
-                    <h2>L’edificio nel suo intorno</h2>
-                </div>
-                <p class="section-note">
-                    Vista orbitabile sul lotto con Google Photorealistic 3D Tiles.
-                </p>
-            </div>
-
             <div class="urban-layout">
-                <div class="urban-viewer-wrap">
-                    <div id="urbanViewer" class="urban-viewer"></div>
+                <div class="urban-title-block">
+                    <h2>L’edificio nel suo intorno</h2>
 
-                    <button id="urbanResetButton"
-                            class="urban-reset-button"
-                            type="button"
-                            aria-label="Reimposta vista">
-                        Reset vista
-                    </button>
+                    <div class="urban-viewer-wrap">
+                        <div id="urbanViewer" class="urban-viewer"></div>
+
+                        <button id="urbanResetButton"
+                                class="urban-reset-button"
+                                type="button"
+                                aria-label="Reimposta vista">
+                            Reset vista
+                        </button>
+                    </div>
                 </div>
 
                 <div class="urban-copy">
+                    <p class="urban-copy__note">
+                        Vista orbitabile sul lotto con Google Photorealistic 3D Tiles.
+                    </p>
+
                     <p class="urban-copy__eyebrow">Vista 3D</p>
                     <h3>Un punto di vista controllato sul lotto</h3>
                     <p>
