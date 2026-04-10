@@ -404,8 +404,7 @@ model-viewer {
 
 .urban-heading__note {
     margin: 0;
-    justify-self: end;
-    max-width: 340px;
+    justify-self: end;;
     padding-top: 10px;
     color: #5f5f5f;
     font-size: 15px;
@@ -457,7 +456,6 @@ model-viewer {
 
 .urban-copy__top h3 {
     margin: 0 0 14px;
-    max-width: 12ch;
     font-family: "Cormorant Garamond", Georgia, serif;
     font-size: clamp(42px, 3.5vw, 64px);
     font-weight: 500;
