@@ -3,6 +3,7 @@
   initHeroVideo();
   initApartmentPageNavigation();
   initTourFullscreen();
+  initRenderLightbox();
 });
 
 function initAnchorScroll() {
@@ -156,6 +157,95 @@ function initTourFullscreen() {
     } else {
       tourFullscreenBtn.textContent = "⤢";
       tourFullscreenBtn.setAttribute("aria-label", "Schermo intero");
+    }
+  });
+}
+
+function initRenderLightbox() {
+  const cards = Array.from(document.querySelectorAll(".gallery-render-card"));
+  const lightbox = document.getElementById("renderLightbox");
+  const lightboxImage = document.getElementById("renderLightboxImage");
+  const closeButton = document.querySelector(".render-lightbox__close");
+  const prevButton = document.querySelector(".render-lightbox__nav--prev");
+  const nextButton = document.querySelector(".render-lightbox__nav--next");
+
+  if (!cards.length || !lightbox || !lightboxImage || !closeButton || !prevButton || !nextButton) {
+    return;
+  }
+
+  const images = cards.map((card) => {
+    const img = card.querySelector("img");
+    return {
+      src: img?.getAttribute("src") || "",
+      alt: img?.getAttribute("alt") || ""
+    };
+  });
+
+  let currentIndex = 0;
+
+  function updateLightbox() {
+    const currentImage = images[currentIndex];
+    if (!currentImage) return;
+
+    lightboxImage.src = currentImage.src;
+    lightboxImage.alt = currentImage.alt;
+  }
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    lightboxImage.src = "";
+    lightboxImage.alt = "";
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateLightbox();
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateLightbox();
+  }
+
+  cards.forEach((card, index) => {
+    card.addEventListener("click", () => {
+      openLightbox(index);
+    });
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+  prevButton.addEventListener("click", showPrev);
+  nextButton.addEventListener("click", showNext);
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox.classList.contains("is-open")) return;
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+
+    if (event.key === "ArrowLeft") {
+      showPrev();
+    }
+
+    if (event.key === "ArrowRight") {
+      showNext();
     }
   });
 }

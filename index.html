@@ -220,31 +220,42 @@ title: Appartamenti
                 </div>
 
                 <div class="gallery-render-grid">
-                    <div class="gallery-render-card">
+                    <button class="gallery-render-card" type="button" data-index="0">
                         <img src="{{ '/assets/media/index/render-1.png' | relative_url }}"
                              alt="Render interno 1"
                              loading="lazy" />
-                    </div>
+                    </button>
 
-                    <div class="gallery-render-card">
+                    <button class="gallery-render-card" type="button" data-index="1">
                         <img src="{{ '/assets/media/index/render-2.png' | relative_url }}"
                              alt="Render interno 2"
                              loading="lazy" />
-                    </div>
+                    </button>
 
-                    <div class="gallery-render-card">
+                    <button class="gallery-render-card" type="button" data-index="2">
                         <img src="{{ '/assets/media/index/render-3.png' | relative_url }}"
                              alt="Render interno 3"
                              loading="lazy" />
-                    </div>
+                    </button>
 
-                    <div class="gallery-render-card">
+                    <button class="gallery-render-card" type="button" data-index="3">
                         <img src="{{ '/assets/media/index/render-4.png' | relative_url }}"
                              alt="Render interno 4"
                              loading="lazy" />
-                    </div>
+                    </button>
                 </div>
             </section>
+
+            <div class="render-lightbox" id="renderLightbox" aria-hidden="true">
+                <button class="render-lightbox__close" type="button" aria-label="Chiudi galleria">×</button>
+                <button class="render-lightbox__nav render-lightbox__nav--prev" type="button" aria-label="Immagine precedente">‹</button>
+
+                <div class="render-lightbox__content">
+                    <img id="renderLightboxImage" src="" alt="" />
+                </div>
+
+                <button class="render-lightbox__nav render-lightbox__nav--next" type="button" aria-label="Immagine successiva">›</button>
+            </div>
 
             <section id="contatti" class="contact-section">
                 <div class="contact-section__media">
