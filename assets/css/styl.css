@@ -609,7 +609,7 @@ model-viewer {
         width: 130%;
         height: 130%;
         object-fit: cover;
-        object-position: 30% center;
+        object-position: left center;
     }
 
 .apartment-card__placeholder {
