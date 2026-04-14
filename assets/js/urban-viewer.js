@@ -23,12 +23,12 @@ async function initUrbanViewer() {
       globe: false,
       requestRenderMode: true,
       maximumRenderTimeChange: Infinity,
-      msaaSamples: 1
+      msaaSamples: 4
     });
 
-  viewer.resolutionScale = 0.7;
+  viewer.resolutionScale = 1;
   viewer.scene.fog.enabled = false;
-  viewer.scene.postProcessStages.fxaa.enabled = false;
+  viewer.scene.postProcessStages.fxaa.enabled = true;
   viewer.scene.requestRenderMode = true;
   viewer.scene.skyBox.show = false;
   viewer.scene.sun.show = false;
@@ -41,8 +41,9 @@ async function initUrbanViewer() {
 
   const googleTileset = await Cesium.createGooglePhotorealistic3DTileset();
 
-  googleTileset.maximumScreenSpaceError = 32
-  
+  googleTileset.maximumScreenSpaceError = 6
+
+  /*
   googleTileset.customShader = new Cesium.CustomShader({
     mode: Cesium.CustomShaderMode.MODIFY_MATERIAL,
     lightingModel: Cesium.LightingModel.UNLIT,
@@ -51,7 +52,7 @@ async function initUrbanViewer() {
         material.diffuse = clamp(material.diffuse * 1.5, 0.0, 1.0);
       }
     `
-  });
+  }); */
 
   viewer.scene.primitives.add(googleTileset);
 
