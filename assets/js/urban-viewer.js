@@ -91,7 +91,7 @@ async function initUrbanViewer() {
   const lotLatitude = orbitCartographic.latitude;
 
   const baseHeight = 285;
-  const markerHeight = 314;
+  const markerHeight = 330;
 
   const markerBasePosition = Cesium.Cartesian3.fromRadians(
     lotLongitude,
@@ -105,33 +105,33 @@ async function initUrbanViewer() {
     markerHeight
   );
 
-  const diamondSvg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-      <defs>
-        <filter id="g" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="6" result="b"/>
-          <feMerge>
-            <feMergeNode in="b"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      <g filter="url(#g)">
-        <polygon
-          points="48,16 76,44 48,72 20,44"
-          fill="#d6a14d"
-          fill-opacity="0.95"
-          stroke="rgba(255,255,255,0.95)"
-          stroke-width="3"
-          stroke-linejoin="round"
-        />
-        <polygon
-          points="48,26 66,44 48,62 30,44"
-          fill="rgba(255,255,255,0.22)"
-        />
-      </g>
-    </svg>
-  `;
+    const diamondSvg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+        <defs>
+          <filter id="g" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6" result="b"/>
+            <feMerge>
+              <feMergeNode in="b"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <g filter="url(#g)">
+          <polygon
+            points="48,10 68,44 48,78 28,44"
+            fill="#d6a14d"
+            fill-opacity="0.95"
+            stroke="rgba(255,255,255,0.95)"
+            stroke-width="3"
+            stroke-linejoin="round"
+          />
+          <polygon
+            points="48,22 60,44 48,66 36,44"
+            fill="rgba(255,255,255,0.22)"
+          />
+        </g>
+      </svg>
+    `;
 
   viewer.entities.add({
     id: "lotMarkerBaseGlow",
