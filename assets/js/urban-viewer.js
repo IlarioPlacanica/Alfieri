@@ -9,22 +9,22 @@ if (container && window.Cesium) {
 }
 
 async function initUrbanViewer() {
-    const viewer = new Cesium.Viewer("urbanViewer", {
-      timeline: false,
-      animation: false,
-      baseLayerPicker: false,
-      geocoder: false,
-      homeButton: false,
-      sceneModePicker: false,
-      navigationHelpButton: false,
-      fullscreenButton: false,
-      infoBox: false,
-      selectionIndicator: false,
-      globe: false,
-      requestRenderMode: true,
-      maximumRenderTimeChange: Infinity,
-      msaaSamples: 4
-    });
+  const viewer = new Cesium.Viewer("urbanViewer", {
+    timeline: false,
+    animation: false,
+    baseLayerPicker: false,
+    geocoder: false,
+    homeButton: false,
+    sceneModePicker: false,
+    navigationHelpButton: false,
+    fullscreenButton: false,
+    infoBox: false,
+    selectionIndicator: false,
+    globe: false,
+    requestRenderMode: true,
+    maximumRenderTimeChange: Infinity,
+    msaaSamples: 4
+  });
 
   viewer.resolutionScale = 1;
   viewer.scene.fog.enabled = false;
@@ -40,8 +40,7 @@ async function initUrbanViewer() {
   );
 
   const googleTileset = await Cesium.createGooglePhotorealistic3DTileset();
-
-  googleTileset.maximumScreenSpaceError = 6
+  googleTileset.maximumScreenSpaceError = 6;
 
   /*
   googleTileset.customShader = new Cesium.CustomShader({
@@ -81,49 +80,41 @@ async function initUrbanViewer() {
     }
   });
 
-    const pulseState = { value: 0 };
-
-    viewer.entities.add({
-      id: "lotPulse",
-      position: lotCenter,
-      ellipse: {
-        semiMinorAxis: new Cesium.CallbackProperty(() => {
-          return 10 + Math.sin(pulseState.value) * 2;
-        }, false),
-        semiMajorAxis: new Cesium.CallbackProperty(() => {
-          return 10 + Math.sin(pulseState.value) * 2;
-        }, false),
-        height: 285,
-        material: new Cesium.CallbackProperty(() => {
-          const alpha = 0.18 + (Math.sin(pulseState.value) + 1) * 0.08;
-          return Cesium.Color.fromCssColorString("#d6a14d").withAlpha(alpha);
-        }, false)
-      }
-    });
-
-    viewer.entities.add({
-      id: "lotPin",
-      position: Cesium.Cartesian3.fromElements(
-        lotCenter.x,
-        lotCenter.y,
-        lotCenter.z + 20
-      ),
-      point: {
-        pixelSize: 10,
-        color: Cesium.Color.fromCssColorString("#d6a14d"),
-        outlineColor: Cesium.Color.WHITE,
-        outlineWidth: 2,
-        disableDepthTestDistance: Number.POSITIVE_INFINITY
-      }
-    });
-
-    viewer.scene.preRender.addEventListener(() => {
-      pulseState.value += 0.03;
-    });  
-
   const hierarchy = selectedPolygon.polygon.hierarchy.getValue(Cesium.JulianDate.now());
   const boundingSphere = Cesium.BoundingSphere.fromPoints(hierarchy.positions);
   const orbitTarget = boundingSphere.center;
+
+  // Segnaposto discreto sopra il lotto, senza toccare il focus camera
+  const lotCartographic = Cesium.Cartographic.fromCartesian(orbitTarget);
+  const markerPosition = Cesium.Cartesian3.fromRadians(
+    lotCartographic.longitude,
+    lotCartographic.latitude,
+    315
+  );
+
+  viewer.entities.add({
+    id: "lotMarker",
+    position: markerPosition,
+    point: {
+      pixelSize: 14,
+      color: Cesium.Color.fromCssColorString("#d6a14d"),
+      outlineColor: Cesium.Color.WHITE,
+      outlineWidth: 3,
+      disableDepthTestDistance: Number.POSITIVE_INFINITY
+    }
+  });
+
+  viewer.entities.add({
+    id: "lotMarkerGlow",
+    position: markerPosition,
+    ellipse: {
+      semiMajorAxis: 14,
+      semiMinorAxis: 14,
+      height: 285,
+      material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.18),
+      outline: false
+    }
+  });
 
   let orbitHeading = Cesium.Math.toRadians(365);
   let orbitPitch = Cesium.Math.toRadians(-35);
