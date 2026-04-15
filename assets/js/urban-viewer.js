@@ -85,9 +85,9 @@ async function initUrbanViewer() {
   const boundingSphere = Cesium.BoundingSphere.fromPoints(hierarchy.positions);
   const orbitTarget = boundingSphere.center;
 
-  let orbitHeading = Cesium.Math.toRadians(275);
+  let orbitHeading = Cesium.Math.toRadians(185);
   let orbitPitch = Cesium.Math.toRadians(-35);
-  let orbitRange = 70;
+  let orbitRange = 150;
 
   const minPitch = Cesium.Math.toRadians(-80);
   const maxPitch = Cesium.Math.toRadians(-10);
