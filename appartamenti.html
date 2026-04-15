@@ -1,0 +1,84 @@
+---
+title: Tutti gli appartamenti
+permalink: /appartamenti/
+---
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+
+  <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
+</head>
+
+<body class="site-body home-page">
+  {% assign apartments_sorted = site.apartments | sort: "title" %}
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="{{ '/' | relative_url }}" class="site-header__brand">ALFIERI</a>
+
+      <nav class="site-header__nav" aria-label="Navigazione principale">
+        <a href="{{ '/' | relative_url }}#progetto">Progetto</a>
+        <a href="{{ '/' | relative_url }}#contesto">Contesto</a>
+        <a href="{{ '/' | relative_url }}#appartamenti">Appartamenti</a>
+        <a href="{{ '/' | relative_url }}#contatti">Contatti</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="home-main">
+    <section class="section section--all-apartments">
+      <div class="section-heading section-heading--split">
+        <div>
+          <p class="section-kicker">Collezione completa</p>
+          <h2>Tutti gli appartamenti</h2>
+        </div>
+        <p class="section-note">
+          Una vista completa di tutte le unità disponibili.
+        </p>
+      </div>
+
+      <div class="apartment-grid">
+          {% for apartment in apartments_sorted %}
+          <a class="apartment-card" href="{{ apartment.url | relative_url }}">
+              <div class="apartment-card__media">
+                  {% if apartment.card_image %}
+                  <img src="{{ apartment.card_image | relative_url }}"
+                       alt="{{ apartment.title }}"
+                       loading="lazy" />
+                  {% else %}
+                  <div class="apartment-card__placeholder">
+                      {{ apartment.title }}
+                  </div>
+                  {% endif %}
+              </div>
+
+              <div class="apartment-card__body">
+                  {% if apartment.tipologia %}
+                  <p class="apartment-card__eyebrow">{{ apartment.tipologia }}</p>
+                  {% endif %}
+
+                  <h3>{{ apartment.title }}</h3>
+
+                  <span class="apartment-card__link">
+                      Scopri l’unità
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                  </span>
+              </div>
+          </a>
+          {% endfor %}
+      </div>
+    </section>
+  </main>
+</body>
+</html>

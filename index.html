@@ -147,52 +147,39 @@ title: Appartamenti
                 <div class="section-heading section-heading--split">
                     <div>
                         <p class="section-kicker">Appartamenti</p>
-                        <h2>Seleziona la tua soluzione</h2>
+                        <h2>Le tipologie disponibili :</h2>
                     </div>
                     <p class="section-note">
-                        Ogni unità apre la sua pagina dedicata.
+                        Ogni cards apre la sua pagina dedicata.
                     </p>
+
                 </div>
 
                 <div class="apartment-grid">
                     {% assign featured_apartments = "A22|A14|A17" | split: "|" %}
 
                     {% for featured_title in featured_apartments %}
-                    {% assign card_image = "" %}
-
-                    {% if featured_title == "A22" %}
-                    {% assign card_image = "/assets/media/index/card-1.jpg" %}
-                    {% elsif featured_title == "A14" %}
-                    {% assign card_image = "/assets/media/index/card-2.jpg" %}
-                    {% elsif featured_title == "A17" %}
-                    {% assign card_image = "/assets/media/index/card-3.jpg" %}
-                    {% endif %}
-
                     {% for apartment in apartments_sorted %}
                     {% if apartment.title == featured_title %}
                     <a class="apartment-card" href="{{ apartment.url | relative_url }}">
                         <div class="apartment-card__media">
-                            <img src="{{ card_image | relative_url }}"
+                            {% if apartment.card_image %}
+                            <img src="{{ apartment.card_image | relative_url }}"
                                  alt="{{ apartment.title }}"
                                  loading="lazy" />
+                            {% else %}
+                            <div class="apartment-card__placeholder">
+                                {{ apartment.title }}
+                            </div>
+                            {% endif %}
                         </div>
 
                         <div class="apartment-card__body">
-                            <p class="apartment-card__eyebrow">
-                                {% if apartment.title == "A22" %}
-                                Monolocale
-                                {% elsif apartment.title == "A14" %}
-                                Bilocale
-                                {% elsif apartment.title == "A17" %}
-                                Trilocale
-                                {% endif %}
-                            </p>
-                            <h3>{{ apartment.title }}</h3>
+                            {% if apartment.tipologia %}
+                            <p class="apartment-card__eyebrow">{{ apartment.tipologia }}</p>
+                            {% endif %}
 
-                            <div class="apartment-card__meta">
-                                {% if apartment.address %}<span>{{ apartment.address }}</span>{% endif %}
-                                {% if apartment.price %}<strong>{{ apartment.price }}</strong>{% endif %}
-                            </div>
+                            <h3>{{ apartment.title }}</h3>
 
                             <span class="apartment-card__link">
                                 Scopri l’unità
@@ -206,6 +193,11 @@ title: Appartamenti
                     {% endfor %}
                     {% endfor %}
                 </div>
+
+                <a href="{{ '/appartamenti/' | relative_url }}" class="apartments-more-link">
+                    Vedi tutti gli appartamenti
+                </a>
+
             </section>
 
             <section id="galleria" class="section section--gallery">
