@@ -84,13 +84,15 @@ async function initUrbanViewer() {
   const boundingSphere = Cesium.BoundingSphere.fromPoints(hierarchy.positions);
   const orbitTarget = boundingSphere.center;
 
+  // ===== Beam stile "objective marker" sottile =====
   const orbitCartographic = Cesium.Cartographic.fromCartesian(orbitTarget);
   const lotLongitude = orbitCartographic.longitude;
   const lotLatitude = orbitCartographic.latitude;
 
   const baseHeight = 285;
-  const beamLength = 220;
+  const beamLength = 520;
   const beamCenterHeight = baseHeight + beamLength / 2;
+  const beamTopHeight = baseHeight + beamLength;
 
   const beamBasePosition = Cesium.Cartesian3.fromRadians(
     lotLongitude,
@@ -104,14 +106,20 @@ async function initUrbanViewer() {
     beamCenterHeight
   );
 
+  const beamTopPosition = Cesium.Cartesian3.fromRadians(
+    lotLongitude,
+    lotLatitude,
+    beamTopHeight
+  );
+
   viewer.entities.add({
-    id: "lotGlowBase",
+    id: "lotBaseGlow",
     position: beamBasePosition,
     ellipse: {
-      semiMajorAxis: 16,
-      semiMinorAxis: 16,
-      height: baseHeight,
-      material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.22),
+      semiMajorAxis: 7,
+      semiMinorAxis: 7,
+      height: baseHeight + 0.1,
+      material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.16),
       outline: false
     }
   });
@@ -120,23 +128,23 @@ async function initUrbanViewer() {
     id: "lotBaseRing",
     position: beamBasePosition,
     ellipse: {
-      semiMajorAxis: 24,
-      semiMinorAxis: 24,
+      semiMajorAxis: 10,
+      semiMinorAxis: 10,
       height: baseHeight + 0.2,
-      material: Cesium.Color.WHITE.withAlpha(0.06),
+      material: Cesium.Color.WHITE.withAlpha(0.015),
       outline: true,
-      outlineColor: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.95),
-      outlineWidth: 2
+      outlineColor: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.65),
+      outlineWidth: 1
     }
   });
 
   viewer.entities.add({
-    id: "lotBeam",
+    id: "lotBeamOuter",
     position: beamCenterPosition,
     cylinder: {
       length: beamLength,
-      topRadius: 7,
-      bottomRadius: 18,
+      topRadius: 0.9,
+      bottomRadius: 1.6,
       material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.20),
       outline: false,
       numberOfVerticalLines: 0
@@ -144,17 +152,40 @@ async function initUrbanViewer() {
   });
 
   viewer.entities.add({
-    id: "lotBeamCore",
+    id: "lotBeamInner",
     position: beamCenterPosition,
     cylinder: {
-      length: beamLength * 0.92,
-      topRadius: 3,
-      bottomRadius: 7,
-      material: Cesium.Color.WHITE.withAlpha(0.16),
+      length: beamLength,
+      topRadius: 0.28,
+      bottomRadius: 0.42,
+      material: Cesium.Color.WHITE.withAlpha(0.85),
       outline: false,
       numberOfVerticalLines: 0
     }
   });
+
+  viewer.entities.add({
+    id: "lotBeamTopGlow",
+    position: beamTopPosition,
+    point: {
+      pixelSize: 8,
+      color: Cesium.Color.WHITE.withAlpha(0.95),
+      outlineColor: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.9),
+      outlineWidth: 2,
+      disableDepthTestDistance: Number.POSITIVE_INFINITY
+    }
+  });
+
+  viewer.entities.add({
+    id: "lotBeamTopHalo",
+    position: beamTopPosition,
+    point: {
+      pixelSize: 16,
+      color: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.18),
+      disableDepthTestDistance: Number.POSITIVE_INFINITY
+    }
+  });
+  // ===== fine beam =====
 
   let orbitHeading = Cesium.Math.toRadians(365);
   let orbitPitch = Cesium.Math.toRadians(-35);
