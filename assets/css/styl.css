@@ -434,7 +434,7 @@ model-viewer {
 .urban-copy {
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
-    row-gap: 24px;
+    /*  row-gap: 24px; */
     height: 520px; /* stessa altezza del viewer */
     min-height: 520px;
     min-width: 0;
