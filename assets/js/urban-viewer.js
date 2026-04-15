@@ -84,13 +84,13 @@ async function initUrbanViewer() {
   const boundingSphere = Cesium.BoundingSphere.fromPoints(hierarchy.positions);
   const orbitTarget = boundingSphere.center;
 
-  // ===== Beam stile "objective marker" sottile =====
+  // ===== Beam glow sottile e più basso =====
   const orbitCartographic = Cesium.Cartographic.fromCartesian(orbitTarget);
   const lotLongitude = orbitCartographic.longitude;
   const lotLatitude = orbitCartographic.latitude;
 
   const baseHeight = 285;
-  const beamLength = 520;
+  const beamLength = 360;
   const beamCenterHeight = baseHeight + beamLength / 2;
   const beamTopHeight = baseHeight + beamLength;
 
@@ -112,76 +112,96 @@ async function initUrbanViewer() {
     beamTopHeight
   );
 
+  // glow base morbido
   viewer.entities.add({
     id: "lotBaseGlow",
     position: beamBasePosition,
     ellipse: {
-      semiMajorAxis: 7,
-      semiMinorAxis: 7,
-      height: baseHeight + 0.1,
-      material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.16),
+      semiMajorAxis: 8,
+      semiMinorAxis: 8,
+      height: baseHeight + 0.05,
+      material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.14),
       outline: false
     }
   });
 
+  // ring base
   viewer.entities.add({
     id: "lotBaseRing",
     position: beamBasePosition,
     ellipse: {
-      semiMajorAxis: 10,
-      semiMinorAxis: 10,
-      height: baseHeight + 0.2,
-      material: Cesium.Color.WHITE.withAlpha(0.015),
+      semiMajorAxis: 11,
+      semiMinorAxis: 11,
+      height: baseHeight + 0.1,
+      material: Cesium.Color.WHITE.withAlpha(0.01),
       outline: true,
-      outlineColor: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.65),
+      outlineColor: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.55),
       outlineWidth: 1
     }
   });
 
+  // alone esterno
+  viewer.entities.add({
+    id: "lotBeamGlow",
+    position: beamCenterPosition,
+    cylinder: {
+      length: beamLength,
+      topRadius: 1.8,
+      bottomRadius: 2.6,
+      material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.09),
+      outline: false,
+      numberOfVerticalLines: 0
+    }
+  });
+
+  // fascio principale
   viewer.entities.add({
     id: "lotBeamOuter",
     position: beamCenterPosition,
     cylinder: {
       length: beamLength,
-      topRadius: 0.9,
-      bottomRadius: 1.6,
-      material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.20),
+      topRadius: 0.65,
+      bottomRadius: 1.0,
+      material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.30),
       outline: false,
       numberOfVerticalLines: 0
     }
   });
 
+  // core luminoso
   viewer.entities.add({
     id: "lotBeamInner",
     position: beamCenterPosition,
     cylinder: {
       length: beamLength,
-      topRadius: 0.28,
-      bottomRadius: 0.42,
-      material: Cesium.Color.WHITE.withAlpha(0.85),
+      topRadius: 0.16,
+      bottomRadius: 0.22,
+      material: Cesium.Color.WHITE.withAlpha(0.95),
       outline: false,
       numberOfVerticalLines: 0
     }
   });
 
+  // punto luminoso in testa
   viewer.entities.add({
     id: "lotBeamTopGlow",
     position: beamTopPosition,
     point: {
-      pixelSize: 8,
-      color: Cesium.Color.WHITE.withAlpha(0.95),
+      pixelSize: 9,
+      color: Cesium.Color.WHITE.withAlpha(0.98),
       outlineColor: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.9),
       outlineWidth: 2,
       disableDepthTestDistance: Number.POSITIVE_INFINITY
     }
   });
 
+  // halo alto
   viewer.entities.add({
     id: "lotBeamTopHalo",
     position: beamTopPosition,
     point: {
-      pixelSize: 16,
-      color: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.18),
+      pixelSize: 18,
+      color: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.15),
       disableDepthTestDistance: Number.POSITIVE_INFINITY
     }
   });
