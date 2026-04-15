@@ -81,6 +81,46 @@ async function initUrbanViewer() {
     }
   });
 
+    const pulseState = { value: 0 };
+
+    viewer.entities.add({
+      id: "lotPulse",
+      position: lotCenter,
+      ellipse: {
+        semiMinorAxis: new Cesium.CallbackProperty(() => {
+          return 10 + Math.sin(pulseState.value) * 2;
+        }, false),
+        semiMajorAxis: new Cesium.CallbackProperty(() => {
+          return 10 + Math.sin(pulseState.value) * 2;
+        }, false),
+        height: 285,
+        material: new Cesium.CallbackProperty(() => {
+          const alpha = 0.18 + (Math.sin(pulseState.value) + 1) * 0.08;
+          return Cesium.Color.fromCssColorString("#d6a14d").withAlpha(alpha);
+        }, false)
+      }
+    });
+
+    viewer.entities.add({
+      id: "lotPin",
+      position: Cesium.Cartesian3.fromElements(
+        lotCenter.x,
+        lotCenter.y,
+        lotCenter.z + 20
+      ),
+      point: {
+        pixelSize: 10,
+        color: Cesium.Color.fromCssColorString("#d6a14d"),
+        outlineColor: Cesium.Color.WHITE,
+        outlineWidth: 2,
+        disableDepthTestDistance: Number.POSITIVE_INFINITY
+      }
+    });
+
+    viewer.scene.preRender.addEventListener(() => {
+      pulseState.value += 0.03;
+    });  
+
   const hierarchy = selectedPolygon.polygon.hierarchy.getValue(Cesium.JulianDate.now());
   const boundingSphere = Cesium.BoundingSphere.fromPoints(hierarchy.positions);
   const orbitTarget = boundingSphere.center;
