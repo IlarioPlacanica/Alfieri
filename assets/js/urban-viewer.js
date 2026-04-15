@@ -40,6 +40,7 @@ async function initUrbanViewer() {
   );
 
   const googleTileset = await Cesium.createGooglePhotorealistic3DTileset();
+
   googleTileset.maximumScreenSpaceError = 6;
 
   /*
@@ -84,128 +85,92 @@ async function initUrbanViewer() {
   const boundingSphere = Cesium.BoundingSphere.fromPoints(hierarchy.positions);
   const orbitTarget = boundingSphere.center;
 
-  // ===== Beam glow sottile e più basso =====
+  // ===== Diamond marker flottante =====
   const orbitCartographic = Cesium.Cartographic.fromCartesian(orbitTarget);
   const lotLongitude = orbitCartographic.longitude;
   const lotLatitude = orbitCartographic.latitude;
 
   const baseHeight = 285;
-  const beamLength = 360;
-  const beamCenterHeight = baseHeight + beamLength / 2;
-  const beamTopHeight = baseHeight + beamLength;
+  const markerHeight = 314;
 
-  const beamBasePosition = Cesium.Cartesian3.fromRadians(
+  const markerBasePosition = Cesium.Cartesian3.fromRadians(
     lotLongitude,
     lotLatitude,
     baseHeight
   );
 
-  const beamCenterPosition = Cesium.Cartesian3.fromRadians(
+  const markerPosition = Cesium.Cartesian3.fromRadians(
     lotLongitude,
     lotLatitude,
-    beamCenterHeight
+    markerHeight
   );
 
-  const beamTopPosition = Cesium.Cartesian3.fromRadians(
-    lotLongitude,
-    lotLatitude,
-    beamTopHeight
-  );
+  const diamondSvg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+      <defs>
+        <filter id="g" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="6" result="b"/>
+          <feMerge>
+            <feMergeNode in="b"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <g filter="url(#g)">
+        <polygon
+          points="48,16 76,44 48,72 20,44"
+          fill="#d6a14d"
+          fill-opacity="0.95"
+          stroke="rgba(255,255,255,0.95)"
+          stroke-width="3"
+          stroke-linejoin="round"
+        />
+        <polygon
+          points="48,26 66,44 48,62 30,44"
+          fill="rgba(255,255,255,0.22)"
+        />
+      </g>
+    </svg>
+  `;
 
-  // glow base morbido
   viewer.entities.add({
-    id: "lotBaseGlow",
-    position: beamBasePosition,
+    id: "lotMarkerBaseGlow",
+    position: markerBasePosition,
     ellipse: {
-      semiMajorAxis: 8,
-      semiMinorAxis: 8,
+      semiMajorAxis: 7,
+      semiMinorAxis: 7,
       height: baseHeight + 0.05,
       material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.14),
       outline: false
     }
   });
 
-  // ring base
   viewer.entities.add({
-    id: "lotBaseRing",
-    position: beamBasePosition,
+    id: "lotMarkerBaseRing",
+    position: markerBasePosition,
     ellipse: {
-      semiMajorAxis: 11,
-      semiMinorAxis: 11,
+      semiMajorAxis: 10,
+      semiMinorAxis: 10,
       height: baseHeight + 0.1,
       material: Cesium.Color.WHITE.withAlpha(0.01),
       outline: true,
-      outlineColor: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.55),
+      outlineColor: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.42),
       outlineWidth: 1
     }
   });
 
-  // alone esterno
   viewer.entities.add({
-    id: "lotBeamGlow",
-    position: beamCenterPosition,
-    cylinder: {
-      length: beamLength,
-      topRadius: 1.8,
-      bottomRadius: 2.6,
-      material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.09),
-      outline: false,
-      numberOfVerticalLines: 0
-    }
-  });
-
-  // fascio principale
-  viewer.entities.add({
-    id: "lotBeamOuter",
-    position: beamCenterPosition,
-    cylinder: {
-      length: beamLength,
-      topRadius: 0.65,
-      bottomRadius: 1.0,
-      material: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.30),
-      outline: false,
-      numberOfVerticalLines: 0
-    }
-  });
-
-  // core luminoso
-  viewer.entities.add({
-    id: "lotBeamInner",
-    position: beamCenterPosition,
-    cylinder: {
-      length: beamLength,
-      topRadius: 0.16,
-      bottomRadius: 0.22,
-      material: Cesium.Color.WHITE.withAlpha(0.95),
-      outline: false,
-      numberOfVerticalLines: 0
-    }
-  });
-
-  // punto luminoso in testa
-  viewer.entities.add({
-    id: "lotBeamTopGlow",
-    position: beamTopPosition,
-    point: {
-      pixelSize: 9,
-      color: Cesium.Color.WHITE.withAlpha(0.98),
-      outlineColor: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.9),
-      outlineWidth: 2,
+    id: "lotDiamondMarker",
+    position: markerPosition,
+    billboard: {
+      image: `data:image/svg+xml;charset=utf-8,${encodeURIComponent(diamondSvg)}`,
+      scale: 0.58,
+      verticalOrigin: Cesium.VerticalOrigin.CENTER,
+      horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
       disableDepthTestDistance: Number.POSITIVE_INFINITY
     }
   });
-
-  // halo alto
-  viewer.entities.add({
-    id: "lotBeamTopHalo",
-    position: beamTopPosition,
-    point: {
-      pixelSize: 18,
-      color: Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.15),
-      disableDepthTestDistance: Number.POSITIVE_INFINITY
-    }
-  });
-  // ===== fine beam =====
+  // ===== fine marker =====
 
   let orbitHeading = Cesium.Math.toRadians(365);
   let orbitPitch = Cesium.Math.toRadians(-35);
