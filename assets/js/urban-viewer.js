@@ -125,7 +125,7 @@ async function initUrbanViewer() {
         <g filter="url(#g)">
           <polygon
             points="48,10 68,44 48,78 28,44"
-            fill="rgba(255,255,255,0.22)"
+            fill="#d6a14d"
             fill-opacity="0.95"
             stroke="rgba(255,255,255,0.95)"
             stroke-width="3"
@@ -133,7 +133,7 @@ async function initUrbanViewer() {
           />
           <polygon
             points="48,22 60,44 48,66 36,44"
-            fill="rgba(255,255,255,0.22)"
+            fill="#d6a14d"
           />
         </g>
       </svg>
