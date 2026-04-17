@@ -696,6 +696,7 @@ model-viewer {
     gap: 10px;
     margin-top: auto;
     min-height: 52px;
+    margin-top: 18px;
     padding: 0 22px;
     border: 1px solid rgba(255, 255, 255, 0.42);
     background: transparent;
