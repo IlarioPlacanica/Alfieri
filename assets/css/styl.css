@@ -632,7 +632,7 @@ model-viewer {
 
 .apartment-card__media {
     aspect-ratio: 4 / 5;
-    background: #ddd6cb;
+    background: #F5F6F6;
     overflow: hidden;
 }
 
@@ -722,15 +722,16 @@ model-viewer {
 ========================================= */
 
 .apartments-more-link {
-    display: inline-block;
-    margin-top: 24px;
+    display: table;
+    margin: 32px auto 0;
     color: #171717;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     position: relative;
+    text-align: center;
 }
 
     .apartments-more-link::after {
@@ -775,6 +776,16 @@ model-viewer {
     line-height: 1;
     letter-spacing: -0.03em;
     color: #111111;
+}
+
+.section--all-apartments .apartment-card__body {
+    align-items: flex-start;
+}
+
+.section--all-apartments .apartment-card__body h3 {
+    margin: 0;
+    align-self: flex-start;
+    text-align: left;
 }
 
 @media (max-width: 760px) {
