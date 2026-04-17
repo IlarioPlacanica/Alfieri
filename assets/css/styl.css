@@ -654,7 +654,7 @@ model-viewer {
 .apartment-card__body {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 8px;
     padding: 22px;
     background: #000000;
     color: #ffffff;
