@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Onest";
+    src: local("Onest Regular"),
+         local("Onest-Regular"),
+         url("assets/fonts/Onest-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --page-bg: #ededed;
     --card-bg: #ffffff;
@@ -25,7 +35,7 @@ html {
 body {
     margin: 0;
     background: var(--page-bg);
-    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-family: "Onest", Arial, Helvetica, sans-serif;
     color: #111;
 }
 
@@ -77,9 +87,9 @@ model-viewer {
 .site-header__brand {
     color: #fff;
     text-decoration: none;
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Onest", Arial, Helvetica, sans-serif;
     font-size: 34px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.06em;
 }
 
@@ -88,14 +98,14 @@ model-viewer {
     gap: 22px;
 }
 
-    .site-header__nav a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-    }
+.site-header__nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
 
 .hero {
     position: relative;
@@ -156,9 +166,9 @@ model-viewer {
 
 .hero__title {
     margin: 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Onest", Arial, Helvetica, sans-serif;
     font-size: clamp(60px, 8vw, 118px);
-    font-weight: 500;
+    font-weight: 400;
     line-height: 0.88;
     letter-spacing: -0.04em;
 }
@@ -184,9 +194,9 @@ model-viewer {
     transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
-    .btn:hover {
-        transform: translateY(-1px);
-    }
+.btn:hover {
+    transform: translateY(-1px);
+}
 
 .btn--light {
     background: #ffffff;
@@ -217,9 +227,9 @@ model-viewer {
     border-right: 1px solid rgba(0,0,0,0.08);
 }
 
-    .project-band__item:last-child {
-        border-right: 0;
-    }
+.project-band__item:last-child {
+    border-right: 0;
+}
 
 .project-band__label {
     display: block;
@@ -247,15 +257,15 @@ model-viewer {
     margin-bottom: 28px;
 }
 
-    .section-heading h2 {
-        margin: 0;
-        max-width: 12ch;
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: clamp(38px, 3.4vw, 64px);
-        font-weight: 500;
-        line-height: 0.96;
-        letter-spacing: -0.04em;
-    }
+.section-heading h2 {
+    margin: 0;
+    max-width: 12ch;
+    font-family: "Onest", Arial, Helvetica, sans-serif;
+    font-size: clamp(38px, 3.4vw, 64px);
+    font-weight: 400;
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+}
 
 .section-heading--tight h2 {
     max-width: 14ch;
@@ -322,11 +332,11 @@ model-viewer {
     z-index: 2;
 }
 
-    .intro-editorial__ornament img {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
+.intro-editorial__ornament img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
 
 .intro-editorial__eyebrow {
     margin: 0 0 12px;
@@ -339,9 +349,10 @@ model-viewer {
 
 .intro-editorial__title {
     margin: 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
     font-size: clamp(42px, 4.4vw, 68px);
-    font-weight: 500;
+    font-weight: 400;
     line-height: 0.96;
     letter-spacing: -0.035em;
     text-transform: uppercase;
@@ -369,11 +380,11 @@ model-viewer {
     pointer-events: none;
 }
 
-    .intro-editorial__mark-right img {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
+.intro-editorial__mark-right img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
 
 /* =========================================
    URBAN
@@ -392,15 +403,15 @@ model-viewer {
     margin-bottom: 28px;
 }
 
-    .urban-heading h2 {
-        margin: 0;
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: clamp(54px, 5vw, 84px);
-        font-weight: 500;
-        line-height: 0.9;
-        letter-spacing: -0.045em;
-        white-space: nowrap;
-    }
+.urban-heading h2 {
+    margin: 0;
+    font-family: "Onest", Arial, Helvetica, sans-serif;
+    font-size: clamp(54px, 5vw, 84px);
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+}
 
 .urban-heading__note {
     margin: 0;
@@ -454,9 +465,9 @@ model-viewer {
 
 .urban-copy__top h3 {
     margin: 0 0 14px;
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Onest", Arial, Helvetica, sans-serif;
     font-size: clamp(23px, 3.5vw, 45px);
-    font-weight: 500;
+    font-weight: 400;
     line-height: 0.96;
     letter-spacing: -0.04em;
 }
@@ -480,13 +491,14 @@ model-viewer {
     position: relative;
 }
 
-    .urban-copy__image img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-    }
+.urban-copy__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
 /* viewer message fallback */
 .urban-viewer-message {
     letter-spacing: 0.01em;
@@ -602,7 +614,7 @@ model-viewer {
 
 .apartment-card {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-decoration: none;
     color: inherit;
     background: #fff;
@@ -610,10 +622,10 @@ model-viewer {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-    .apartment-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 18px 36px rgba(0,0,0,0.08);
-    }
+.apartment-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.08);
+}
 
 .apartment-card__media {
     aspect-ratio: 4 / 5;
@@ -621,12 +633,12 @@ model-viewer {
     overflow: hidden;
 }
 
-    .apartment-card__media img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: -50% 0%;
-    }
+.apartment-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: -50% 0%;
+}
 
 .apartment-card__placeholder {
     height: 100%;
@@ -643,12 +655,12 @@ model-viewer {
     padding: 22px;
 }
 
-    .apartment-card__body h3 {
-        margin: 0;
-        font-size: 30px;
-        line-height: 1;
-        letter-spacing: -0.035em;
-    }
+.apartment-card__body h3 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: -0.035em;
+}
 
 .apartment-card__meta {
     display: flex;
@@ -658,9 +670,9 @@ model-viewer {
     color: #616161;
 }
 
-    .apartment-card__meta strong {
-        color: #111;
-    }
+.apartment-card__meta strong {
+    color: #111;
+}
 
 .apartment-card__link {
     display: inline-flex;
@@ -670,10 +682,10 @@ model-viewer {
     font-weight: 700;
 }
 
-    .apartment-card__link svg {
-        width: 18px;
-        height: 18px;
-    }
+.apartment-card__link svg {
+    width: 18px;
+    height: 18px;
+}
 
 /* =========================================
    TUTTI GLI APPARTAMENTI
@@ -691,34 +703,34 @@ model-viewer {
     position: relative;
 }
 
-    .apartments-more-link::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        width: 100%;
-        height: 1px;
-        background: currentColor;
-        transform: scaleX(0);
-        transform-origin: left center;
-        transition: transform 0.25s ease;
-    }
+.apartments-more-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.25s ease;
+}
 
-    .apartments-more-link:hover::after {
-        transform: scaleX(1);
-    }
+.apartments-more-link:hover::after {
+    transform: scaleX(1);
+}
 
 .section--all-apartments {
     padding-top: 132px;
     padding-bottom: 72px;
 }
 
-    .section--all-apartments .section-heading,
-    .section--all-apartments .apartment-grid {
-        width: min(1500px, calc(100% - 32px));
-        margin-left: auto;
-        margin-right: auto;
-    }
+.section--all-apartments .section-heading,
+.section--all-apartments .apartment-grid {
+    width: min(1500px, calc(100% - 32px));
+    margin-left: auto;
+    margin-right: auto;
+}
 
 @media (max-width: 760px) {
     .section--all-apartments {
@@ -726,12 +738,12 @@ model-viewer {
         padding-bottom: 56px;
     }
 
-        .section--all-apartments .section-heading,
-        .section--all-apartments .apartment-grid {
-            width: calc(100% - 40px);
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .section--all-apartments .section-heading,
+    .section--all-apartments .apartment-grid {
+        width: calc(100% - 40px);
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* =========================================
@@ -745,12 +757,12 @@ model-viewer {
     background: #f5f1ea;
 }
 
-    .section--gallery .section-heading,
-    .section--gallery .gallery-render-grid {
-        width: min(1500px, calc(100% - 32px));
-        margin-left: auto;
-        margin-right: auto;
-    }
+.section--gallery .section-heading,
+.section--gallery .gallery-render-grid {
+    width: min(1500px, calc(100% - 32px));
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .gallery-render-grid {
     display: grid;
@@ -770,17 +782,17 @@ model-viewer {
     transform-origin: center center;
 }
 
-    .gallery-render-card:hover {
-        transform: translateY(-6px) scale(1.02);
-        border-color: rgba(0,0,0,0.18);
-    }
+.gallery-render-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(0,0,0,0.18);
+}
 
-    .gallery-render-card img {
-        display: block;
-        width: 100%;
-        aspect-ratio: 9 / 16;
-        object-fit: cover;
-    }
+.gallery-render-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+}
 
 /* =========================================
    RENDER LIGHTBOX
@@ -797,9 +809,9 @@ model-viewer {
     background: rgba(12, 12, 12, 0.88);
 }
 
-    .render-lightbox.is-open {
-        display: flex;
-    }
+.render-lightbox.is-open {
+    display: flex;
+}
 
 .render-lightbox__content {
     max-width: min(72vw, 720px);
@@ -809,15 +821,15 @@ model-viewer {
     justify-content: center;
 }
 
-    .render-lightbox__content img {
-        display: block;
-        max-width: 100%;
-        max-height: 88vh;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-        box-shadow: 0 18px 48px rgba(0,0,0,0.28);
-    }
+.render-lightbox__content img {
+    display: block;
+    max-width: 100%;
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 18px 48px rgba(0,0,0,0.28);
+}
 
 .render-lightbox__close,
 .render-lightbox__nav {
@@ -884,12 +896,12 @@ model-viewer {
         background: #f5f1ea;
     }
 
-        .section--gallery .section-heading,
-        .section--gallery .gallery-render-grid {
-            width: calc(100% - 40px);
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .section--gallery .section-heading,
+    .section--gallery .gallery-render-grid {
+        width: calc(100% - 40px);
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     .gallery-render-grid {
         grid-template-columns: 1fr;
@@ -942,17 +954,17 @@ model-viewer {
     position: relative;
 }
 
-    .contact-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        width: 100vw;
-        transform: translateX(-50%);
-        background: #d9cec2;
-        z-index: -1;
-    }
+.contact-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    background: #d9cec2;
+    z-index: -1;
+}
 
 .contact-section__media {
     min-height: 520px;
@@ -960,11 +972,11 @@ model-viewer {
     background: #d8d2c8;
 }
 
-    .contact-section__media img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.contact-section__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .contact-section__content {
     display: flex;
@@ -973,20 +985,20 @@ model-viewer {
     padding: 28px 0;
 }
 
-    .contact-section__content h2 {
-        margin: 0 0 12px;
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: clamp(40px, 3vw, 62px);
-        font-weight: 500;
-        line-height: 0.96;
-        letter-spacing: -0.04em;
-    }
+.contact-section__content h2 {
+    margin: 0 0 12px;
+    font-family: "Onest", Arial, Helvetica, sans-serif;
+    font-size: clamp(40px, 3vw, 62px);
+    font-weight: 400;
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+}
 
-    .contact-section__content p {
-        margin: 0 0 20px;
-        color: #4d4d4d;
-        line-height: 1.8;
-    }
+.contact-section__content p {
+    margin: 0 0 20px;
+    color: #4d4d4d;
+    line-height: 1.8;
+}
 
 .contact-list {
     display: grid;
@@ -994,12 +1006,12 @@ model-viewer {
     margin-bottom: 24px;
 }
 
-    .contact-list a {
-        color: #111;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 600;
-    }
+.contact-list a {
+    color: #111;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
 
 /* =========================================
    SINGLE PAGES
@@ -1039,24 +1051,24 @@ model-viewer {
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
-    .section-nav a {
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 17px;
-        font-weight: 700;
-        line-height: 1;
-        padding: 7px 8px;
-        border-radius: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        transition: background 0.2s ease, color 0.2s ease;
-    }
+.section-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 7px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: background 0.2s ease, color 0.2s ease;
+}
 
-        .section-nav a:hover,
-        .section-nav a.is-active {
-            background: #ffffff;
-            color: #000000;
-        }
+.section-nav a:hover,
+.section-nav a.is-active {
+    background: #ffffff;
+    color: #000000;
+}
 
 .media-card {
     position: relative;
@@ -1099,12 +1111,12 @@ model-viewer {
     aspect-ratio: 9 / 16;
 }
 
-    .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        background: #ddd;
-    }
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #ddd;
+}
 
 .viewer-wrap {
     min-height: 520px;
@@ -1133,12 +1145,12 @@ model-viewer {
     aspect-ratio: 9 / 16;
 }
 
-    .tour-wrap iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-        background: #000;
-    }
+.tour-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #000;
+}
 
 .tour-fullscreen-btn {
     display: inline-flex;
@@ -1161,10 +1173,10 @@ model-viewer {
     -webkit-backdrop-filter: blur(6px);
 }
 
-    .tour-fullscreen-btn:hover {
-        background: #ffffff;
-        color: #000000;
-    }
+.tour-fullscreen-btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
 
 /* =========================================
    RESPONSIVE
@@ -1223,9 +1235,9 @@ model-viewer {
         margin-bottom: 22px;
     }
 
-        .urban-heading h2 {
-            white-space: normal;
-        }
+    .urban-heading h2 {
+        white-space: normal;
+    }
 
     .urban-heading__note {
         white-space: normal;
@@ -1288,9 +1300,9 @@ model-viewer {
         border-bottom: 1px solid rgba(0,0,0,0.08);
     }
 
-        .project-band__item:last-child {
-            border-bottom: 0;
-        }
+    .project-band__item:last-child {
+        border-bottom: 0;
+    }
 
     .section {
         padding-top: 52px;
@@ -1339,11 +1351,11 @@ model-viewer {
         margin-bottom: 18px;
     }
 
-        .urban-heading h2 {
-            white-space: normal;
-            font-size: clamp(40px, 11vw, 58px);
-            line-height: 0.96;
-        }
+    .urban-heading h2 {
+        white-space: normal;
+        font-size: clamp(40px, 11vw, 58px);
+        line-height: 0.96;
+    }
 
     .urban-heading__note {
         white-space: normal;
@@ -1394,12 +1406,12 @@ model-viewer {
         background: #d9cec2;
     }
 
-        .section--apartments .section-heading,
-        .section--apartments .apartment-grid {
-            width: calc(100% - 40px);
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .section--apartments .section-heading,
+    .section--apartments .apartment-grid {
+        width: calc(100% - 40px);
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     .apartment-grid {
         grid-template-columns: 1fr;
@@ -1414,21 +1426,21 @@ model-viewer {
         aspect-ratio: 4 / 5;
     }
 
-        .apartment-card__media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
+    .apartment-card__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
 
     .apartment-card__body {
         padding: 18px;
         gap: 14px;
     }
 
-        .apartment-card__body h3 {
-            font-size: 24px;
-        }
+    .apartment-card__body h3 {
+        font-size: 24px;
+    }
 
     .apartment-card__link {
         font-size: 15px;
@@ -1452,11 +1464,12 @@ model-viewer {
         padding: 7px 8px;
     }
 
-        .section-nav a {
-            font-size: 15px;
-            padding: 6px 5px;
-            letter-spacing: 0.02em;
-        }
+    .section-nav a {
+        font-size: 15px;
+        padding: 6px 5px;
+        letter-spacing: 0.02em;
+    }
+
     /*GALLERY*/
     .section--gallery {
         width: 100%;
@@ -1465,12 +1478,12 @@ model-viewer {
         background: #f5f1ea;
     }
 
-        .section--gallery .section-heading,
-        .section--gallery .gallery-render-grid {
-            width: calc(100% - 40px);
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .section--gallery .section-heading,
+    .section--gallery .gallery-render-grid {
+        width: calc(100% - 40px);
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     .gallery-render-grid {
         grid-template-columns: 1fr;
@@ -1489,17 +1502,17 @@ model-viewer {
         gap: 20px;
     }
 
-        .contact-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 100vw;
-            transform: translateX(-50%);
-            background: #d9cec2;
-            z-index: -1;
-        }
+    .contact-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 100vw;
+        transform: translateX(-50%);
+        background: #d9cec2;
+        z-index: -1;
+    }
 }
 
 @media (min-width: 900px) {
