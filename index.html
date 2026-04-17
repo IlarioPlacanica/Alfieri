@@ -179,6 +179,14 @@ title: Alfieri
                             <p class="apartment-card__eyebrow">{{ apartment.tipologia }}</p>
                             {% endif %}
 
+                            {% if apartment.title == "A22" %}
+                            <p class="apartment-card__eyebrow">A partire da 30 mq</p>
+                            {% elsif apartment.title == "A14" %}
+                            <p class="apartment-card__eyebrow">A partire da 60 mq</p>
+                            {% elsif apartment.title == "A17" %}
+                            <p class="apartment-card__eyebrow">A partire da 90 mq</p>
+                            {% endif %}
+
                             <h3>{{ apartment.title }}</h3>
 
                             <span class="apartment-card__link">

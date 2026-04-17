@@ -610,6 +610,21 @@ model-viewer {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.apartment-card__eyebrow {
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.apartment-card__subeyebrow {
+    margin: -6px 0 0;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
     .apartment-card:hover {
         transform: translateY(-4px);
         box-shadow: 0 18px 36px rgba(0,0,0,0.08);
