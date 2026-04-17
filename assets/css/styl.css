@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "Onest";
+  src: url("/assets/fonts/Onest-Regular.woff2") format("woff2"),
+       url("/assets/fonts/Onest-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: "Onest", Arial, Helvetica, sans-serif;
+}
+
 :root {
     --page-bg: #ededed;
     --card-bg: #ffffff;
@@ -25,7 +37,8 @@ html {
 body {
     margin: 0;
     background: var(--page-bg);
-    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-family: "Onest", Arial, Helvetica, sans-serif;
+    font-weight: 400;
     color: #111;
 }
 
@@ -77,7 +90,7 @@ model-viewer {
 .site-header__brand {
     color: #fff;
     text-decoration: none;
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Onest", Arial, Helvetica, sans-serif;
     font-size: 34px;
     font-weight: 500;
     letter-spacing: 0.06em;
@@ -154,9 +167,14 @@ model-viewer {
     text-transform: uppercase;
 }
 
+.apartment-card__eyebrow {
+    margin-bottom: 6px;
+}
+
 .hero__title {
     margin: 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
     font-size: clamp(60px, 8vw, 118px);
     font-weight: 500;
     line-height: 0.88;
@@ -250,7 +268,7 @@ model-viewer {
     .section-heading h2 {
         margin: 0;
         max-width: 12ch;
-        font-family: "Cormorant Garamond", Georgia, serif;
+        font-family: "Onest", Arial, Helvetica, sans-serif;
         font-size: clamp(38px, 3.4vw, 64px);
         font-weight: 500;
         line-height: 0.96;
@@ -351,7 +369,7 @@ model-viewer {
 .intro-editorial__text {
     width: min(860px, 100%);
     margin: 18px auto 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Onest", Arial, Helvetica, sans-serif;
     font-size: clamp(22px, 2vw, 30px);
     font-weight: 500;
     line-height: 1.28;
@@ -394,7 +412,7 @@ model-viewer {
 
     .urban-heading h2 {
         margin: 0;
-        font-family: "Cormorant Garamond", Georgia, serif;
+        font-family: "Onest", Arial, Helvetica, sans-serif;
         font-size: clamp(54px, 5vw, 84px);
         font-weight: 500;
         line-height: 0.9;
@@ -454,7 +472,7 @@ model-viewer {
 
 .urban-copy__top h3 {
     margin: 0 0 14px;
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Onest", Arial, Helvetica, sans-serif;
     font-size: clamp(23px, 3.5vw, 45px);
     font-weight: 500;
     line-height: 0.96;
@@ -636,11 +654,11 @@ model-viewer {
     font-size: 14px;
 }
 
-.apartment-card__body {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    padding: 22px;
+.apartment-card__price-label {
+    margin: -6px 0 0;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #6a6a6a;
 }
 
     .apartment-card__body h3 {
@@ -648,6 +666,7 @@ model-viewer {
         font-size: 30px;
         line-height: 1;
         letter-spacing: -0.035em;
+        font-weight: 500;
     }
 
 .apartment-card__meta {
@@ -661,6 +680,13 @@ model-viewer {
     .apartment-card__meta strong {
         color: #111;
     }
+
+.apartment-card__starting {
+    margin: -4px 0 0;
+    font-size: 14px;
+    line-height: 1.3;
+    color: #5f5f5f;
+}
 
 .apartment-card__link {
     display: inline-flex;
@@ -975,7 +1001,7 @@ model-viewer {
 
     .contact-section__content h2 {
         margin: 0 0 12px;
-        font-family: "Cormorant Garamond", Georgia, serif;
+        font-family: "Onest", Arial, Helvetica, sans-serif;
         font-size: clamp(40px, 3vw, 62px);
         font-weight: 500;
         line-height: 0.96;
@@ -1423,7 +1449,7 @@ model-viewer {
 
     .apartment-card__body {
         padding: 18px;
-        gap: 14px;
+        gap: 10px;
     }
 
         .apartment-card__body h3 {

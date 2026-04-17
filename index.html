@@ -1,5 +1,5 @@
 ---
-title: Appartamenti
+title: Alfieri
 ---
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ title: Appartamenti
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap"
           rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
@@ -75,7 +75,7 @@ title: Appartamenti
                 </div>
             </section>
 
-            <section class="project-band" aria-label="Punti chiave del progetto">
+        <!--   <section class="project-band" aria-label="Punti chiave del progetto">
                 <div class="project-band__item">
                     <span class="project-band__label">Progetto</span>
                     <strong>Residenze contemporanee</strong>
@@ -88,7 +88,7 @@ title: Appartamenti
                     <span class="project-band__label">Collezione</span>
                     <strong>Unità con schede dedicate</strong>
                 </div>
-            </section>
+            </section> -->
 
             <section id="progetto" class="intro-editorial">
                 <div class="intro-editorial__ornament">
@@ -162,6 +162,22 @@ title: Appartamenti
                     {% for apartment in apartments_sorted %}
                     {% if apartment.title == featured_title %}
                     <a class="apartment-card" href="{{ apartment.url | relative_url }}">
+                        <div class="apartment-card__body">
+                            {% if apartment.tipologia %}
+                            <p class="apartment-card__eyebrow">{{ apartment.tipologia }}</p>
+                            {% endif %}
+
+                            <p class="apartment-card__starting">A partire da:</p>
+                            <h3>{{ apartment.title }}</h3>
+
+                            <span class="apartment-card__link">
+                                Scopri l’unità
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+
                         <div class="apartment-card__media">
                             {% if apartment.card_image %}
                             <img src="{{ apartment.card_image | relative_url }}"
@@ -172,21 +188,6 @@ title: Appartamenti
                                 {{ apartment.title }}
                             </div>
                             {% endif %}
-                        </div>
-
-                        <div class="apartment-card__body">
-                            {% if apartment.tipologia %}
-                            <p class="apartment-card__eyebrow">{{ apartment.tipologia }}</p>
-                            {% endif %}
-
-                            <h3>{{ apartment.title }}</h3>
-
-                            <span class="apartment-card__link">
-                                Scopri l’unità
-                                <svg viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </span>
                         </div>
                     </a>
                     {% endif %}
