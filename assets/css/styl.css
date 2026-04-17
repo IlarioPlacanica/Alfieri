@@ -156,7 +156,7 @@ model-viewer {
 
 .hero__title {
     margin: 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: clamp(60px, 8vw, 118px);
     font-weight: 500;
     line-height: 0.88;
@@ -250,7 +250,7 @@ model-viewer {
     .section-heading h2 {
         margin: 0;
         max-width: 12ch;
-        font-family: "Cormorant Garamond", Georgia, serif;
+        font-family: "Times New Roman", Times, serif;
         font-size: clamp(38px, 3.4vw, 64px);
         font-weight: 500;
         line-height: 0.96;
@@ -394,7 +394,7 @@ model-viewer {
 
     .urban-heading h2 {
         margin: 0;
-        font-family: "Cormorant Garamond", Georgia, serif;
+        font-family: "Times New Roman", Times, serif;
         font-size: clamp(54px, 5vw, 84px);
         font-weight: 500;
         line-height: 0.9;
@@ -602,7 +602,7 @@ model-viewer {
 
 .apartment-card {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-decoration: none;
     color: inherit;
     background: #fff;
@@ -641,6 +641,18 @@ model-viewer {
     flex-direction: column;
     gap: 18px;
     padding: 22px;
+    background: #000000;
+    color: #ffffff;
+}
+
+.apartment-card__body h3,
+.apartment-card__body .apartment-card__eyebrow,
+.apartment-card__body .apartment-card__link {
+    color: #ffffff;
+}
+
+.apartment-card__body .apartment-card__link svg {
+    color: #ffffff;
 }
 
     .apartment-card__body h3 {
@@ -665,16 +677,32 @@ model-viewer {
 .apartment-card__link {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    align-self: center;
     gap: 10px;
     margin-top: auto;
+    min-height: 52px;
+    padding: 0 22px;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    background: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
     font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
-    .apartment-card__link svg {
-        width: 18px;
-        height: 18px;
-    }
+.apartment-card__link:hover {
+    transform: translateY(-1px);
+}
 
+.apartment-card__link svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
 /* =========================================
    TUTTI GLI APPARTAMENTI
 ========================================= */
@@ -975,7 +1003,7 @@ model-viewer {
 
     .contact-section__content h2 {
         margin: 0 0 12px;
-        font-family: "Cormorant Garamond", Georgia, serif;
+        font-family: "Times New Roman", Times, serif;
         font-size: clamp(40px, 3vw, 62px);
         font-weight: 500;
         line-height: 0.96;
