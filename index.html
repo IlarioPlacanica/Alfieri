@@ -154,6 +154,286 @@ title: Alfieri
                     </p>
 
                 </div>
+                ---
+title: Appartamenti
+---
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title }}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap"
+          rel="stylesheet" />
+
+    <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
+
+    <!-- questo è un commento -->
+    <link rel="stylesheet"
+          href="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Widgets/widgets.css" />
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.118/Build/Cesium/Cesium.js"></script>
+
+    <link href="https://unpkg.com/maplibre-gl@5.3.0/dist/maplibre-gl.css" rel="stylesheet">
+    <script src="https://unpkg.com/maplibre-gl@5.3.0/dist/maplibre-gl.js"></script>
+    <script src="{{ '/assets/js/context-map.js' | relative_url }}"></script>
+
+</head>
+    <body class="site-body home-page">
+        {% assign apartments_sorted = site.apartments | sort: "title" %}
+
+        <header class="site-header">
+            <div class="site-header__inner">
+                <a href="{{ '/' | relative_url }}" class="site-header__brand">ALFIERI</a>
+
+                <nav class="site-header__nav" aria-label="Navigazione principale">
+                    <a href="#progetto">Progetto</a>
+                    <a href="#contesto">Contesto</a>
+                    <a href="#appartamenti">Appartamenti</a>
+                    <a href="#contatti">Contatti</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="home-main">
+
+            <section class="hero">
+                <div class="hero__media">
+                    <img src="{{ '/assets/media/index/hero-poster.jpg' | relative_url }}"
+                         alt="Vista progetto"
+                         class="hero__poster"
+                         loading="eager" />
+
+                    <video class="hero__video"
+                           autoplay
+                           muted
+                           loop
+                           playsinline
+                           preload="metadata"
+                           poster="{{ '/assets/media/index/hero-poster.jpg' | relative_url }}">
+                        <source src="{{ '/assets/media/index/hero-video.mp4' | relative_url }}" type="video/mp4" />
+                    </video>
+
+                    <div class="hero__overlay"></div>
+                </div>
+
+                <div class="hero__content">
+                    <p class="hero__eyebrow">Torino, Via Alfieri 17</p>
+                    <h1 class="hero__title">Abitare la città.</h1>
+
+                    <div class="hero__actions">
+                        <a href="#appartamenti" class="btn btn--light">Appartamenti</a>
+                        <a href="#contesto" class="btn btn--ghost">Contesto urbano</a>
+                    </div>
+                </div>
+            </section>
+
+        <!--   <section class="project-band" aria-label="Punti chiave del progetto">
+                <div class="project-band__item">
+                    <span class="project-band__label">Progetto</span>
+                    <strong>Residenze contemporanee</strong>
+                </div>
+                <div class="project-band__item">
+                    <span class="project-band__label">Contesto</span>
+                    <strong>Quartiere, servizi, connessioni</strong>
+                </div>
+                <div class="project-band__item">
+                    <span class="project-band__label">Collezione</span>
+                    <strong>Unità con schede dedicate</strong>
+                </div>
+            </section> -->
+
+            <section id="progetto" class="intro-editorial">
+                <div class="intro-editorial__ornament">
+                    <img src="{{ '/assets/media/index/intro-mark.png' | relative_url }}"
+                         alt=""
+                         aria-hidden="true" />
+                </div>
+
+                <div class="intro-editorial__inner">
+                    <p class="intro-editorial__eyebrow">Il progetto</p>
+                    <h2 class="intro-editorial__title">Storia che diventa casa</h2>
+                    <p class="intro-editorial__text">
+                        Una collezione di residenze che fonde identità architettonica e abitare contemporaneo,
+                        offrendo un’esperienza urbana raffinata, immersa nel cuore della città.
+                    </p>
+                </div>
+
+                <div class="intro-editorial__mark-right" aria-hidden="true">
+                    <img src="{{ '/assets/media/index/intro-mark.png' | relative_url }}"
+                         alt=""
+                         aria-hidden="true" />
+                </div>
+            </section>
+
+            <section id="contesto" class="section section--urban">
+                <div class="urban-heading">
+                    <h2>L’edificio nel suo intorno</h2>
+              <!--  <p class="urban-heading__note">
+                        Vista orbitabile sul lotto con Google Photorealistic 3D Tiles.
+                    </p>-->
+                </div>
+
+                <div class="urban-layout">
+                    <div class="urban-viewer-wrap">
+                        <div id="urbanViewer" class="urban-viewer"></div>
+                    </div>
+
+                    <div class="urban-copy">
+                        <div class="urban-copy__top">
+                       <!-- <p class="urban-copy__eyebrow">Vista 3D</p>
+                            <h3>Un punto di vista controllato sul lotto</h3>
+                            <!-- <p>
+                        Il viewer ruota attorno all’edificio e mantiene il focus sul progetto,
+                        così puoi raccontare quartiere, accessibilità e rapporto con la città.
+                    </p>-->
+                        </div>
+
+                        <div class="urban-copy__image">
+                            <div id="contextMap" class="context-map"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="appartamenti" class="section section--apartments">
+                <div class="section-heading section-heading--split">
+                    <div>
+                        <p class="section-kicker">Appartamenti</p>
+                        <h2>Le tipologie disponibili :</h2>
+                    </div>
+                    <p class="section-note">
+                        Ogni cards apre la sua pagina dedicata.
+                    </p>
+
+                </div>
+
+                <div class="apartment-grid">
+                    {% assign featured_apartments = "A22|A14|A17" | split: "|" %}
+
+                    {% for featured_title in featured_apartments %}
+                    {% for apartment in apartments_sorted %}
+                    {% if apartment.title == featured_title %}
+                    <a class="apartment-card" href="{{ apartment.url | relative_url }}">
+                        <div class="apartment-card__media">
+                            {% if apartment.card_image %}
+                            <img src="{{ apartment.card_image | relative_url }}"
+                                 alt="{{ apartment.title }}"
+                                 loading="lazy" />
+                            {% else %}
+                            <div class="apartment-card__placeholder">
+                                {{ apartment.title }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="apartment-card__body">
+                            {% if apartment.tipologia %}
+                            <p class="apartment-card__eyebrow">{{ apartment.tipologia }}</p>
+                            {% endif %}
+
+                            <h3>{{ apartment.title }}</h3>
+
+                            <span class="apartment-card__link">
+                                Scopri l’unità
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+
+                <a href="{{ '/appartamenti/' | relative_url }}" class="apartments-more-link">
+                    Vedi tutti gli appartamenti
+                </a>
+
+            </section>
+
+            <section id="galleria" class="section section--gallery">
+                <div class="section-heading section-heading--split">
+                    <div>
+                        <p class="section-kicker">Galleria</p>
+                        <h2>Interni</h2>
+                    </div>
+                    <p class="section-note">
+                        Una selezione di render degli ambienti interni.
+                    </p>
+                </div>
+
+                <div class="gallery-render-grid">
+                    <button class="gallery-render-card" type="button" data-index="0">
+                        <img src="{{ '/assets/media/index/render-1.png' | relative_url }}"
+                             alt="Render interno 1"
+                             loading="lazy" />
+                    </button>
+
+                    <button class="gallery-render-card" type="button" data-index="1">
+                        <img src="{{ '/assets/media/index/render-2.png' | relative_url }}"
+                             alt="Render interno 2"
+                             loading="lazy" />
+                    </button>
+
+                    <button class="gallery-render-card" type="button" data-index="2">
+                        <img src="{{ '/assets/media/index/render-3.png' | relative_url }}"
+                             alt="Render interno 3"
+                             loading="lazy" />
+                    </button>
+
+                    <button class="gallery-render-card" type="button" data-index="3">
+                        <img src="{{ '/assets/media/index/render-4.png' | relative_url }}"
+                             alt="Render interno 4"
+                             loading="lazy" />
+                    </button>
+                </div>
+            </section>
+
+            <div class="render-lightbox" id="renderLightbox" aria-hidden="true">
+                <button class="render-lightbox__close" type="button" aria-label="Chiudi galleria">×</button>
+                <button class="render-lightbox__nav render-lightbox__nav--prev" type="button" aria-label="Immagine precedente">‹</button>
+
+                <div class="render-lightbox__content">
+                    <img id="renderLightboxImage" src="" alt="" />
+                </div>
+
+                <button class="render-lightbox__nav render-lightbox__nav--next" type="button" aria-label="Immagine successiva">›</button>
+            </div>
+
+            <section id="contatti" class="contact-section">
+                <div class="contact-section__media">
+                    <img src="{{ '/assets/media/index/contact-cover.png' | relative_url }}"
+                         alt="Contatti progetto"
+                         loading="lazy" />
+                </div>
+
+                <div class="contact-section__content">
+                    <p class="section-kicker">Contatti</p>
+                    <h2>Richiedi informazioni</h2>
+                    <p>
+                        Per disponibilità, brochure, visite e approfondimenti sul progetto.
+                    </p>
+
+                    <div class="contact-list">
+                        <a href="tel:+393400629071">+39 340 062 9071</a>
+                        <a href="mailto:m.cabboi@primulacostruzioni.it">m.cabboi@primulacostruzioni.it</a>
+                    </div>
+
+                    <a href="mailto:m.cabboi@primulacostruzioni.it" class="btn btn--dark">Contattaci</a>
+                </div>
+            </section>
+
+        </main>
+
+        <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+        <script type="module" src="{{ '/assets/js/urban-viewer.js' | relative_url }}"></script>
+    </body>
+    </html>
 
                 <div class="apartment-grid">
                     {% assign featured_apartments = "A22|A14|A17" | split: "|" %}
@@ -167,7 +447,8 @@ title: Alfieri
                             <p class="apartment-card__eyebrow">{{ apartment.tipologia }}</p>
                             {% endif %}
 
-                            <p class="apartment-card__starting">A partire da:</p>
+                            <p class="apartment-card__price-label">A partire da:</p>
+
                             <h3>{{ apartment.title }}</h3>
 
                             <span class="apartment-card__link">
