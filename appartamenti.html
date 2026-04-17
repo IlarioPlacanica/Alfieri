@@ -46,37 +46,118 @@ permalink: /appartamenti/
         </p>
       </div>
 
-      <div class="apartment-grid">
+      <div class="apartments-group">
+        <h3 class="apartments-group__title">Monolocali</h3>
+        <div class="apartment-grid">
           {% for apartment in apartments_sorted %}
+          {% if apartment.tipologia == "Monolocale" %}
           <a class="apartment-card" href="{{ apartment.url | relative_url }}">
-              <div class="apartment-card__media">
-                  {% if apartment.card_image %}
-                  <img src="{{ apartment.card_image | relative_url }}"
-                       alt="{{ apartment.title }}"
-                       loading="lazy" />
-                  {% else %}
-                  <div class="apartment-card__placeholder">
-                      {{ apartment.title }}
-                  </div>
-                  {% endif %}
+            <div class="apartment-card__media">
+              {% if apartment.card_image %}
+              <img src="{{ apartment.card_image | relative_url }}"
+                   alt="{{ apartment.title }}"
+                   loading="lazy" />
+              {% else %}
+              <div class="apartment-card__placeholder">
+                {{ apartment.title }}
               </div>
+              {% endif %}
+            </div>
 
-              <div class="apartment-card__body">
-                  {% if apartment.tipologia %}
-                  <p class="apartment-card__eyebrow">{{ apartment.tipologia }}</p>
-                  {% endif %}
+            <div class="apartment-card__body">
+              {% if apartment.tipologia %}
+              <p class="apartment-card__eyebrow">{{ apartment.tipologia }}</p>
+              {% endif %}
 
-                  <h3>{{ apartment.title }}</h3>
+              <h3>{{ apartment.title }}</h3>
 
-                  <span class="apartment-card__link">
-                      Scopri l’unità
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                          <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                  </span>
-              </div>
+              <span class="apartment-card__link">
+                Scopri l’unità
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </div>
           </a>
+          {% endif %}
           {% endfor %}
+        </div>
+      </div>
+
+      <div class="apartments-group">
+        <h3 class="apartments-group__title">Bilocali</h3>
+        <div class="apartment-grid">
+          {% for apartment in apartments_sorted %}
+          {% if apartment.tipologia == "Bilocale" %}
+          <a class="apartment-card" href="{{ apartment.url | relative_url }}">
+            <div class="apartment-card__media">
+              {% if apartment.card_image %}
+              <img src="{{ apartment.card_image | relative_url }}"
+                   alt="{{ apartment.title }}"
+                   loading="lazy" />
+              {% else %}
+              <div class="apartment-card__placeholder">
+                {{ apartment.title }}
+              </div>
+              {% endif %}
+            </div>
+
+            <div class="apartment-card__body">
+              {% if apartment.tipologia %}
+              <p class="apartment-card__eyebrow">{{ apartment.tipologia }}</p>
+              {% endif %}
+
+              <h3>{{ apartment.title }}</h3>
+
+              <span class="apartment-card__link">
+                Scopri l’unità
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </div>
+          </a>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="apartments-group">
+        <h3 class="apartments-group__title">Trilocali</h3>
+        <div class="apartment-grid">
+          {% for apartment in apartments_sorted %}
+          {% if apartment.tipologia == "Trilocale" %}
+          <a class="apartment-card" href="{{ apartment.url | relative_url }}">
+            <div class="apartment-card__media">
+              {% if apartment.card_image %}
+              <img src="{{ apartment.card_image | relative_url }}"
+                   alt="{{ apartment.title }}"
+                   loading="lazy" />
+              {% else %}
+              <div class="apartment-card__placeholder">
+                {{ apartment.title }}
+              </div>
+              {% endif %}
+            </div>
+
+            <div class="apartment-card__body">
+              {% if apartment.tipologia %}
+              <p class="apartment-card__eyebrow">{{ apartment.tipologia }}</p>
+              {% endif %}
+
+              <h3>{{ apartment.title }}</h3>
+
+              <span class="apartment-card__link">
+                Scopri l’unità
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </div>
+          </a>
+          {% endif %}
+          {% endfor %}
+        </div>
       </div>
     </section>
   </main>
