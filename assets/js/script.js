@@ -3,6 +3,7 @@
   initHeroVideo();
   initApartmentPageNavigation();
   initTourFullscreen();
+  initContextCarousel();
   initRenderLightbox();
 });
 
@@ -157,6 +158,71 @@ function initTourFullscreen() {
     } else {
       tourFullscreenBtn.textContent = "⤢";
       tourFullscreenBtn.setAttribute("aria-label", "Schermo intero");
+    }
+  });
+}
+
+function initContextCarousel() {
+  const carousel = document.querySelector("[data-context-carousel]");
+  if (!carousel) return;
+
+  const images = Array.from(carousel.querySelectorAll(".context-carousel__image"));
+  const dots = Array.from(carousel.querySelectorAll(".context-carousel__dot"));
+  const prevButton = carousel.querySelector(".context-carousel__nav--prev");
+  const nextButton = carousel.querySelector(".context-carousel__nav--next");
+
+  if (!images.length || !dots.length || !prevButton || !nextButton) return;
+
+  const extensions = [".png", ".jpg", ".jpeg", ".webp"];
+  let currentIndex = 0;
+
+  images.forEach((image) => {
+    image.dataset.extensionIndex = "0";
+
+    image.addEventListener("error", () => {
+      const base = image.dataset.base;
+      const extensionIndex = Number(image.dataset.extensionIndex || "0") + 1;
+
+      if (!base || extensionIndex >= extensions.length) return;
+
+      image.dataset.extensionIndex = String(extensionIndex);
+      image.src = `${base}${extensions[extensionIndex]}`;
+    });
+  });
+
+  function setActiveImage(index) {
+    currentIndex = (index + images.length) % images.length;
+
+    images.forEach((image, imageIndex) => {
+      image.classList.toggle("is-active", imageIndex === currentIndex);
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-active", dotIndex === currentIndex);
+    });
+  }
+
+  prevButton.addEventListener("click", () => {
+    setActiveImage(currentIndex - 1);
+  });
+
+  nextButton.addEventListener("click", () => {
+    setActiveImage(currentIndex + 1);
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      setActiveImage(index);
+    });
+  });
+
+  carousel.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      setActiveImage(currentIndex - 1);
+    }
+
+    if (event.key === "ArrowRight") {
+      setActiveImage(currentIndex + 1);
     }
   });
 }
