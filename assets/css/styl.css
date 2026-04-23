@@ -801,15 +801,13 @@ model-viewer {
         color: #111;
     }
 
-.apartment-card__link {
+.apartment-card__link,
+.apartments-more-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    align-self: center;
     gap: 10px;
-    margin-top: auto;
     min-height: 52px;
-    margin-top: 18px;
     padding: 0 22px;
     border: 1px solid rgba(255, 255, 255, 0.42);
     background: transparent;
@@ -822,11 +820,18 @@ model-viewer {
     transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
-.apartment-card__link:hover {
+.apartment-card__link {
+    align-self: center;
+    margin-top: 18px;
+}
+
+.apartment-card__link:hover,
+.apartments-more-link:hover {
     transform: translateY(-1px);
 }
 
-.apartment-card__link svg {
+.apartment-card__link svg,
+.apartments-more-link svg {
     width: 18px;
     height: 18px;
     flex-shrink: 0;
@@ -836,34 +841,17 @@ model-viewer {
 ========================================= */
 
 .apartments-more-link {
-    display: table;
-    margin: 32px auto 0;
-    color: #171717;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    position: relative;
+    width: fit-content;
+    min-height: 64px;
+    margin: 40px auto 0;
+    padding: 0 34px;
+    border-color: #111111;
+    background: #111111;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0.06em;
     text-align: center;
 }
-
-    .apartments-more-link::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        width: 100%;
-        height: 1px;
-        background: currentColor;
-        transform: scaleX(0);
-        transform-origin: left center;
-        transition: transform 0.25s ease;
-    }
-
-    .apartments-more-link:hover::after {
-        transform: scaleX(1);
-    }
 
 .section--all-apartments {
     padding-top: 132px;
