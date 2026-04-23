@@ -254,7 +254,7 @@ title: Alfieri
                 <div class="section-heading section-heading--split">
                     <div>
                         <p class="section-kicker">Galleria</p>
-                        <h2>Interni</h2>
+                        <h2>LE Finiture</h2>
                     </div>
                     <p class="section-note">
                         Una selezione di render degli ambienti interni.
@@ -262,29 +262,46 @@ title: Alfieri
                 </div>
 
                 <div class="gallery-render-grid">
-                    <button class="gallery-render-card" type="button" data-index="0">
-                        <img src="{{ '/assets/media/index/render-1.png' | relative_url }}"
-                             alt="Render interno 1"
-                             loading="lazy" />
-                    </button>
+                    <div class="gallery-render-copy">
+                        <p class="intro-editorial__text">
+                            forme contemporanee si fonono al pregio dei materiali e delle finiture . Un ampio capitolato per offrire soluzioni su misura per riflettere gusto e stile di ogni residente.
+                        </p>
+                    </div>
 
-                    <button class="gallery-render-card" type="button" data-index="1">
-                        <img src="{{ '/assets/media/index/render-2.png' | relative_url }}"
-                             alt="Render interno 2"
-                             loading="lazy" />
-                    </button>
+                    <div class="gallery-render-carousel" data-gallery-carousel tabindex="0">
+                        <button class="gallery-render-carousel__stage" type="button" aria-label="Apri immagine galleria">
+                            <img class="gallery-render-carousel__image is-active"
+                                 src="{{ '/assets/media/index/render-1.png' | relative_url }}"
+                                 alt="Render interno 1"
+                                 loading="lazy" />
+                            <img class="gallery-render-carousel__image"
+                                 src="{{ '/assets/media/index/render-2.png' | relative_url }}"
+                                 alt="Render interno 2"
+                                 loading="lazy" />
+                            <img class="gallery-render-carousel__image"
+                                 src="{{ '/assets/media/index/render-3.png' | relative_url }}"
+                                 alt="Render interno 3"
+                                 loading="lazy" />
+                            <img class="gallery-render-carousel__image"
+                                 src="{{ '/assets/media/index/render-4.png' | relative_url }}"
+                                 alt="Render interno 4"
+                                 loading="lazy" />
+                        </button>
 
-                    <button class="gallery-render-card" type="button" data-index="2">
-                        <img src="{{ '/assets/media/index/render-3.png' | relative_url }}"
-                             alt="Render interno 3"
-                             loading="lazy" />
-                    </button>
+                        <button class="gallery-render-carousel__nav gallery-render-carousel__nav--prev" type="button" aria-label="Immagine precedente">
+                            &lsaquo;
+                        </button>
+                        <button class="gallery-render-carousel__nav gallery-render-carousel__nav--next" type="button" aria-label="Immagine successiva">
+                            &rsaquo;
+                        </button>
 
-                    <button class="gallery-render-card" type="button" data-index="3">
-                        <img src="{{ '/assets/media/index/render-4.png' | relative_url }}"
-                             alt="Render interno 4"
-                             loading="lazy" />
-                    </button>
+                        <div class="gallery-render-carousel__dots" aria-label="Seleziona immagine galleria">
+                            <button class="gallery-render-carousel__dot is-active" type="button" aria-label="Vai all'immagine 1"></button>
+                            <button class="gallery-render-carousel__dot" type="button" aria-label="Vai all'immagine 2"></button>
+                            <button class="gallery-render-carousel__dot" type="button" aria-label="Vai all'immagine 3"></button>
+                            <button class="gallery-render-carousel__dot" type="button" aria-label="Vai all'immagine 4"></button>
+                        </div>
+                    </div>
                 </div>
             </section>
 

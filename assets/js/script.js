@@ -4,6 +4,7 @@
   initApartmentPageNavigation();
   initTourFullscreen();
   initContextCarousel();
+  initGalleryRenderCarousel();
   initRenderLightbox();
 });
 
@@ -227,20 +228,76 @@ function initContextCarousel() {
   });
 }
 
+function initGalleryRenderCarousel() {
+  const carousel = document.querySelector("[data-gallery-carousel]");
+  if (!carousel) return;
+
+  const images = Array.from(carousel.querySelectorAll(".gallery-render-carousel__image"));
+  const dots = Array.from(carousel.querySelectorAll(".gallery-render-carousel__dot"));
+  const prevButton = carousel.querySelector(".gallery-render-carousel__nav--prev");
+  const nextButton = carousel.querySelector(".gallery-render-carousel__nav--next");
+
+  if (!images.length || !dots.length || !prevButton || !nextButton) return;
+
+  let currentIndex = 0;
+
+  function setActiveImage(index) {
+    currentIndex = (index + images.length) % images.length;
+
+    images.forEach((image, imageIndex) => {
+      image.classList.toggle("is-active", imageIndex === currentIndex);
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-active", dotIndex === currentIndex);
+    });
+  }
+
+  prevButton.addEventListener("click", () => {
+    setActiveImage(currentIndex - 1);
+  });
+
+  nextButton.addEventListener("click", () => {
+    setActiveImage(currentIndex + 1);
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      setActiveImage(index);
+    });
+  });
+
+  carousel.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      setActiveImage(currentIndex - 1);
+    }
+
+    if (event.key === "ArrowRight") {
+      setActiveImage(currentIndex + 1);
+    }
+  });
+}
+
 function initRenderLightbox() {
   const cards = Array.from(document.querySelectorAll(".gallery-render-card"));
+  const carousel = document.querySelector("[data-gallery-carousel]");
+  const carouselImages = Array.from(document.querySelectorAll(".gallery-render-carousel__image"));
+  const carouselStage = carousel?.querySelector(".gallery-render-carousel__stage");
   const lightbox = document.getElementById("renderLightbox");
   const lightboxImage = document.getElementById("renderLightboxImage");
   const closeButton = document.querySelector(".render-lightbox__close");
   const prevButton = document.querySelector(".render-lightbox__nav--prev");
   const nextButton = document.querySelector(".render-lightbox__nav--next");
 
-  if (!cards.length || !lightbox || !lightboxImage || !closeButton || !prevButton || !nextButton) {
+  if ((!cards.length && !carouselImages.length) || !lightbox || !lightboxImage || !closeButton || !prevButton || !nextButton) {
     return;
   }
 
-  const images = cards.map((card) => {
-    const img = card.querySelector("img");
+  const sourceImages = cards.length
+    ? cards.map((card) => card.querySelector("img"))
+    : carouselImages;
+
+  const images = sourceImages.map((img) => {
     return {
       src: img?.getAttribute("src") || "",
       alt: img?.getAttribute("alt") || ""
@@ -287,6 +344,11 @@ function initRenderLightbox() {
     card.addEventListener("click", () => {
       openLightbox(index);
     });
+  });
+
+  carouselStage?.addEventListener("click", () => {
+    const activeIndex = carouselImages.findIndex((image) => image.classList.contains("is-active"));
+    openLightbox(activeIndex >= 0 ? activeIndex : 0);
   });
 
   closeButton.addEventListener("click", closeLightbox);
