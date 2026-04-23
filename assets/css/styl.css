@@ -385,10 +385,6 @@ model-viewer {
 }
 
 .urban-heading {
-    display: grid;
-    grid-template-columns: minmax(320px, 460px) minmax(0, 1fr);
-    align-items: start;
-    column-gap: 56px;
     margin-bottom: 28px;
 }
 
@@ -403,9 +399,8 @@ model-viewer {
     }
 
 .urban-heading__note {
-    margin: 0;
-    justify-self: end;
-    padding-top: 10px;
+    width: min(620px, 100%);
+    margin: 18px 0 0;
     color: #5f5f5f;
     font-size: 15px;
     line-height: 1.65;
@@ -713,6 +708,35 @@ model-viewer {
     gap: 28px;
 }
 
+.section--apartments .section-heading--split {
+    display: block;
+}
+
+.apartments-heading__content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    align-items: end;
+}
+
+.apartments-heading__content .section-kicker,
+.apartments-heading__title {
+    grid-column: 1;
+}
+
+.apartments-heading__text {
+    grid-column: 2 / 4;
+    grid-row: 1 / 3;
+    align-self: end;
+    margin: 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(22px, 2vw, 30px);
+    font-weight: 500;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    color: rgba(88, 69, 64, 0.82);
+}
+
 .apartment-card {
     display: flex;
     flex-direction: column-reverse;
@@ -841,9 +865,11 @@ model-viewer {
 ========================================= */
 
 .apartments-more-link {
-    width: fit-content;
+    display: flex;
+    width: max-content;
+    max-width: 100%;
     min-height: 64px;
-    margin: 40px auto 0;
+    margin: 40px auto 0 auto;
     padding: 0 34px;
     border-color: #111111;
     background: #111111;
@@ -1375,6 +1401,14 @@ model-viewer {
         grid-template-columns: 1fr;
     }
 
+    .apartments-heading__content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .apartments-heading__text {
+        grid-column: 2;
+    }
+
     .urban-copy {
         max-width: 760px;
         height: auto;
@@ -1585,6 +1619,23 @@ model-viewer {
     .apartment-grid {
         grid-template-columns: 1fr;
         gap: 18px;
+    }
+
+    .apartments-heading__content {
+        grid-template-columns: 1fr;
+    }
+
+    .apartments-heading__content .section-kicker,
+    .apartments-heading__title,
+    .apartments-heading__text {
+        grid-column: 1;
+    }
+
+    .apartments-heading__text {
+        grid-row: auto;
+        margin-top: 14px;
+        font-size: 22px;
+        line-height: 1.34;
     }
 
     .apartment-card {
