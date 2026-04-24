@@ -37,7 +37,7 @@ function initThreeViewer(wrapper, canvas) {
   renderer.toneMappingExposure = 1.30;
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000);
+  scene.background = new THREE.Color(0xf3f3f3);
 
   const camera = new THREE.PerspectiveCamera(
     38,
@@ -104,7 +104,7 @@ function initThreeViewer(wrapper, canvas) {
   const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(40, 40),
     new THREE.MeshStandardMaterial({
-      color: 0x000000,
+      color: 0xf3f3f3,
       roughness: 1
     })
   );
@@ -313,8 +313,8 @@ function showViewerMessage(wrapper, text) {
     message.style.padding = '24px';
     message.style.fontSize = '14px';
     message.style.fontWeight = '600';
-    message.style.color = '#ffffff';
-    message.style.background = '#000000';
+    message.style.color = '#333';
+    message.style.background = '#f3f3f3';
     message.style.zIndex = '5';
     wrapper.appendChild(message);
   }

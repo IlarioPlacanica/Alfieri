@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}">
+</head>
+<body class="tour-provisional-page">
+  {% if page.tour_embed_url %}
+  <main class="tour-provisional">
+    <iframe
+      class="tour-provisional__frame"
+      src="{{ page.tour_embed_url | relative_url }}"
+      title="Tour virtuale {{ page.title }}"
+      loading="eager"
+      allowfullscreen
+      referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+  </main>
+  {% else %}
+  <main class="tour-provisional tour-provisional--empty">
+    <p>Tour non ancora disponibile.</p>
+  </main>
+  {% endif %}
+</body>
+</html>

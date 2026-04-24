@@ -160,7 +160,7 @@ model-viewer {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-    width: var(--hero-intro-width, 195px);
+    width: 182px;
 }
 
 .hero__icon {
@@ -201,6 +201,8 @@ model-viewer {
     text-align: justify;
     text-align-last: justify;
     white-space: nowrap;
+    font-size: 10px;
+    letter-spacing: 0.14em;
 }
 
 .hero__intro .hero__eyebrow::after {
@@ -1521,7 +1523,7 @@ model-viewer {
     position: relative;
     overflow: hidden;
     border-radius: var(--media-radius);
-    background: #000000;
+    background: #f3f3f3;
     aspect-ratio: 9 / 16;
 }
 
@@ -1545,6 +1547,31 @@ model-viewer {
         border: 0;
         background: #000;
     }
+
+.tour-provisional-page {
+    margin: 0;
+    background: #000;
+}
+
+.tour-provisional {
+    width: 100vw;
+    height: 100vh;
+}
+
+.tour-provisional__frame {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: #000;
+}
+
+.tour-provisional--empty {
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+}
 
 .tour-fullscreen-btn {
     display: inline-flex;
@@ -1698,6 +1725,7 @@ model-viewer {
 
     .hero__intro {
         top: 0;
+        width: 150px;
     }
 
     .project-band {

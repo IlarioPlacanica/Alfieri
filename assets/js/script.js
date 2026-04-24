@@ -1,7 +1,6 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
   initAnchorScroll();
   initHeroVideo();
-  syncHeroIntroWidth();
   initApartmentPageNavigation();
   initTourFullscreen();
   initContextCarousel();
@@ -54,24 +53,6 @@ function initHeroVideo() {
       heroVideo.play().catch(() => {});
     }
   });
-}
-
-function syncHeroIntroWidth() {
-  const intro = document.querySelector(".hero__intro");
-  const eyebrow = intro?.querySelector(".hero__eyebrow");
-
-  if (!intro || !eyebrow) return;
-
-  function updateWidth() {
-    const naturalWidth = Math.ceil(eyebrow.scrollWidth);
-    if (!naturalWidth) return;
-
-    const sharedWidth = Math.round(naturalWidth);
-    intro.style.setProperty("--hero-intro-width", `${sharedWidth}px`);
-  }
-
-  updateWidth();
-  window.addEventListener("resize", updateWidth);
 }
 
 function initApartmentPageNavigation() {
