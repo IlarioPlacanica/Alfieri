@@ -66,7 +66,7 @@ function syncHeroIntroWidth() {
     const naturalWidth = Math.ceil(eyebrow.scrollWidth);
     if (!naturalWidth) return;
 
-    const sharedWidth = Math.round(naturalWidth * 1.1);
+    const sharedWidth = Math.round(naturalWidth);
     intro.style.setProperty("--hero-intro-width", `${sharedWidth}px`);
   }
 

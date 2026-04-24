@@ -104,7 +104,7 @@ function initThreeViewer(wrapper, canvas) {
   const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(40, 40),
     new THREE.MeshStandardMaterial({
-      color: 0xf3f3f3,
+      color: 0x000000,
       roughness: 1
     })
   );
