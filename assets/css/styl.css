@@ -439,7 +439,7 @@ model-viewer {
     .urban-heading h2 {
         margin: 0;
         font-family: "Times New Roman", Times, serif;
-        font-size: clamp(42px, 4.2vw, 66px);
+        font-size: clamp(34px, 3.6vw, 50px);
         font-weight: 400;
         line-height: 0.9;
         letter-spacing: -0.045em;
@@ -763,6 +763,13 @@ model-viewer {
 .apartments-heading__content .section-kicker,
 .apartments-heading__title {
     grid-column: 1;
+}
+
+.apartments-heading__title {
+    width: 100%;
+    max-width: none;
+    text-align: justify;
+    text-align-last: justify;
 }
 
 .apartments-heading__text {
@@ -1710,11 +1717,17 @@ model-viewer {
 
     .site-header__inner {
         min-height: 68px;
-        justify-content: center;
+        justify-content: flex-end;
     }
 
     .site-header__nav {
         display: none;
+    }
+
+    .site-header__brand {
+        left: auto;
+        right: 0;
+        transform: none;
     }
 
     .hero__content {
