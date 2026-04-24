@@ -768,8 +768,7 @@ model-viewer {
 .apartments-heading__title {
     width: 100%;
     max-width: none;
-    text-align: justify;
-    text-align-last: justify;
+    text-align: left;
 }
 
 .apartments-heading__text {
