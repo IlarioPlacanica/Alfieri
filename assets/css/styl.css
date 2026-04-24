@@ -197,6 +197,16 @@ model-viewer {
 .hero__intro .hero__eyebrow {
     width: 100%;
     margin: 0;
+    display: block;
+    text-align: justify;
+    text-align-last: justify;
+    white-space: nowrap;
+}
+
+.hero__intro .hero__eyebrow::after {
+    content: "";
+    display: inline-block;
+    width: 100%;
 }
 
 .hero__actions {
@@ -428,7 +438,7 @@ model-viewer {
         margin: 0;
         font-family: "Times New Roman", Times, serif;
         font-size: clamp(42px, 4.2vw, 66px);
-        font-weight: 500;
+        font-weight: 400;
         line-height: 0.9;
         letter-spacing: -0.045em;
         white-space: nowrap;
@@ -1511,7 +1521,7 @@ model-viewer {
     position: relative;
     overflow: hidden;
     border-radius: var(--media-radius);
-    background: #f3f3f3;
+    background: #000000;
     aspect-ratio: 9 / 16;
 }
 
