@@ -1563,6 +1563,7 @@ model-viewer {
 .tour-provisional {
     width: 100vw;
     height: 100vh;
+    position: relative;
 }
 
 .tour-provisional__frame {
@@ -1578,6 +1579,16 @@ model-viewer {
     place-items: center;
     color: #ffffff;
     font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+.tour-home-btn {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    z-index: 12;
+    min-width: 188px;
+    justify-content: center;
+    text-align: center;
 }
 
 .tour-fullscreen-btn {

@@ -9,6 +9,9 @@
 <body class="tour-provisional-page">
   {% if page.tour_embed_url %}
   <main class="tour-provisional">
+    <a class="btn btn--light tour-home-btn" href="https://ilarioplacanica.github.io/Alfieri/">
+      Torna alla home
+    </a>
     <iframe
       class="tour-provisional__frame"
       src="{{ page.tour_embed_url | relative_url }}"
@@ -20,6 +23,9 @@
   </main>
   {% else %}
   <main class="tour-provisional tour-provisional--empty">
+    <a class="btn btn--light tour-home-btn" href="https://ilarioplacanica.github.io/Alfieri/">
+      Torna alla home
+    </a>
     <p>Tour non ancora disponibile.</p>
   </main>
   {% endif %}
