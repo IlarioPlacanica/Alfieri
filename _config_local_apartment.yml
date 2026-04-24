@@ -1,0 +1,13 @@
+# Override locale per vedere un singolo appartamento con il layout completo.
+# Uso:
+#   bundle exec jekyll serve --config _config.yml,_config_local_apartment.yml
+#
+# Sostituisci "__preview__.md" con il file che vuoi provare, per esempio:
+#   "_apartments/A22.md"
+
+defaults:
+  - scope:
+      path: "_apartments/__preview__.md"
+      type: apartments
+    values:
+      layout: apartment

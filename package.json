@@ -1,0 +1,8 @@
+{
+  "name": "alfieri-local-preview",
+  "private": true,
+  "scripts": {
+    "dev": "node tools/apartment-preview-server.js",
+    "dev:check": "node tools/apartment-preview-server.js --check"
+  }
+}
