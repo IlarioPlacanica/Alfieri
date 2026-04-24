@@ -79,7 +79,7 @@ async function initUrbanViewer() {
     polygon: {
       hierarchy: lotPositions,
       material: new Cesium.ColorMaterialProperty(
-        Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.15)
+        Cesium.Color.fromCssColorString("#d6a14d").withAlpha(0.35)
       ),
       perPositionHeight: true,
       extrudedHeight: 285,
