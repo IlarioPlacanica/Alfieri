@@ -363,7 +363,7 @@ function renderTourSection(tourUrl) {
   return `
       <section id="tour" class="block scroll-target">
         <div class="tour-wrap media-card" id="tour-container">
-          <a class="btn btn--light tour-home-btn" href="https://ilarioplacanica.github.io/Alfieri/">
+          <a class="btn btn--light tour-home-btn" href="/">
             Torna alla home
           </a>
           <button type="button"

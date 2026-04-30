@@ -1,4 +1,5 @@
-baseurl: "/Alfieri"
+baseurl: ""
+url: "https://www.angolidialfieri.com"
 
 collections:
   apartments:
