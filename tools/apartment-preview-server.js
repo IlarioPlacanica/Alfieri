@@ -34,6 +34,16 @@ const server = http.createServer((request, response) => {
   const pathname = decodeURIComponent(requestUrl.pathname);
 
   if (pathname === "/" || pathname === "/index.html") {
+    const source = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
+    const data = parseFrontMatter(source.replace(/^\uFEFF/, ""));
+    const html = source.replace(/^\uFEFF?---\r?\n[\s\S]*?\r?\n---\r?\n?/, "")
+      .replace(/{{\s*page.title\s*}}/g, escapeHtml(data.title || "Angoli di Alfieri"))
+      .replace(/{{\s*'([^']+)'\s*\|\s*relative_url\s*}}/g, "$1");
+    sendHtml(response, html);
+    return;
+  }
+
+  if (pathname === "/appartamenti/" || pathname === "/appartamenti") {
     sendHtml(response, renderPreviewIndex(apartments, port));
     return;
   }

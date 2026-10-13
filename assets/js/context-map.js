@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     zoom: 17,
     pitch: 0,
     bearing: 0,
-    attributionControl: false
+    attributionControl: true
   });
 
   map.addControl(

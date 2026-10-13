@@ -7,7 +7,7 @@
 
 defaults:
   - scope:
-      path: "_apartments/__preview__.md"
+      path: "_apartments/A15.md"
       type: apartments
     values:
       layout: apartment
