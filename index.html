@@ -20,7 +20,7 @@ title: Angoli di Alfieri | Nuove residenze a Torino
 <body>
   <a class="skip-link" href="#progetto">Vai al contenuto</a>
   <header class="site-header">
-    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Angoli di Alfieri, home"><img src="{{ '/assets/media/landing/angoli.png' | relative_url }}" alt="Angoli — essential spaces" width="255" height="114"></a>
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Angoli di Alfieri, home"><img src="{{ '/assets/media/index/angoli.png' | relative_url }}" alt="Angoli — essential spaces" width="255" height="114"></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
     <nav id="main-nav" aria-label="Navigazione principale">
       <a href="#progetto">Progetto</a><a href="#contesto">Location</a><a href="#appartamenti">Appartamenti</a><a href="#galleria">Interni</a><a href="#contatti">Contatti</a>
@@ -28,7 +28,7 @@ title: Angoli di Alfieri | Nuove residenze a Torino
   </header>
   <main>
     <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-image" src="{{ '/assets/media/landing/hero.webp' | relative_url }}" alt="Soggiorno luminoso con affaccio sui palazzi del centro di Torino" fetchpriority="high" width="1672" height="941">
+      <img class="hero-image" src="{{ '/assets/media/index/hero.webp' | relative_url }}" alt="Soggiorno luminoso con affaccio sui palazzi del centro di Torino" fetchpriority="high" width="1672" height="941">
       <div class="hero-content">
         <h1 id="hero-title">Al centro di tutto,<br>lontano dal rumore.</h1>
         <p>Via Alfieri 17, Torino.<br>Nuove residenze in vendita.</p>
@@ -46,30 +46,43 @@ title: Angoli di Alfieri | Nuove residenze a Torino
         <p>Nel cuore di Torino, via Alfieri 17 si trova a pochi passi da <strong>piazza Solferino</strong>, il salotto verde della città, e dai luoghi più rappresentativi del centro.</p>
         <p>Un indirizzo da <strong>vivere a piedi</strong>, tra portici, caffè storici e scorci che raccontano l’identità torinese.</p>
       </div>
-      <div class="carousel" data-carousel aria-label="Immagini della location" aria-roledescription="carosello">
-        <img src="{{ '/assets/media/landing/location.webp' | relative_url }}" alt="I portici storici del centro di Torino" width="1536" height="1024" loading="lazy">
-        <img src="{{ '/assets/media/index/contesto-2.png' | relative_url }}" alt="Uno scorcio del quartiere di via Alfieri" loading="lazy" hidden>
-        <img src="{{ '/assets/media/index/contesto-3.png' | relative_url }}" alt="Architettura e luoghi del centro di Torino" loading="lazy" hidden>
+      <div class="carousel location-carousel" data-carousel aria-label="Immagini della location" aria-roledescription="carosello">
+        <img src="{{ '/assets/media/index/location.webp' | relative_url }}" alt="I portici storici del centro di Torino" width="1536" height="1024" loading="lazy">
+        <img src="{{ '/assets/media/index/Torino_fontana_filtro.png' | relative_url }}" alt="La fontana nel centro di Torino" width="1267" height="828" loading="lazy" hidden>
+        <img src="{{ '/assets/media/index/Torino_Galleria_filtro.png' | relative_url }}" alt="La galleria di Torino" width="4471" height="6109" loading="lazy" hidden>
+        <img src="{{ '/assets/media/index/Torino_piazzaSanCarlo_filtro.png' | relative_url }}" alt="Piazza San Carlo a Torino" width="1116" height="1253" loading="lazy" hidden>
+        <img src="{{ '/assets/media/index/Torino_ViaCernaia.png' | relative_url }}" alt="Via Cernaia a Torino" width="1143" height="1376" loading="lazy" hidden>
         <button class="carousel-prev" type="button" aria-label="Immagine precedente">←</button><button class="carousel-next" type="button" aria-label="Immagine successiva">→</button>
-        <span class="sr-only" aria-live="polite" data-carousel-status>Immagine 1 di 3</span>
+        <span class="carousel-status" aria-live="polite" data-carousel-status>Immagine 1 di 5</span>
       </div>
     </section>
     <section id="appartamenti" class="apartments">
       <div class="section-copy"><p class="eyebrow">Gli appartamenti</p><h2>Spazi che<br> ispirano<br> benessere</h2><p>Spazi funzionali per il<br>vivere quotidiano.</p><a class="button plans-link" href="{{ '/appartamenti/' | relative_url }}">Vedi tutte le planimetrie <span aria-hidden="true">→</span></a></div>
       <div class="plans">
-        <a class="plan" href="{{ '/A14/' | relative_url }}" aria-label="Scopri il bilocale A14"><div class="plan-heading"><h3>Bilocale</h3><p>A partire da 40 mq</p></div><img src="{{ '/assets/media/landing/bilocale.webp' | relative_url }}" alt="Planimetria del bilocale" width="772" height="860" loading="lazy"></a>
-        <a class="plan" href="{{ '/A17/' | relative_url }}" aria-label="Scopri il trilocale A17"><div class="plan-heading"><h3>Trilocale</h3><p>A partire da 40 mq</p></div><img src="{{ '/assets/media/landing/trilocale.webp' | relative_url }}" alt="Planimetria del trilocale" width="766" height="859" loading="lazy"></a>
+        <a class="plan" href="{{ '/A14/' | relative_url }}" aria-label="Scopri il bilocale A14"><div class="plan-heading"><h3>Bilocale</h3><p>A partire da 40 mq</p></div><img src="{{ '/assets/media/index/bilocale.webp' | relative_url }}" alt="Planimetria del bilocale" width="772" height="860" loading="lazy"></a>
+        <a class="plan" href="{{ '/A17/' | relative_url }}" aria-label="Scopri il trilocale A17"><div class="plan-heading"><h3>Trilocale</h3><p>A partire da 40 mq</p></div><img src="{{ '/assets/media/index/trilocale.webp' | relative_url }}" alt="Planimetria del trilocale" width="766" height="859" loading="lazy"></a>
       </div>
     </section>
     <section id="galleria" class="editorial interiors">
       <div class="section-copy"><p class="eyebrow">Gli interni</p><h2>Eleganza in ogni dettaglio</h2><p>Forme contemporanee si fondono con la <strong>qualità dei materiali e delle finiture.</strong><br>Un capitolato curato per offrire soluzioni su misura, capaci di riflettere il gusto e lo stile di ogni residente.</p></div>
-      <img class="interiors-image" src="{{ '/assets/media/landing/interni.webp' | relative_url }}" alt="Cucina con isola in marmo, boiserie e illuminazione a sospensione" width="1657" height="940" loading="lazy">
+      <div class="carousel interiors-carousel" data-carousel aria-label="Immagini degli interni" aria-roledescription="carosello">
+        <img src="{{ '/assets/media/index/B4-26_cucina_4.png' | relative_url }}" alt="Render della cucina" width="1671" height="941" loading="lazy">
+        <img src="{{ '/assets/media/index/B24-26_salotto_3.png' | relative_url }}" alt="Render del salotto B24-26" width="1672" height="941" loading="lazy" hidden>
+        <img src="{{ '/assets/media/index/A14_camera_V3.png' | relative_url }}" alt="Render della camera da letto A14" width="1671" height="941" loading="lazy" hidden>
+        <img src="{{ '/assets/media/index/A15_camera_V3_1.png' | relative_url }}" alt="Render della camera da letto A15" width="1672" height="941" loading="lazy" hidden>
+        <img src="{{ '/assets/media/index/B24-26_camera_v5_4.png' | relative_url }}" alt="Render della camera da letto B24-26" width="1672" height="941" loading="lazy" hidden>
+        <img src="{{ '/assets/media/index/A15_bagno_V6_3.png' | relative_url }}" alt="Render del bagno A15" width="1103" height="1426" loading="lazy" hidden>
+        <img src="{{ '/assets/media/index/A23_bagno_V3_2.png' | relative_url }}" alt="Render del bagno A23" width="1254" height="1254" loading="lazy" hidden>
+        <button class="carousel-prev" type="button" aria-label="Interno precedente">←</button>
+        <button class="carousel-next" type="button" aria-label="Interno successivo">→</button>
+        <span class="carousel-status" aria-live="polite" data-carousel-status>Immagine 1 di 7</span>
+      </div>
     </section>
     <section class="map-section" aria-label="Dove siamo: via Alfieri 17, Torino"><div id="contextMap" class="context-map"></div><a class="map-address" href="https://www.google.com/maps/search/?api=1&query=Via+Alfieri+17+Torino" target="_blank" rel="noopener">Via Alfieri 17, Torino ↗</a></section>
   </main>
   <footer id="contatti" class="contact">
     <div class="contact-main"><div><p class="eyebrow">Contatti</p><h2>Vuoi saperne di più?</h2><p>Richiedi informazioni sulle soluzioni in vendita<br>o prenota un appuntamento</p><h3>Telefono - WhatsApp</h3><p class="phones"><a href="tel:+393400629071">+39 340 062 9071</a> <span>|</span> <a href="tel:+393409978648">+39 340 997 8648</a></p><h3>Mail</h3><a href="mailto:info@primulacostruzioni.it">info@primulacostruzioni.it</a></div>
-      <div class="partners"><div><p>Iniziativa immobiliare gruppo:</p><img src="{{ '/assets/media/landing/primula.png' | relative_url }}" alt="Primula Costruzioni" width="198" height="120" loading="lazy"></div><div><p>Commercializzazione:</p><img src="{{ '/assets/media/landing/grande-immobiliare.png' | relative_url }}" alt="Grande Immobiliare" width="318" height="75" loading="lazy"></div></div>
+      <div class="partners"><div><p>Iniziativa immobiliare gruppo:</p><img src="{{ '/assets/media/index/primula.png' | relative_url }}" alt="Primula Costruzioni" width="198" height="120" loading="lazy"></div><div><p>Commercializzazione:</p><img src="{{ '/assets/media/index/grande-immobiliare.png' | relative_url }}" alt="Grande Immobiliare" width="318" height="75" loading="lazy"></div></div>
     </div>
     <p class="legal">Tutta la documentazione grafica e testuale è puramente illustrativa e non costituisce vincolo contrattuale. Classe energetica A.<br>Consegna progetto prevista dicembre 2027</p>
   </footer>

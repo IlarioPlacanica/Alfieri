@@ -251,6 +251,11 @@ strong {
   display:none;
 }
 
+.location-carousel img {
+  object-fit:contain;
+  background:var(--charcoal);
+}
+
 .carousel button {
   position:absolute;
   top:50%;
@@ -339,17 +344,31 @@ strong {
   padding-bottom:40px;
 }
 
-.interiors-image {
+.interiors-carousel img {
   width:100%;
   height:auto;
   aspect-ratio:1.76;
-  object-fit:cover;
+  object-fit:contain;
+  background:var(--charcoal);
+}
+
+.carousel-status {
+  position:absolute;
+  bottom:12px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:5px 12px;
+  background:#333438d9;
+  color:white;
+  font-size:12px;
+  white-space:nowrap;
+  pointer-events:none;
 }
 
 .map-section {
   position:relative;
   height:clamp(300px,43vw,560px);
-  background:url('../media/landing/mappa.webp') center/cover;
+  background:url('../media/index/mappa.webp') center/cover;
 }
 
 .context-map {
