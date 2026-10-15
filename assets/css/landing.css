@@ -447,14 +447,19 @@ strong {
   font-size:14px;
 }
 
+.partners a {
+  display:inline-block;
+  max-width:100%;
+}
+
 .partners img {
   height:auto;
-  width:160px;
+  width:260px;
   margin-left:auto;
 }
 
 .partners div:first-child img {
-  width:115px;
+  width:190px;
 }
 
 .partners p {
@@ -620,6 +625,7 @@ strong {
   }
   .partners {
     flex-direction:row;
+    flex-wrap:wrap;
     text-align:left;
     justify-content:space-between;
     min-width:0;
@@ -628,10 +634,10 @@ strong {
   }
   .partners img {
     margin:0;
-    width:145px;
+    width:220px;
   }
   .partners div:first-child img {
-    width:105px;
+    width:165px;
   }
   .legal {
     margin-top:45px!important;
