@@ -323,8 +323,8 @@ strong {
 .plan img {
   width:100%;
   height:auto;
-  aspect-ratio:.895;
-  object-fit:cover;
+  aspect-ratio:1273 / 1800;
+  object-fit:contain;
 }
 
 .plans-link {
