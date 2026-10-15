@@ -1,3 +1,11 @@
+@font-face {
+  font-family:'Bodoni 72';
+  src:url('../fonts/bodoni-72-book.ttf') format('truetype');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+
 :root {
   --ivory:#f5ede3;
   --sand:#eee7da;
@@ -48,9 +56,9 @@ a:focus-visible,button:focus-visible {
   outline-offset:5px;
 }
 
-h1,h2 {
-  font-family:'Playfair Display',Georgia,serif;
-  font-weight:700;
+h1,h2,h3 {
+  font-family:'Bodoni 72',Georgia,serif;
+  font-weight:400;
   letter-spacing:-.035em;
   line-height:1.08;
 }
@@ -310,7 +318,7 @@ strong {
 .plan h3 {
   font-size:20px;
   text-transform:uppercase;
-  font-weight:500;
+  font-weight:400;
   margin:0 0 18px;
 }
 
@@ -409,7 +417,7 @@ strong {
 }
 
 .contact h3 {
-  font-family:inherit;
+  font-family:'Bodoni 72',Georgia,serif;
   font-size:18px;
   line-height:1.2;
   text-transform:uppercase;
@@ -532,7 +540,7 @@ strong {
     min-height:90svh;
   }
   .hero-image {
-    object-position:58% center;
+    object-position:30% center;
   }
   .hero-content {
     padding:150px 22px 32px;
