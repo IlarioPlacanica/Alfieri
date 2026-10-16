@@ -1,7 +1,7 @@
 @font-face {
-  font-family:'Bodoni 72';
-  src:url('../fonts/bodoni-72-book.ttf') format('truetype');
-  font-weight:400;
+  font-family:'Bodoni Seventytwo ITC';
+  src:url('../font/bodoni-seventytwo-itc-bold.otf') format('opentype');
+  font-weight:700;
   font-style:normal;
   font-display:swap;
 }
@@ -57,8 +57,8 @@ a:focus-visible,button:focus-visible {
 }
 
 h1,h2,h3 {
-  font-family:'Bodoni 72',Georgia,serif;
-  font-weight:400;
+  font-family:'Bodoni Seventytwo ITC',Georgia,serif;
+  font-weight:700;
   letter-spacing:-.035em;
   line-height:1.08;
 }
@@ -261,7 +261,6 @@ strong {
 
 .location-carousel img {
   object-fit:contain;
-  background:var(--charcoal);
 }
 
 .carousel button {
@@ -318,7 +317,7 @@ strong {
 .plan h3 {
   font-size:20px;
   text-transform:uppercase;
-  font-weight:400;
+  font-weight:700;
   margin:0 0 18px;
 }
 
@@ -357,20 +356,6 @@ strong {
   height:auto;
   aspect-ratio:1.76;
   object-fit:contain;
-  background:var(--charcoal);
-}
-
-.carousel-status {
-  position:absolute;
-  bottom:12px;
-  left:50%;
-  transform:translateX(-50%);
-  padding:5px 12px;
-  background:#333438d9;
-  color:white;
-  font-size:12px;
-  white-space:nowrap;
-  pointer-events:none;
 }
 
 .map-section {
@@ -417,7 +402,7 @@ strong {
 }
 
 .contact h3 {
-  font-family:'Bodoni 72',Georgia,serif;
+  font-family:'Bodoni Seventytwo ITC',Georgia,serif;
   font-size:18px;
   line-height:1.2;
   text-transform:uppercase;
@@ -438,13 +423,19 @@ strong {
 }
 
 .partners {
-  text-align:right;
+  text-align:center;
   display:flex;
   flex-direction:column;
   justify-content:center;
   gap:55px;
   min-width:230px;
   font-size:14px;
+}
+
+.partners > div {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 .partners a {
@@ -455,7 +446,7 @@ strong {
 .partners img {
   height:auto;
   width:260px;
-  margin-left:auto;
+  margin:0 auto;
 }
 
 .partners div:first-child img {
@@ -624,10 +615,9 @@ strong {
     font-size:15px;
   }
   .partners {
-    flex-direction:row;
-    flex-wrap:wrap;
-    text-align:left;
-    justify-content:space-between;
+    flex-direction:column;
+    text-align:center;
+    align-items:center;
     min-width:0;
     gap:25px;
     font-size:12px;
