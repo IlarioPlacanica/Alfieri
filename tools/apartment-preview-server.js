@@ -173,6 +173,7 @@ function renderPreviewIndex(apartmentList, portNumber) {
   return `<!DOCTYPE html>
 <html lang="it">
 <head>
+  <link rel="icon" type="image/png" href="/assets/media/index/favicon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Preview appartamenti</title>
@@ -274,6 +275,7 @@ function renderApartmentPage(apartment) {
   return `<!DOCTYPE html>
 <html lang="it">
 <head>
+  <link rel="icon" type="image/png" href="/assets/media/index/favicon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${escapeHtml(title)}</title>
@@ -398,6 +400,7 @@ function renderNotFound(pathname) {
   return `<!DOCTYPE html>
 <html lang="it">
 <head>
+  <link rel="icon" type="image/png" href="/assets/media/index/favicon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Non trovato</title>
