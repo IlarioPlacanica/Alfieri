@@ -2,153 +2,42 @@
 title: Tutti gli appartamenti
 permalink: /appartamenti/
 ---
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} | Angoli di Alfieri</title>
   <link rel="icon" type="image/png" href="{{ '/assets/media/index/favicon.png' | relative_url }}">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ page.title }}</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap"
-        rel="stylesheet" />
-
-  <link rel="stylesheet" href="{{ '/assets/css/styl.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/landing.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/apartments.css' | relative_url }}">
+  <script defer src="{{ '/assets/js/landing.js' | relative_url }}"></script>
 </head>
-
-<body class="site-body home-page">
-  {% assign apartments_sorted = site.apartments | sort: "title" %}
-
+<body class="catalog-page">
   <header class="site-header">
-    <div class="site-header__inner">
-      <a href="{{ '/' | relative_url }}" class="site-header__brand">ALFIERI</a>
-
-      <nav class="site-header__nav" aria-label="Navigazione principale">
-        <a href="{{ '/' | relative_url }}#progetto">Progetto</a>
-        <a href="{{ '/' | relative_url }}#contesto">Contesto</a>
-        <a href="{{ '/' | relative_url }}#appartamenti">Appartamenti</a>
-        <a href="{{ '/' | relative_url }}#contatti">Contatti</a>
-      </nav>
-    </div>
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Angoli di Alfieri, home"><img src="{{ '/assets/media/index/angoli.png' | relative_url }}" alt="Angoli — essential spaces" width="255" height="114"></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button>
+    <nav id="main-nav" aria-label="Navigazione principale"><a href="{{ '/' | relative_url }}#progetto">Progetto</a><a href="{{ '/' | relative_url }}#contesto">Location</a><a href="{{ '/appartamenti/' | relative_url }}" aria-current="page">Appartamenti</a><a href="{{ '/' | relative_url }}#galleria">Interni</a><a href="{{ '/' | relative_url }}#contatti">Contatti</a></nav>
   </header>
-
-  <main class="home-main">
-    <section class="section section--all-apartments">
-      <div class="section-heading section-heading--split">
-        <div>
-          <p class="section-kicker">Collezione completa</p>
-          <h2>Tutti gli appartamenti</h2>
-        </div>
-        <p class="section-note">
-          Una vista completa di tutte le unità disponibili.
-        </p>
-      </div>
-
-      <div class="apartments-group">
-        <h3 class="apartments-group__title">Monolocali</h3>
-        <div class="apartment-grid">
-          {% for apartment in apartments_sorted %}
-          {% if apartment.tipologia == "Monolocale" %}
-          <a class="apartment-card" href="{{ apartment.url | relative_url }}">
-            <div class="apartment-card__media">
-              {% if apartment.card_image %}
-              <img src="{{ apartment.card_image | relative_url }}"
-                   alt="{{ apartment.title }}"
-                   loading="lazy" />
-              {% else %}
-              <div class="apartment-card__placeholder">
-                {{ apartment.title }}
-              </div>
-              {% endif %}
-            </div>
-
-            <div class="apartment-card__body">
-              <h3>{{ apartment.title }}</h3>
-
-              <span class="apartment-card__link">
-                Scopri l’unità
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-            </div>
-          </a>
-          {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-
-      <div class="apartments-group apartments-group--bilocali">
-        <h3 class="apartments-group__title">Bilocali</h3>
-        <div class="apartment-grid">
-          {% for apartment in apartments_sorted %}
-          {% if apartment.tipologia == "Bilocale" %}
-          <a class="apartment-card" href="{{ apartment.url | relative_url }}">
-            <div class="apartment-card__media">
-              {% if apartment.card_image %}
-              <img src="{{ apartment.card_image | relative_url }}"
-                   alt="{{ apartment.title }}"
-                   loading="lazy" />
-              {% else %}
-              <div class="apartment-card__placeholder">
-                {{ apartment.title }}
-              </div>
-              {% endif %}
-            </div>
-
-            <div class="apartment-card__body">
-              <h3>{{ apartment.title }}</h3>
-
-              <span class="apartment-card__link">
-                Scopri l’unità
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-            </div>
-          </a>
-          {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-
-      <div class="apartments-group">
-        <h3 class="apartments-group__title">Trilocali</h3>
-        <div class="apartment-grid">
-          {% for apartment in apartments_sorted %}
-          {% if apartment.tipologia == "Trilocale" %}
-          <a class="apartment-card" href="{{ apartment.url | relative_url }}">
-            <div class="apartment-card__media">
-              {% if apartment.card_image %}
-              <img src="{{ apartment.card_image | relative_url }}"
-                   alt="{{ apartment.title }}"
-                   loading="lazy" />
-              {% else %}
-              <div class="apartment-card__placeholder">
-                {{ apartment.title }}
-              </div>
-              {% endif %}
-            </div>
-
-            <div class="apartment-card__body">
-              <h3>{{ apartment.title }}</h3>
-
-              <span class="apartment-card__link">
-                Scopri l’unità
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-            </div>
-          </a>
-          {% endif %}
-          {% endfor %}
-        </div>
+  <main class="catalog">
+    <div class="catalog-heading"><p class="eyebrow">Le residenze</p><h1>Tutti gli appartamenti</h1><p>Scopri le planimetrie e trova lo spazio che fa per te.</p></div>
+    <!-- apartment-groups -->
+    {% assign apartments_sorted = site.apartments | where_exp: "apartment", "apartment.floor_plan != nil" | sort: "title" %}
+    {% assign types = "Monolocale|Bilocale|Trilocale" | split: "|" %}
+    {% assign labels = "Monolocali|Bilocali|Trilocali" | split: "|" %}
+    {% for type in types %}
+    {% assign group = apartments_sorted | where: "tipologia", type %}
+    <section class="catalog-group" aria-labelledby="group-{{ type }}">
+      <h2 id="group-{{ type }}">{{ labels[forloop.index0] }}</h2>
+      <div class="catalog-grid">
+        {% for apartment in group %}
+        {% include apartment-card.html %}
+        {% endfor %}
       </div>
     </section>
+    {% endfor %}
+    <!-- /apartment-groups -->
+    <a class="button" href="{{ '/' | relative_url }}#contatti">Richiedi informazioni</a>
   </main>
 </body>
 </html>

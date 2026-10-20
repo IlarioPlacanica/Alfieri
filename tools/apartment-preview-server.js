@@ -99,7 +99,7 @@ function loadApartments() {
 }
 
 function parseFrontMatter(raw) {
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+  const match = raw.replace(/^\uFEFF/, "").match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   if (!match) {
     return {};
   }
@@ -155,119 +155,42 @@ function unquote(value) {
   return trimmed;
 }
 
-function renderPreviewIndex(apartmentList, portNumber) {
-  const apartmentLinks = apartmentList
-    .map((apartment) => {
-      const title = apartment.data.title || apartment.slug;
-      const type = apartment.data.tipologia || "Appartamento";
-      return `
-        <a class="preview-card" href="/${encodeURIComponent(apartment.slug)}/">
-          <span class="preview-card__eyebrow">${escapeHtml(type)}</span>
-          <strong class="preview-card__title">${escapeHtml(title)}</strong>
-          <span class="preview-card__link">Apri preview</span>
-        </a>
-      `;
-    })
-    .join("");
+// Render the same source templates used by Jekyll for the catalog and plan pages.
+function renderTemplate(source, values = {}) {
+  return source.replace(/^\uFEFF?---\r?\n[\s\S]*?\r?\n---\r?\n?/, "")
+    .replace(/{{\s*'([^']+)'\s*\|\s*relative_url\s*}}/g, "$1")
+    .replace(/{{\s*([\w.]+)(?:\s*\|\s*relative_url)?\s*}}/g,
+      (_, key) => escapeHtml(String(values[key] ?? "")));
+}
 
-  return `<!DOCTYPE html>
-<html lang="it">
-<head>
-  <link rel="icon" type="image/png" href="/assets/media/index/favicon.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preview appartamenti</title>
-  <style>
-    :root {
-      color-scheme: light;
-      font-family: Inter, Arial, Helvetica, sans-serif;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: #f5f1ea;
-      color: #171717;
-    }
-    main {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 48px 0 56px;
-    }
-    h1 {
-      margin: 0 0 10px;
-      font: 500 clamp(40px, 5vw, 68px) "Cormorant Garamond", Georgia, serif;
-      color: #4a3632;
-      text-transform: uppercase;
-      line-height: 1;
-    }
-    p {
-      margin: 0;
-      max-width: 760px;
-      font-size: 18px;
-      line-height: 1.55;
-      color: rgba(88, 69, 64, 0.82);
-    }
-    .preview-meta {
-      margin-top: 8px;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(70, 52, 47, 0.7);
-    }
-    .preview-grid {
-      margin-top: 32px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-    .preview-card {
-      display: grid;
-      gap: 10px;
-      padding: 22px;
-      text-decoration: none;
-      color: inherit;
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,0.08);
-      min-height: 168px;
-    }
-    .preview-card__eyebrow {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(70, 52, 47, 0.7);
-    }
-    .preview-card__title {
-      font-size: 32px;
-      line-height: 1;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      color: #4a3632;
-    }
-    .preview-card__link {
-      align-self: end;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <h1>Preview Apartment</h1>
-    <p>
-      Qui puoi vedere in locale i file dentro <code>_apartments</code> con il layout <code>apartment</code>,
-      senza toccare il front matter e senza passare da Jekyll.
-    </p>
-    <div class="preview-meta">Server locale su porta ${portNumber}</div>
-    <div class="preview-grid">${apartmentLinks}</div>
-  </main>
-</body>
-</html>`;
+function renderPreviewIndex(apartmentList) {
+  const source = fs.readFileSync(path.join(ROOT, "appartamenti.html"), "utf8");
+  const card = fs.readFileSync(path.join(ROOT, "_includes/apartment-card.html"), "utf8");
+  const types = [["Monolocale", "Monolocali"], ["Bilocale", "Bilocali"], ["Trilocale", "Trilocali"]];
+  const groups = types.map(([type, label]) => {
+    const cards = apartmentList.filter(a => a.data.floor_plan && a.data.tipologia === type)
+      .sort((a, b) => a.data.title.localeCompare(b.data.title, "it"))
+      .map(a => renderTemplate(card, {
+        "apartment.url": a.data.permalink || `/${a.slug}/`,
+        "apartment.title": a.data.title,
+        "apartment.tipologia": a.data.tipologia,
+        "apartment.card_image": a.data.card_image
+      })).join("\n");
+    return `<section class="catalog-group" aria-labelledby="group-${type}"><h2 id="group-${type}">${label}</h2><div class="catalog-grid">${cards}</div></section>`;
+  }).join("\n");
+  return renderTemplate(source.replace(/<!-- apartment-groups -->[\s\S]*?<!-- \/apartment-groups -->/, groups), {"page.title": "Tutti gli appartamenti"});
+}
+
+function renderPlanPage(data) {
+  let source = fs.readFileSync(path.join(ROOT, "_layouts/apartment_plan.html"), "utf8");
+  source = source.replace(/{% if page.tour_embed_url %}([\s\S]*?){% endif %}/g,
+    (_, content) => data.tour_embed_url ? content : "");
+  return renderTemplate(source, Object.fromEntries(Object.entries(data).map(([key, value]) => [`page.${key}`, value])));
 }
 
 function renderApartmentPage(apartment) {
   const { data, slug } = apartment;
+  if (data.layout === "apartment_plan") return renderPlanPage(data);
   const title = data.title || slug;
   const gallery = Array.isArray(data.gallery) ? data.gallery : [];
   const hasGlb = Boolean(data.glb_model);
