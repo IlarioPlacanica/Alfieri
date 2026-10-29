@@ -16,7 +16,6 @@
     <a class="floor-plan__image" href="{{ page.floor_plan | relative_url }}" target="_blank" rel="noopener" aria-label="Apri la planimetria {{ page.title }} a dimensione intera"><img src="{{ page.floor_plan | relative_url }}" alt="Planimetria {{ page.title }}" width="1414" height="2000"></a>
     <div class="floor-plan__actions">
       <a class="button" href="{{ page.floor_plan | relative_url }}" target="_blank" rel="noopener">Apri la planimetria ↗</a>
-      {% if page.tour_embed_url %}<a class="button" href="{{ page.tour_embed_url | relative_url }}">Esplora il tour virtuale</a>{% endif %}
       <a class="button" href="{{ '/' | relative_url }}#contatti">Richiedi informazioni</a>
     </div>
   </main>

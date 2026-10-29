@@ -22,7 +22,7 @@ permalink: /appartamenti/
   <main class="catalog">
     <div class="catalog-heading"><p class="eyebrow">Le residenze</p><h1>Tutti gli appartamenti</h1><p>Scopri le planimetrie e trova lo spazio che fa per te.</p></div>
     <!-- apartment-groups -->
-    {% assign apartments_sorted = site.apartments | where_exp: "apartment", "apartment.floor_plan != nil" | sort: "title" %}
+    {% assign apartments_sorted = site.apartments | where_exp: "apartment", "apartment.floor_plan != nil and apartment.catalog_hidden != true" | sort: "title" %}
     {% assign types = "Monolocale|Bilocale|Trilocale" | split: "|" %}
     {% assign labels = "Monolocali|Bilocali|Trilocali" | split: "|" %}
     {% for type in types %}

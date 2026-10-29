@@ -168,7 +168,7 @@ function renderPreviewIndex(apartmentList) {
   const card = fs.readFileSync(path.join(ROOT, "_includes/apartment-card.html"), "utf8");
   const types = [["Monolocale", "Monolocali"], ["Bilocale", "Bilocali"], ["Trilocale", "Trilocali"]];
   const groups = types.map(([type, label]) => {
-    const cards = apartmentList.filter(a => a.data.floor_plan && a.data.tipologia === type)
+    const cards = apartmentList.filter(a => a.data.floor_plan && a.data.catalog_hidden !== "true" && a.data.tipologia === type)
       .sort((a, b) => a.data.title.localeCompare(b.data.title, "it"))
       .map(a => renderTemplate(card, {
         "apartment.url": a.data.permalink || `/${a.slug}/`,
